@@ -33,9 +33,9 @@
                                 </items>
                             </toolbar>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYw-6b-z64">
-                                <rect key="frame" x="16" y="547" width="138" height="60"/>
+                                <rect key="frame" x="16" y="518" width="137.5" height="89"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="umc-JP-ZgS">
-                                    <rect key="frame" x="0.0" y="0.0" width="138" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="137.5" height="89"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a photo." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0g-ZL-bip">
@@ -44,12 +44,23 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYV-bO-x1P">
+                                            <rect key="frame" x="20" y="48.5" width="98" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="g0g-ZL-bip" secondAttribute="trailing" constant="20" symbolic="YES" id="LEm-7k-l9W"/>
+                                        <constraint firstAttribute="trailing" secondItem="EYV-bO-x1P" secondAttribute="trailing" constant="20" symbolic="YES" id="8Vf-4E-KCv"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="g0g-ZL-bip" secondAttribute="trailing" constant="20" symbolic="YES" id="LEm-7k-l9W"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EYV-bO-x1P" secondAttribute="trailing" constant="20" symbolic="YES" id="M1m-0L-Z1G"/>
+                                        <constraint firstItem="EYV-bO-x1P" firstAttribute="leading" secondItem="umc-JP-ZgS" secondAttribute="leading" constant="20" symbolic="YES" id="QBS-H1-Reh"/>
+                                        <constraint firstAttribute="bottom" secondItem="EYV-bO-x1P" secondAttribute="bottom" constant="20" symbolic="YES" id="U6v-q2-XdE"/>
+                                        <constraint firstAttribute="trailing" secondItem="g0g-ZL-bip" secondAttribute="trailing" constant="20" symbolic="YES" id="a9c-M9-GkW"/>
+                                        <constraint firstItem="EYV-bO-x1P" firstAttribute="top" secondItem="g0g-ZL-bip" secondAttribute="bottom" constant="8" symbolic="YES" id="bho-aQ-cDO"/>
                                         <constraint firstItem="g0g-ZL-bip" firstAttribute="top" secondItem="umc-JP-ZgS" secondAttribute="top" constant="20" symbolic="YES" id="fR4-0V-maI"/>
                                         <constraint firstItem="g0g-ZL-bip" firstAttribute="leading" secondItem="umc-JP-ZgS" secondAttribute="leading" constant="20" symbolic="YES" id="hzP-6t-oeG"/>
-                                        <constraint firstAttribute="bottom" secondItem="g0g-ZL-bip" secondAttribute="bottom" constant="20" symbolic="YES" id="wZJ-L6-4Fl"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="extraLight"/>
@@ -60,19 +71,20 @@
                             <constraint firstItem="frE-bb-H3L" firstAttribute="leading" secondItem="0ab-3A-mEX" secondAttribute="leading" id="1px-XK-hND"/>
                             <constraint firstItem="frE-bb-H3L" firstAttribute="bottom" secondItem="0ab-3A-mEX" secondAttribute="bottom" id="6Vs-nn-fY1"/>
                             <constraint firstItem="0ab-3A-mEX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="AiH-vY-Iy1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZYw-6b-z64" secondAttribute="trailing" constant="16" id="BYC-Pn-1yp"/>
                             <constraint firstItem="frE-bb-H3L" firstAttribute="top" secondItem="ZYw-6b-z64" secondAttribute="bottom" constant="16" id="Nxg-tT-ywI"/>
                             <constraint firstItem="0ab-3A-mEX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TDH-yg-vtq"/>
                             <constraint firstItem="0ab-3A-mEX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aue-gW-QfL"/>
                             <constraint firstItem="ZYw-6b-z64" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bqt-ws-mjR"/>
                             <constraint firstItem="frE-bb-H3L" firstAttribute="trailing" secondItem="0ab-3A-mEX" secondAttribute="trailing" id="h3C-Es-4xC"/>
                             <constraint firstItem="0ab-3A-mEX" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="mf7-R0-Bw8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZYw-6b-z64" secondAttribute="trailing" constant="16" id="ptX-HF-AWi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="assessmentLabel" destination="g0g-ZL-bip" id="zPN-pU-1DA"/>
                         <outlet property="cameraButton" destination="tVy-xy-s6p" id="hbf-IS-KvB"/>
+                        <outlet property="emotionLabel" destination="EYV-bO-x1P" id="Wsg-50-OMb"/>
                         <outlet property="imageView" destination="0ab-3A-mEX" id="l24-k4-rwX"/>
                     </connections>
                 </viewController>

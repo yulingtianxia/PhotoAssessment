@@ -43,10 +43,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var assessmentLabel: UILabel!
     @IBOutlet weak var emotionLabel: UILabel!
     
+    var assessmentScore = 0.0
+    var emotionScore = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    let scoreGroup = DispatchGroup()
     
     lazy var emotionsModel: VNCoreMLModel = {
         do {
@@ -119,11 +124,15 @@ class ViewController: UIViewController {
         faceLandmarksRequest.inputFaceObservations = faceDetectionResults
         
         DispatchQueue.main.async {
+            
+            if faceDetectionResults.count == 0 {
+                self.emotionLabel.text = "No Emotion"
+            }
+            
             if let image = self.imageView.image {
                 
                 DispatchQueue.global().async {
                     let emotionGroup = DispatchGroup()
-                    
                     
                     let emotionRequests: [VNCoreMLRequest] = faceDetectionResults.map({ (faceObservation) -> VNCoreMLRequest in
                         emotionGroup.enter()
@@ -160,17 +169,30 @@ class ViewController: UIViewController {
     
     func updateRequests(for image: UIImage) {
         assessmentLabel.text = "Processing..."
+        emotionLabel.text = "Detecting Emotions..."
+        assessmentScore = 0.0
+        emotionScore = 0.0
         
         let orientation = CGImagePropertyOrientation(image.imageOrientation)
         guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
         
         DispatchQueue.global(qos: .userInitiated).async {
+//            let start = Date()
+//            let fingerprint = image.fingerprint()
+//            let duration = Date().timeIntervalSince(start)
             let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
             do {
+                self.scoreGroup.enter()
+                self.scoreGroup.enter()
                 try handler.perform([self.assessmentRequest, self.faceDetectionRequest])
             } catch {
+                self.scoreGroup.leave()
+                self.scoreGroup.leave()
                 print("Failed to perform Assessment.\n\(error.localizedDescription)")
             }
+            self.scoreGroup.notify(queue: DispatchQueue.main, execute: {
+                self.assessmentLabel.text = String(format: "Assessment Score:%0.5f\nEmotion Score:%0.5f\nTotal Score:%0.5f", self.assessmentScore, self.emotionScore, self.assessmentScore + self.emotionScore)
+            })
         }
     }
     
@@ -191,14 +213,16 @@ class ViewController: UIViewController {
                 for index in 1...count {
                     result += scores[index].doubleValue * Double(index)
                 }
-                self.assessmentLabel.text = String(format: "Assessment Score:%0.5f", result)
+                self.assessmentScore = result
             }
+            self.scoreGroup.leave()
         }
     }
     
     func processEmotions(for requests: [VNRequest], error: Error?) {
         DispatchQueue.main.async {
             var texts = [String]()
+            let scoreForEmotions = ["Happy": 5.0, "Angry": 4.0, "Disgust": 2.5, "Fear": 4.0, "Neutral": 2.5, "Sad": 2.5, "Surprise": 4.5]
             for request in requests {
                 guard let results = request.results else {
                     self.emotionLabel.text = "Unable to find emotion.\n\(error!.localizedDescription)"
@@ -217,9 +241,18 @@ class ViewController: UIViewController {
                         }
                     }
                     texts.append(result.identifier)
+                    self.emotionScore += scoreForEmotions[result.identifier] ?? 0
                 }
             }
-            self.emotionLabel.text = "Emotions:" + texts.joined(separator: ", ")
+            if requests.count == 0 {
+                self.emotionLabel.text = "No Emotion"
+                self.emotionScore = 0.0
+            }
+            else {
+                self.emotionLabel.text = "Emotions:" + texts.joined(separator: ", ")
+                self.emotionScore /= Double(requests.count)
+            }
+            self.scoreGroup.leave()
         }
     }
     

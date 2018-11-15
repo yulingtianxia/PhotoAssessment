@@ -12,6 +12,7 @@
 		A412CF6A2195BE4A00306823 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A412CF682195BE4A00306823 /* Main.storyboard */; };
 		A412CF6C2195BE4D00306823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6B2195BE4D00306823 /* Assets.xcassets */; };
 		A412CF6F2195BE4D00306823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6D2195BE4D00306823 /* LaunchScreen.storyboard */; };
+		A412CF9A219C7AB100306823 /* ImageFingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF99219C7AB100306823 /* ImageFingerprint.swift */; };
 		A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */; };
 		A4F9FD8E219BF9F3000C8518 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8D219BF9F3000C8518 /* CNNEmotions.mlmodel */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 		A412CF6B2195BE4D00306823 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A412CF6E2195BE4D00306823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A412CF702195BE4D00306823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A412CF99219C7AB100306823 /* ImageFingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFingerprint.swift; sourceTree = "<group>"; };
 		A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = NIMANasnet.mlmodel; path = ../../../ConvertMLModel/NIMA/models/NIMANasnet.mlmodel; sourceTree = "<group>"; };
 		A4F9FD8D219BF9F3000C8518 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = CNNEmotions.mlmodel; path = ../../../ConvertMLModel/Emotion/models/CNNEmotions.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +63,7 @@
 				A412CF762195CC3A00306823 /* Model */,
 				A412CF642195BE4A00306823 /* AppDelegate.swift */,
 				A412CF662195BE4A00306823 /* ViewController.swift */,
+				A412CF99219C7AB100306823 /* ImageFingerprint.swift */,
 				A412CF682195BE4A00306823 /* Main.storyboard */,
 				A412CF6B2195BE4D00306823 /* Assets.xcassets */,
 				A412CF6D2195BE4D00306823 /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 				A4F9FD8E219BF9F3000C8518 /* CNNEmotions.mlmodel in Sources */,
 				A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */,
 				A412CF672195BE4A00306823 /* ViewController.swift in Sources */,
+				A412CF9A219C7AB100306823 /* ImageFingerprint.swift in Sources */,
 				A412CF652195BE4A00306823 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

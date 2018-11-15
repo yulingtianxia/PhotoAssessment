@@ -20,5 +20,5 @@ coreml_model.save('models/CNNEmotions.mlmodel')
 # coreml_model_quantized = coremltools.models.neural_network.quantization_utils.quantize_weights(coreml_model, 4)
 # coreml_model_quantized.save('models/CNNEmotions_p4.mlmodel')
 
-coreml_model_quantized = coremltools.models.neural_network.quantization_utils.quantize_weights(coreml_model, 2)
-coreml_model_quantized.save('models/CNNEmotions_p2.mlmodel')
+# coreml_model_quantized = coremltools.models.neural_network.quantization_utils.quantize_weights(coreml_model, 2)
+# coreml_model_quantized.save('models/CNNEmotions_p2.mlmodel')

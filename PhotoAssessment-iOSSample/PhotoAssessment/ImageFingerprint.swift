@@ -8,55 +8,27 @@
 
 import UIKit
 
-extension UIImage {
-    func fingerprint() -> Dictionary<Int, Double> {
-        return downsample(scale: 0.01)?.fingerprint() ?? [0: 0]
-    }
-    
-    fileprivate func downsample(scale: CGFloat) -> CGImage? {
-        let sourceOpt = [kCGImageSourceShouldCache : false] as CFDictionary
-        guard let data = self.pngData() else {
-            return nil
-        }
-        
-        guard let source = CGImageSourceCreateWithData(data as CFData, sourceOpt) else {
-            return nil
-        }
-        
-        let maxDimension = max(self.size.width, self.size.height) * scale
-        let downsampleOpt = [kCGImageSourceCreateThumbnailFromImageAlways : true,
-                             kCGImageSourceShouldCacheImmediately : true ,
-                             kCGImageSourceCreateThumbnailWithTransform : true,
-                             kCGImageSourceThumbnailMaxPixelSize : maxDimension] as CFDictionary
-        let downsampleImage = CGImageSourceCreateThumbnailAtIndex(source, 0, downsampleOpt)!
-        return downsampleImage
-    }
-}
-
 extension CGImage {
     func fingerprint() -> Dictionary<Int, Double> {
         var result = Dictionary<Int, Double>()
-        if let pixels = calloc(width * height, MemoryLayout<Int32>.size) {
-            let context = CGContext(data: pixels, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace ?? CGColorSpaceCreateDeviceRGB(), bitmapInfo: bitmapInfo.rawValue)
-            context?.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
-            var currentPixel = pixels
-            var pixelBucket = Dictionary<Int, Int>()
-            for j in 0 ..< height {
-                for i in 0 ..< width {
-                    let color = currentPixel.load(as: UInt32.self)
-                    let r = downsample(component: color.r())
-                    let g = downsample(component: color.g()) << 4
-                    let b = downsample(component: color.b()) << 8
-                    let loction = downsample(x: i, y: j) << 12
-                    let fingerprint = Int(r | g | b | loction)
-                    pixelBucket[fingerprint] = (pixelBucket[fingerprint] ?? 0) + 1
-                    currentPixel += 4
-                }
+        var pixels = [UInt32](repeatElement(0, count: width * height))
+        let context = CGContext(data: &pixels, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
+        context?.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
+        var pixelBucket = Dictionary<Int, Int>()
+        for j in 0 ..< height {
+            for i in 0 ..< width {
+                let color = pixels[width * j + i]
+                let r = downsample(component: color.r())
+                let g = downsample(component: color.g()) << 4
+                let b = downsample(component: color.b()) << 8
+                let loction = downsample(x: i, y: j) << 12
+                let fingerprint = Int(r | g | b | loction)
+                pixelBucket[fingerprint] = (pixelBucket[fingerprint] ?? 0) + 1
             }
-            free(pixels)
-            for (fingerprint, count) in pixelBucket {
-                result[fingerprint] = Double(count) / Double(height * width)
-            }
+        }
+
+        for (fingerprint, count) in pixelBucket {
+            result[fingerprint] = Double(count) / Double(height * width)
         }
         return result
     }

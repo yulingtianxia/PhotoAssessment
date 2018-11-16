@@ -177,9 +177,6 @@ class ViewController: UIViewController {
         guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
         
         DispatchQueue.global(qos: .userInitiated).async {
-//            let start = Date()
-//            let fingerprint = image.fingerprint()
-//            let duration = Date().timeIntervalSince(start)
             let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
             do {
                 self.scoreGroup.enter()
@@ -210,8 +207,9 @@ class ViewController: UIViewController {
             } else if let scores = assessments.first?.featureValue.multiArrayValue {
                 let count = scores.count
                 var result = 0.0
-                for index in 1...count {
-                    result += scores[index].doubleValue * Double(index)
+                for index in 0 ..< count {
+//                    print("score[\(index)]:\(scores[index])")
+                    result += scores[index].doubleValue * Double(index + 1)
                 }
                 self.assessmentScore = result
             }
@@ -233,7 +231,6 @@ class ViewController: UIViewController {
                 
                 if !emotions.isEmpty {
                     var result: VNClassificationObservation = emotions.first!
-                    print(emotions)
                     for emotion in emotions
                     {
                         if result.confidence < emotion.confidence {
@@ -283,6 +280,27 @@ class ViewController: UIViewController {
         picker.sourceType = sourceType
         present(picker, animated: true)
     }
+    
+    fileprivate func downsample(url: URL, size: CGSize) -> CGImage? {
+        let start = Date()
+        let sourceOpt = [kCGImageSourceShouldCache : false] as CFDictionary
+        
+        guard let source = CGImageSourceCreateWithURL(url as CFURL, sourceOpt) else {
+            return nil
+        }
+        let duration = Date().timeIntervalSince(start)
+        
+        let maxDimension = max(size.width, size.height)
+        let downsampleOpt = [kCGImageSourceCreateThumbnailFromImageAlways : true,
+                             kCGImageSourceShouldCacheImmediately : true ,
+                             kCGImageSourceCreateThumbnailWithTransform : true,
+                             kCGImageSourceThumbnailMaxPixelSize : maxDimension] as CFDictionary
+        let downsampleImage = CGImageSourceCreateThumbnailAtIndex(source, 0, downsampleOpt)!
+        
+        print("downsample duration:\(duration)")
+        
+        return downsampleImage
+    }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -291,6 +309,15 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let image = info[.originalImage] as! UIImage
         imageView.image = image
         updateRequests(for: image)
+//        if let url = info[.imageURL] as? URL {
+//            DispatchQueue.global().async {
+//                let start = Date()
+//                let fingerprint = self.downsample(url: url, size: CGSize(width: 16, height: 16))?.fingerprint()
+//                let duration = Date().timeIntervalSince(start)
+//                print("duration:\(duration)")
+//            }
+//        }
     }
+    
 }
 

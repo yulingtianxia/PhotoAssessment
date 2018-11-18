@@ -12,9 +12,9 @@
 		A412CF6A2195BE4A00306823 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A412CF682195BE4A00306823 /* Main.storyboard */; };
 		A412CF6C2195BE4D00306823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6B2195BE4D00306823 /* Assets.xcassets */; };
 		A412CF6F2195BE4D00306823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6D2195BE4D00306823 /* LaunchScreen.storyboard */; };
-		A412CF9A219C7AB100306823 /* ImageFingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF99219C7AB100306823 /* ImageFingerprint.swift */; };
+		A412CF9C21A00C3000306823 /* MPSImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF9B21A00C3000306823 /* MPSImageProcessor.swift */; };
+		A487816821A14EBF005C3CD8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A487816721A14EBF005C3CD8 /* Utils.swift */; };
 		A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */; };
-		A4F9FD8E219BF9F3000C8518 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8D219BF9F3000C8518 /* CNNEmotions.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +25,10 @@
 		A412CF6B2195BE4D00306823 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A412CF6E2195BE4D00306823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A412CF702195BE4D00306823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A412CF99219C7AB100306823 /* ImageFingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFingerprint.swift; sourceTree = "<group>"; };
+		A412CF9B21A00C3000306823 /* MPSImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSImageProcessor.swift; sourceTree = "<group>"; };
+		A412CFA421A0421900306823 /* PhotoAssessment-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoAssessment-Bridging-Header.h"; sourceTree = "<group>"; };
+		A487816721A14EBF005C3CD8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = NIMANasnet.mlmodel; path = ../../../ConvertMLModel/NIMA/models/NIMANasnet.mlmodel; sourceTree = "<group>"; };
-		A4F9FD8D219BF9F3000C8518 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = CNNEmotions.mlmodel; path = ../../../ConvertMLModel/Emotion/models/CNNEmotions.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +63,14 @@
 			children = (
 				A412CF762195CC3A00306823 /* Model */,
 				A412CF642195BE4A00306823 /* AppDelegate.swift */,
+				A487816721A14EBF005C3CD8 /* Utils.swift */,
 				A412CF662195BE4A00306823 /* ViewController.swift */,
-				A412CF99219C7AB100306823 /* ImageFingerprint.swift */,
+				A412CF9B21A00C3000306823 /* MPSImageProcessor.swift */,
 				A412CF682195BE4A00306823 /* Main.storyboard */,
 				A412CF6B2195BE4D00306823 /* Assets.xcassets */,
 				A412CF6D2195BE4D00306823 /* LaunchScreen.storyboard */,
 				A412CF702195BE4D00306823 /* Info.plist */,
+				A412CFA421A0421900306823 /* PhotoAssessment-Bridging-Header.h */,
 			);
 			path = PhotoAssessment;
 			sourceTree = "<group>";
@@ -76,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */,
-				A4F9FD8D219BF9F3000C8518 /* CNNEmotions.mlmodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,6 +115,7 @@
 				TargetAttributes = {
 					A412CF602195BE4A00306823 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -152,11 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4F9FD8E219BF9F3000C8518 /* CNNEmotions.mlmodel in Sources */,
 				A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */,
 				A412CF672195BE4A00306823 /* ViewController.swift in Sources */,
-				A412CF9A219C7AB100306823 /* ImageFingerprint.swift in Sources */,
+				A412CF9C21A00C3000306823 /* MPSImageProcessor.swift in Sources */,
 				A412CF652195BE4A00306823 /* AppDelegate.swift in Sources */,
+				A487816821A14EBF005C3CD8 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = D3RCVUP6VH;
@@ -312,6 +316,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.PhotoAssessment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoAssessment/PhotoAssessment-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -321,6 +327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D3RCVUP6VH;
 				INFOPLIST_FILE = PhotoAssessment/Info.plist;
@@ -330,6 +337,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.PhotoAssessment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoAssessment/PhotoAssessment-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

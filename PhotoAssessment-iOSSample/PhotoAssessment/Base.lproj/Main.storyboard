@@ -33,9 +33,9 @@
                                 </items>
                             </toolbar>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYw-6b-z64">
-                                <rect key="frame" x="16" y="518" width="138" height="89"/>
+                                <rect key="frame" x="16" y="538.5" width="138" height="68.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="umc-JP-ZgS">
-                                    <rect key="frame" x="0.0" y="0.0" width="138" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="68.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a photo." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0g-ZL-bip">
@@ -44,8 +44,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYV-bO-x1P">
-                                            <rect key="frame" x="20" y="48.5" width="98" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYV-bO-x1P">
+                                            <rect key="frame" x="20" y="48.5" width="98" height="0.0"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                     <connections>
                         <outlet property="assessmentLabel" destination="g0g-ZL-bip" id="zPN-pU-1DA"/>
                         <outlet property="cameraButton" destination="tVy-xy-s6p" id="hbf-IS-KvB"/>
-                        <outlet property="emotionLabel" destination="EYV-bO-x1P" id="Wsg-50-OMb"/>
+                        <outlet property="detailLabel" destination="EYV-bO-x1P" id="tPe-5T-JD4"/>
                         <outlet property="imageView" destination="0ab-3A-mEX" id="l24-k4-rwX"/>
                     </connections>
                 </viewController>

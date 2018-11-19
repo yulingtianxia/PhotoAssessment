@@ -10,19 +10,11 @@ import UIKit
 import CoreML
 import Vision
 
+@available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
 class PhotoMLProcessor {
     
     fileprivate var score: Double = 0
     fileprivate let processQueue = DispatchQueue(label: "com.photoassessment.mlprocessor")
-    
-    init?() {
-        if #available(iOS 11.0, macOS 10.13, tvOS 11.0, *) {
-            
-        }
-        else {
-            return nil
-        }
-    }
     
     fileprivate lazy var assessmentRequest: VNCoreMLRequest = {
         do {

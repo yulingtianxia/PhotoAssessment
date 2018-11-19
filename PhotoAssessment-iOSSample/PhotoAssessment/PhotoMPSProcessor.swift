@@ -10,6 +10,7 @@ import UIKit
 import MetalKit
 import MetalPerformanceShaders
 
+@available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
 class PhotoMPSProcessor {
     
     private let device: MTLDevice?

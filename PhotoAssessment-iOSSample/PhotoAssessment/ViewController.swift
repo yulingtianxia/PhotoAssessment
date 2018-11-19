@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import CoreML
-import Vision
-import ImageIO
 
 class ViewController: UIViewController {
 
@@ -18,8 +15,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var assessmentLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     
-    
-    let helper = PhotoAssessmentHelper()
+    @available (iOS 11.0, *)
+    lazy var helper: PhotoAssessmentHelper = {
+       return PhotoAssessmentHelper()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +70,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 start = Date()
                 if let downsampleImage = downsample(url: url, maxDimension: downsampleDimension) {
                     print("downsample duration:\(Date().timeIntervalSince(start))")
+                    guard #available(iOS 11.8, *) else {
+                        return
+                    }
                     self.helper.requestMLAssessmentScore(for: downsampleImage, completionHandler: { (score) in
                         DispatchQueue.main.async {
                             self.assessmentLabel.text = String(format: "Assessment Score:%0.5f", score)

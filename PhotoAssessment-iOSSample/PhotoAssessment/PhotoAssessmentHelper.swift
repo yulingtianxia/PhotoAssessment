@@ -35,6 +35,7 @@ class PhotoAssessmentResult: CustomStringConvertible {
     }
 }
 
+@available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
 class PhotoAssessmentHelper {
     
     let mpsProcessor = PhotoMPSProcessor()
@@ -43,7 +44,7 @@ class PhotoAssessmentHelper {
     
     func requestMLAssessmentScore(for image: CGImage, completionHandler: @escaping (Double) -> Void) {
         let start = Date()
-        mlProcessor?.process(image: image, completionHandler: { (score) in
+        mlProcessor.process(image: image, completionHandler: { (score) in
             print("ml process duration:\(Date().timeIntervalSince(start))")
             completionHandler(score)
         })

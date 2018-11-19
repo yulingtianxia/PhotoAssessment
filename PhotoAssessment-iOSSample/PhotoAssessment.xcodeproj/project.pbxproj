@@ -12,9 +12,11 @@
 		A412CF6A2195BE4A00306823 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A412CF682195BE4A00306823 /* Main.storyboard */; };
 		A412CF6C2195BE4D00306823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6B2195BE4D00306823 /* Assets.xcassets */; };
 		A412CF6F2195BE4D00306823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6D2195BE4D00306823 /* LaunchScreen.storyboard */; };
-		A412CF9C21A00C3000306823 /* MPSImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF9B21A00C3000306823 /* MPSImageProcessor.swift */; };
+		A412CF9C21A00C3000306823 /* PhotoMPSProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */; };
 		A487816821A14EBF005C3CD8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A487816721A14EBF005C3CD8 /* Utils.swift */; };
 		A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */; };
+		A4F9FDBD21A26204000C8518 /* PhotoMLProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */; };
+		A4F9FDBF21A2A890000C8518 /* PhotoAssessmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +27,12 @@
 		A412CF6B2195BE4D00306823 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A412CF6E2195BE4D00306823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A412CF702195BE4D00306823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A412CF9B21A00C3000306823 /* MPSImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSImageProcessor.swift; sourceTree = "<group>"; };
+		A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMPSProcessor.swift; sourceTree = "<group>"; };
 		A412CFA421A0421900306823 /* PhotoAssessment-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoAssessment-Bridging-Header.h"; sourceTree = "<group>"; };
 		A487816721A14EBF005C3CD8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = NIMANasnet.mlmodel; path = ../../../ConvertMLModel/NIMA/models/NIMANasnet.mlmodel; sourceTree = "<group>"; };
+		A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMLProcessor.swift; sourceTree = "<group>"; };
+		A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssessmentHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +69,9 @@
 				A412CF642195BE4A00306823 /* AppDelegate.swift */,
 				A487816721A14EBF005C3CD8 /* Utils.swift */,
 				A412CF662195BE4A00306823 /* ViewController.swift */,
-				A412CF9B21A00C3000306823 /* MPSImageProcessor.swift */,
+				A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */,
+				A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */,
+				A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */,
 				A412CF682195BE4A00306823 /* Main.storyboard */,
 				A412CF6B2195BE4D00306823 /* Assets.xcassets */,
 				A412CF6D2195BE4D00306823 /* LaunchScreen.storyboard */,
@@ -157,9 +163,11 @@
 			files = (
 				A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */,
 				A412CF672195BE4A00306823 /* ViewController.swift in Sources */,
-				A412CF9C21A00C3000306823 /* MPSImageProcessor.swift in Sources */,
+				A4F9FDBD21A26204000C8518 /* PhotoMLProcessor.swift in Sources */,
+				A412CF9C21A00C3000306823 /* PhotoMPSProcessor.swift in Sources */,
 				A412CF652195BE4A00306823 /* AppDelegate.swift in Sources */,
 				A487816821A14EBF005C3CD8 /* Utils.swift in Sources */,
+				A4F9FDBF21A2A890000C8518 /* PhotoAssessmentHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

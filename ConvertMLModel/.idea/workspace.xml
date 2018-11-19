@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f5bd197-753e-4d5e-906f-67c25dde02b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/ImageFuzzyDegree.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/PhotoAssessment-Bridging-Header.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/PhotoMLProcessor.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NIMA/nima.py" beforeDir="false" afterPath="$PROJECT_DIR$/NIMA/nima.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment.xcodeproj/xcshareddata/xcschemes/PhotoAssessment.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment.xcodeproj/xcshareddata/xcschemes/PhotoAssessment.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/ImageFingerprint.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/ImageFingerprint.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/MPSImageProcessor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/PhotoMPSProcessor.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/ViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/ViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoFingerPrint/PhotoFingerPrint.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoFingerPrint/PhotoFingerPrint.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoFingerPrint/PhotoFingerPrint/FingerPrint.h" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoFingerPrint/PhotoFingerPrint/FingerPrint.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoFingerPrint/PhotoFingerPrint/FingerPrint.m" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoFingerPrint/PhotoFingerPrint/FingerPrint.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoFingerPrint/PhotoFingerPrint/ViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoFingerPrint/PhotoFingerPrint/ViewController.m" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +18,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ConvertMLModel$mobile_net_v2.coverage" NAME="mobile_net_v2 Coverage Results" MODIFIED="1542339611661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NIMA" />
     <SUITE FILE_PATH="coverage/ConvertMLModel$emotion.coverage" NAME="emotion Coverage Results" MODIFIED="1542209767723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Emotion" />
-    <SUITE FILE_PATH="coverage/ConvertMLModel$nima.coverage" NAME="nima Coverage Results" MODIFIED="1542345275693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NIMA" />
+    <SUITE FILE_PATH="coverage/ConvertMLModel$nima.coverage" NAME="nima Coverage Results" MODIFIED="1542606386426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NIMA" />
     <SUITE FILE_PATH="coverage/ConvertMLModel$nima__1_.coverage" NAME="nima (1) Coverage Results" MODIFIED="1542168920701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NIMA" />
   </component>
   <component name="DatabaseView">
@@ -46,10 +41,9 @@
         <counts>
           <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -66,12 +60,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="866" />
+          <entry key="py" value="873" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="866" />
+          <entry key="Python" value="873" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -80,11 +74,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NIMA/nima.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+            <state relative-caret-position="393">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="21" selection-end-column="61" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -92,10 +86,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.6/site-packages/onnx_coreml/converter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6312">
+              <caret line="289" column="30" selection-start-line="289" selection-start-column="12" selection-end-line="289" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NIMA/models/dummy.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NIMA/mobile_net_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
+            <state relative-caret-position="3504">
               <caret line="152" selection-start-line="152" selection-end-line="152" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -151,8 +159,8 @@
         <option value="$PROJECT_DIR$/nima.py" />
         <option value="$PROJECT_DIR$/Emotion/emotion.py" />
         <option value="$PROJECT_DIR$/NIMA/common.py" />
-        <option value="$PROJECT_DIR$/NIMA/nima.py" />
         <option value="$PROJECT_DIR$/NIMA/mobile_net_v2.py" />
+        <option value="$PROJECT_DIR$/NIMA/nima.py" />
       </list>
     </option>
   </component>
@@ -162,9 +170,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="2560" />
+    <option name="height" value="1337" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -172,6 +181,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -205,7 +215,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,14 +357,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="23" width="2560" height="1337" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26180258" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25694996" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.328879" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.328879" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -369,7 +379,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.16165951" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.16203336" />
       <window_info anchor="right" id="Database" order="4" weight="0.32962668" />
     </layout>
   </component>
@@ -424,7 +434,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NIMA/models/dummy.jpg" />
     <entry file="file:///usr/local/lib/python3.6/site-packages/coremltools/models/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -432,13 +441,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python3.6/site-packages/onnx_coreml/converter.py" />
     <entry file="file://$PROJECT_DIR$/NIMA/nima.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+        <state relative-caret-position="393">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="21" selection-end-column="61" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.6/site-packages/onnx_coreml/converter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6312">
+          <caret line="289" column="30" selection-start-line="289" selection-start-column="12" selection-end-line="289" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NIMA/models/dummy.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NIMA/mobile_net_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3504">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -457,16 +485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
           <caret line="23" column="18" selection-start-line="22" selection-start-column="16" selection-end-line="23" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NIMA/mobile_net_v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="152" selection-start-line="152" selection-end-line="152" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

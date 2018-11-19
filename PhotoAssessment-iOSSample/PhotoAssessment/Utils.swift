@@ -16,10 +16,10 @@ func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt16] {
     
     let result: [UInt16] = imagePixels.map { (pixel) -> UInt16 in
         let color = pixel
-        let r = downsample(component: color.r())
-        let g = downsample(component: color.g()) << 4
-        let b = downsample(component: color.b()) << 8
-        let a = downsample(component: color.a()) << 12
+        let r = downsample(component: color.r()) << 12
+        let g = downsample(component: color.g()) << 8
+        let b = downsample(component: color.b()) << 4
+        let a = downsample(component: color.a())
         let fingerprint = r | g | b | a
         return fingerprint
     }
@@ -82,19 +82,19 @@ extension Int32 {
     }
     
     func r() -> UInt8 {
-        return UInt8(mask8())
+        return (self >> 24).mask8()
     }
     
     func g() -> UInt8 {
-        return UInt8(mask8() >> 8)
+        return (self >> 16).mask8()
     }
     
     func b() -> UInt8 {
-        return UInt8(mask8() >> 16)
+        return (self >> 8).mask8()
     }
     
     func a() -> UInt8 {
-        return UInt8(mask8() >> 24)
+        return mask8()
     }
 }
 

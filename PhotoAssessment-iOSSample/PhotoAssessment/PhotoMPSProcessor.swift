@@ -1,5 +1,5 @@
 //
-//  MPSImageProcessor.swift
+//  PhotoMPSProcessor.swift
 //  PhotoAssessment
 //
 //  Created by 杨萧玉 on 2018/11/17.
@@ -10,7 +10,7 @@ import UIKit
 import MetalKit
 import MetalPerformanceShaders
 
-class MPSImageProcessor {
+class PhotoMPSProcessor {
     
     private let device: MTLDevice?
     private let commandQueue: MTLCommandQueue?
@@ -74,8 +74,10 @@ class MPSImageProcessor {
                 let region = MTLRegionMake2D(0, 0, scaleDimension, scaleDimension)
                 
                 scaleDesTexture.getBytes(&result, bytesPerRow: 4 * scaleDimension, from: region, mipmapLevel: 0)
-//                let image = self.imageOf(rgbaTexture: scaleDesTexture)
+                
                 block(result)
+                
+//                let image = self.imageOf(rgbaTexture: scaleDesTexture)
             }
             commandBuffer.commit()
         }
@@ -123,14 +125,14 @@ class MPSImageProcessor {
             sobel?.encode(commandBuffer: commandBuffer, sourceTexture: sobelSrcTexture, destinationTexture: sobelDesTexture)
             meanAndVariance?.encode(commandBuffer: commandBuffer, sourceTexture: sobelDesTexture, destinationTexture: varianceTexture)
             commandBuffer.addCompletedHandler { (buffer) in
-//                let grayImage = self.imageOf(grayTexture: sobelDesTexture)
                 
                 var result = [Int8](repeatElement(0, count: 2))
                 let region = MTLRegionMake2D(0, 0, 2, 1)
                 
                 varianceTexture.getBytes(&result, bytesPerRow: 1 * 2, from: region, mipmapLevel: 0)
-                print("result:\(result)")
                 block(result.first, result.last)
+                
+//                let grayImage = self.imageOf(grayTexture: sobelDesTexture)
             }
             commandBuffer.commit()
         }

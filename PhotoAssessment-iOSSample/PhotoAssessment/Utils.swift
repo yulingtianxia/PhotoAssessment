@@ -30,10 +30,12 @@ func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (CGFloat, CGFl
     let hsbPixels = imagePixels.map { (pixel) -> (CGFloat, CGFloat, CGFloat) in
         return UIColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb
     }
-    return hsbPixels.reduce((0, 0, 0)) { (result, hsb) -> (CGFloat, CGFloat, CGFloat) in
+    let result = hsbPixels.reduce((0, 0, 0)) { (result, hsb) -> (CGFloat, CGFloat, CGFloat) in
         let (h, s, b) = hsb
         return (result.0 + h, result.1 + s, result.2 + b)
     }
+    let count = CGFloat(hsbPixels.count)
+    return (result.0 / count, result.1 / count, result.2 / count)
 }
 
 func downsample(url: URL, maxDimension: Int) -> CGImage? {

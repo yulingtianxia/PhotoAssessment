@@ -11,7 +11,7 @@ import MetalKit
 import MetalPerformanceShaders
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
-class PhotoMPSProcessor {
+open class PhotoMPSProcessor {
     
     private let device: MTLDevice?
     private let commandQueue: MTLCommandQueue?
@@ -19,7 +19,7 @@ class PhotoMPSProcessor {
     private let meanAndVariance: MPSImageStatisticsMeanAndVariance?
     private let scale: MPSImageBilinearScale?
     
-    init?() {
+    public init?() {
         // Load default device.
         device = MTLCreateSystemDefaultDevice()
         
@@ -42,7 +42,7 @@ class PhotoMPSProcessor {
         }
     }
     
-    func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, _ block: @escaping ([Int32]?) -> Void) -> Void {
+    public func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, _ block: @escaping ([Int32]?) -> Void) -> Void {
         var pixels = imagePixels
         // TextureDescriptors
         let scaleSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Snorm, width: width, height: height, mipmapped: false)
@@ -87,7 +87,7 @@ class PhotoMPSProcessor {
         }
     }
     
-    func edgeDetect(imagePixels: [Int32], width: Int, height: Int, _ block: @escaping (Int8?, Int8?) -> Void) -> Void {
+    public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, _ block: @escaping (Int8?, Int8?) -> Void) -> Void {
         
         var pixels = imagePixels
         

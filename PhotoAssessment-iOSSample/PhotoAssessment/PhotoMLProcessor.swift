@@ -11,12 +11,12 @@ import CoreML
 import Vision
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
-class PhotoMLProcessor {
+open class PhotoMLProcessor {
     
-    fileprivate var score: Double = 0
-    fileprivate let processQueue = DispatchQueue(label: "com.photoassessment.mlprocessor")
+    private var score: Double = 0
+    private let processQueue = DispatchQueue(label: "com.photoassessment.mlprocessor")
     
-    fileprivate lazy var assessmentRequest: VNCoreMLRequest = {
+    private lazy var assessmentRequest: VNCoreMLRequest = {
         do {
             let model = try VNCoreMLModel(for: NIMANasnet().model)
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
@@ -29,14 +29,14 @@ class PhotoMLProcessor {
         }
     }()
     
-    fileprivate lazy var faceDetectionRequest: VNDetectFaceRectanglesRequest = {
+    private lazy var faceDetectionRequest: VNDetectFaceRectanglesRequest = {
         let request = VNDetectFaceRectanglesRequest(completionHandler: { [weak self] (request, error) in
             self?.score += self?.processFaceDetection(for: request, error: error) ?? 0
         })
         return request
     }()
     
-    fileprivate func processNIMA(for request: VNRequest, error: Error?) -> Double {
+    private func processNIMA(for request: VNRequest, error: Error?) -> Double {
         if error != nil {
             print("Vision ML NIMANasnet error: \(String(describing: error)).")
         }
@@ -58,7 +58,7 @@ class PhotoMLProcessor {
         return 0
     }
     
-    fileprivate func processFaceDetection(for request: VNRequest, error: Error?) -> Double {
+    private func processFaceDetection(for request: VNRequest, error: Error?) -> Double {
         if error != nil {
             print("FaceDetection error: \(String(describing: error)).")
         }
@@ -74,7 +74,7 @@ class PhotoMLProcessor {
         return 1
     }
     
-    func process(image: CGImage, completionHandler: @escaping (Double) -> Void) {
+    public func process(image: CGImage, completionHandler: @escaping (Double) -> Void) {
         processQueue.async {
             self.score = 0
             let handler = VNImageRequestHandler(cgImage: image)

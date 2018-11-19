@@ -1,0 +1,11 @@
+framework module PhotoAssessmentKit {
+  umbrella header "PhotoAssessmentKit.h"
+
+  export *
+  module * { export * }
+}
+
+module PhotoAssessmentKit.Swift {
+    header "PhotoAssessmentKit-Swift.h"
+    requires objc
+}

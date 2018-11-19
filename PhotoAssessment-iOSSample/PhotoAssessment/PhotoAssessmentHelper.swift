@@ -8,13 +8,13 @@
 
 import UIKit
 
-class PhotoAssessmentResult: CustomStringConvertible {
-    var edgeDetect: (mean: Int8, variance: Int8)?
-    var hsb: (h: CGFloat, s: CGFloat, b: CGFloat)?
-    var fingerprint: [UInt16]?
-    var contentScore: Double?
+open class PhotoAssessmentResult: CustomStringConvertible {
+    public var edgeDetect: (mean: Int8, variance: Int8)?
+    public var hsb: (h: CGFloat, s: CGFloat, b: CGFloat)?
+    public var fingerprint: [UInt16]?
+    public var contentScore: Double?
     
-    var description: String {
+    public var description: String {
         var text = ""
         if let edgeDetect = edgeDetect {
             text += "edgeDetect: \(String(describing: edgeDetect))"
@@ -36,13 +36,13 @@ class PhotoAssessmentResult: CustomStringConvertible {
 }
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
-class PhotoAssessmentHelper {
+open class PhotoAssessmentHelper {
     
-    let mpsProcessor = PhotoMPSProcessor()
-    let mlProcessor = PhotoMLProcessor()
-    let processQueue = DispatchQueue(label: "com.photoassessment.helper")
+    private let mpsProcessor = PhotoMPSProcessor()
+    private let mlProcessor = PhotoMLProcessor()
+    private let processQueue = DispatchQueue(label: "com.photoassessment.helper")
     
-    func requestMLAssessmentScore(for image: CGImage, completionHandler: @escaping (Double) -> Void) {
+    public func requestMLAssessmentScore(for image: CGImage, completionHandler: @escaping (Double) -> Void) {
         let start = Date()
         mlProcessor.process(image: image, completionHandler: { (score) in
             print("ml process duration:\(Date().timeIntervalSince(start))")
@@ -50,7 +50,7 @@ class PhotoAssessmentHelper {
         })
     }
     
-    func requestMPSAssessmentScore(for image: CGImage, completionHandler: @escaping (PhotoAssessmentResult) -> Void) {
+    public func requestMPSAssessmentScore(for image: CGImage, completionHandler: @escaping (PhotoAssessmentResult) -> Void) {
         var start = Date()
         let imagePixels = image.rgbPixels()
         print("rgb pixels duration:\(Date().timeIntervalSince(start))")

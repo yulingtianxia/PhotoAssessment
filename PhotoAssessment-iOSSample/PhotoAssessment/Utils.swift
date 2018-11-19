@@ -8,7 +8,7 @@
 
 import UIKit
 
-func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt16] {
+public func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt16] {
     
     func downsample(component: UInt8) -> UInt16 {
         return UInt16(component / 16)
@@ -26,7 +26,7 @@ func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt16] {
     return result
 }
 
-func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (CGFloat, CGFloat, CGFloat) {
+public func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (CGFloat, CGFloat, CGFloat) {
     let hsbPixels = imagePixels.map { (pixel) -> (CGFloat, CGFloat, CGFloat) in
         return UIColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb
     }
@@ -38,7 +38,7 @@ func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (CGFloat, CGFl
     return (result.0 / count, result.1 / count, result.2 / count)
 }
 
-func downsample(url: URL, maxDimension: Int) -> CGImage? {
+public func downsample(url: URL, maxDimension: Int) -> CGImage? {
     let sourceOpt = [kCGImageSourceShouldCache : false] as CFDictionary
     
     guard let source = CGImageSourceCreateWithURL(url as CFURL, sourceOpt) else {

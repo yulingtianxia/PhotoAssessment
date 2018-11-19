@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		A43BB5C621A304C200148CE8 /* UniversalPhotoAssessment */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A43BB5C721A304C200148CE8 /* Build configuration list for PBXAggregateTarget "UniversalPhotoAssessment" */;
+			buildPhases = (
+				A43BB5CA21A304E700148CE8 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = UniversalPhotoAssessment;
+			productName = UniversalPhotoAssessment;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		A412CF652195BE4A00306823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF642195BE4A00306823 /* AppDelegate.swift */; };
 		A412CF672195BE4A00306823 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF662195BE4A00306823 /* ViewController.swift */; };
@@ -13,11 +27,43 @@
 		A412CF6C2195BE4D00306823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6B2195BE4D00306823 /* Assets.xcassets */; };
 		A412CF6F2195BE4D00306823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6D2195BE4D00306823 /* LaunchScreen.storyboard */; };
 		A412CF9C21A00C3000306823 /* PhotoMPSProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */; };
+		A43BB5B821A301B100148CE8 /* PhotoAssessmentKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A43BB5B621A301B100148CE8 /* PhotoAssessmentKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A43BB5BB21A301B100148CE8 /* PhotoAssessmentKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43BB5B421A301B100148CE8 /* PhotoAssessmentKit.framework */; };
+		A43BB5BC21A301B100148CE8 /* PhotoAssessmentKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A43BB5B421A301B100148CE8 /* PhotoAssessmentKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A43BB5C121A301F700148CE8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A487816721A14EBF005C3CD8 /* Utils.swift */; };
+		A43BB5C221A301FA00148CE8 /* PhotoMPSProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */; };
+		A43BB5C321A301FE00148CE8 /* PhotoMLProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */; };
+		A43BB5C421A3020100148CE8 /* PhotoAssessmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */; };
+		A43BB5C521A3021A00148CE8 /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */; };
 		A487816821A14EBF005C3CD8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A487816721A14EBF005C3CD8 /* Utils.swift */; };
 		A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */; };
 		A4F9FDBD21A26204000C8518 /* PhotoMLProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */; };
 		A4F9FDBF21A2A890000C8518 /* PhotoAssessmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A43BB5B921A301B100148CE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A412CF592195BE4A00306823 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A43BB5B321A301B100148CE8;
+			remoteInfo = PhotoAssessmentKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A43BB5C021A301B100148CE8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A43BB5BC21A301B100148CE8 /* PhotoAssessmentKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A412CF612195BE4A00306823 /* PhotoAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,6 +75,9 @@
 		A412CF702195BE4D00306823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMPSProcessor.swift; sourceTree = "<group>"; };
 		A412CFA421A0421900306823 /* PhotoAssessment-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoAssessment-Bridging-Header.h"; sourceTree = "<group>"; };
+		A43BB5B421A301B100148CE8 /* PhotoAssessmentKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhotoAssessmentKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A43BB5B621A301B100148CE8 /* PhotoAssessmentKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoAssessmentKit.h; sourceTree = "<group>"; };
+		A43BB5B721A301B100148CE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A487816721A14EBF005C3CD8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = NIMANasnet.mlmodel; path = ../../../ConvertMLModel/NIMA/models/NIMANasnet.mlmodel; sourceTree = "<group>"; };
 		A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMLProcessor.swift; sourceTree = "<group>"; };
@@ -37,6 +86,14 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		A412CF5E2195BE4A00306823 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A43BB5BB21A301B100148CE8 /* PhotoAssessmentKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A43BB5B121A301B100148CE8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				A412CF632195BE4A00306823 /* PhotoAssessment */,
+				A43BB5B521A301B100148CE8 /* PhotoAssessmentKit */,
 				A412CF622195BE4A00306823 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				A412CF612195BE4A00306823 /* PhotoAssessment.app */,
+				A43BB5B421A301B100148CE8 /* PhotoAssessmentKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,8 +126,8 @@
 			children = (
 				A412CF762195CC3A00306823 /* Model */,
 				A412CF642195BE4A00306823 /* AppDelegate.swift */,
-				A487816721A14EBF005C3CD8 /* Utils.swift */,
 				A412CF662195BE4A00306823 /* ViewController.swift */,
+				A487816721A14EBF005C3CD8 /* Utils.swift */,
 				A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */,
 				A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */,
 				A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */,
@@ -89,7 +148,27 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A43BB5B521A301B100148CE8 /* PhotoAssessmentKit */ = {
+			isa = PBXGroup;
+			children = (
+				A43BB5B621A301B100148CE8 /* PhotoAssessmentKit.h */,
+				A43BB5B721A301B100148CE8 /* Info.plist */,
+			);
+			path = PhotoAssessmentKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A43BB5AF21A301B100148CE8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A43BB5B821A301B100148CE8 /* PhotoAssessmentKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		A412CF602195BE4A00306823 /* PhotoAssessment */ = {
@@ -99,15 +178,35 @@
 				A412CF5D2195BE4A00306823 /* Sources */,
 				A412CF5E2195BE4A00306823 /* Frameworks */,
 				A412CF5F2195BE4A00306823 /* Resources */,
+				A43BB5C021A301B100148CE8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A43BB5BA21A301B100148CE8 /* PBXTargetDependency */,
 			);
 			name = PhotoAssessment;
 			productName = PhotoAssessment;
 			productReference = A412CF612195BE4A00306823 /* PhotoAssessment.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A43BB5B321A301B100148CE8 /* PhotoAssessmentKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A43BB5BF21A301B100148CE8 /* Build configuration list for PBXNativeTarget "PhotoAssessmentKit" */;
+			buildPhases = (
+				A43BB5AF21A301B100148CE8 /* Headers */,
+				A43BB5B021A301B100148CE8 /* Sources */,
+				A43BB5B121A301B100148CE8 /* Frameworks */,
+				A43BB5B221A301B100148CE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhotoAssessmentKit;
+			productName = PhotoAssessmentKit;
+			productReference = A43BB5B421A301B100148CE8 /* PhotoAssessmentKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -122,6 +221,12 @@
 					A412CF602195BE4A00306823 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
+					};
+					A43BB5B321A301B100148CE8 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					A43BB5C621A304C200148CE8 = {
+						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
@@ -139,6 +244,8 @@
 			projectRoot = "";
 			targets = (
 				A412CF602195BE4A00306823 /* PhotoAssessment */,
+				A43BB5B321A301B100148CE8 /* PhotoAssessmentKit */,
+				A43BB5C621A304C200148CE8 /* UniversalPhotoAssessment */,
 			);
 		};
 /* End PBXProject section */
@@ -154,7 +261,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A43BB5B221A301B100148CE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A43BB5CA21A304E700148CE8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"PhotoAssessmentKit\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"PhotoAssessmentKit\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/PhotoAssessmentKit.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/PhotoAssessmentKit.framework/Modules/PhotoAssessmentKit.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/PhotoAssessmentKit.framework/Modules/PhotoAssessmentKit.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/PhotoAssessmentKit.framework/PhotoAssessmentKit\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/PhotoAssessmentKit.framework/PhotoAssessmentKit\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/PhotoAssessmentKit.framework/PhotoAssessmentKit\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/PhotoAssessmentKit.framework\" \"${PROJECT_DIR}\"\n\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A412CF5D2195BE4A00306823 /* Sources */ = {
@@ -171,7 +305,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A43BB5B021A301B100148CE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A43BB5C221A301FA00148CE8 /* PhotoMPSProcessor.swift in Sources */,
+				A43BB5C121A301F700148CE8 /* Utils.swift in Sources */,
+				A43BB5C521A3021A00148CE8 /* NIMANasnet.mlmodel in Sources */,
+				A43BB5C421A3020100148CE8 /* PhotoAssessmentHelper.swift in Sources */,
+				A43BB5C321A301FE00148CE8 /* PhotoMLProcessor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A43BB5BA21A301B100148CE8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A43BB5B321A301B100148CE8 /* PhotoAssessmentKit */;
+			targetProxy = A43BB5B921A301B100148CE8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A412CF682195BE4A00306823 /* Main.storyboard */ = {
@@ -312,6 +466,7 @@
 		A412CF742195BE4D00306823 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -335,6 +490,7 @@
 		A412CF752195BE4D00306823 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -350,6 +506,81 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotoAssessment/PhotoAssessment-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A43BB5BD21A301B100148CE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D3RCVUP6VH;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PhotoAssessmentKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.PhotoAssessmentKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A43BB5BE21A301B100148CE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D3RCVUP6VH;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PhotoAssessmentKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yulingtianxia.PhotoAssessmentKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A43BB5C821A304C200148CE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3RCVUP6VH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A43BB5C921A304C200148CE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3RCVUP6VH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -370,6 +601,24 @@
 			buildConfigurations = (
 				A412CF742195BE4D00306823 /* Debug */,
 				A412CF752195BE4D00306823 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A43BB5BF21A301B100148CE8 /* Build configuration list for PBXNativeTarget "PhotoAssessmentKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A43BB5BD21A301B100148CE8 /* Debug */,
+				A43BB5BE21A301B100148CE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A43BB5C721A304C200148CE8 /* Build configuration list for PBXAggregateTarget "UniversalPhotoAssessment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A43BB5C821A304C200148CE8 /* Debug */,
+				A43BB5C921A304C200148CE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

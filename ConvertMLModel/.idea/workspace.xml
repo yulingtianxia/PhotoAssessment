@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f5bd197-753e-4d5e-906f-67c25dde02b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/PhotoMLProcessor.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PhotoAssessmentUsageDemo/PhotoAssessmentUsageDemo/PhotoScanner.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PhotoAssessmentUsageDemo/PhotoAssessmentUsageDemo/PhotoScanner.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NIMA/nima.py" beforeDir="false" afterPath="$PROJECT_DIR$/NIMA/nima.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/MPSImageProcessor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/PhotoMPSProcessor.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/ViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessment-iOSSample/PhotoAssessment/ViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PhotoAssessmentUsageDemo/PhotoAssessmentUsageDemo.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessmentUsageDemo/PhotoAssessmentUsageDemo.xcodeproj/project.pbxproj" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,9 +39,10 @@
         <counts>
           <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -77,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NIMA/nima.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="21" selection-end-column="61" />
+            <state relative-caret-position="24">
+              <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -103,7 +102,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NIMA/mobile_net_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3504">
+            <state relative-caret-position="3648">
               <caret line="152" selection-start-line="152" selection-end-line="152" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -115,7 +114,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NIMA/common.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1392">
+            <state relative-caret-position="1488">
               <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -360,7 +359,7 @@
     <frame x="0" y="23" width="2560" height="1337" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25694996" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25893566" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -379,7 +378,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.16203336" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.16203336" />
       <window_info anchor="right" id="Database" order="4" weight="0.32962668" />
     </layout>
   </component>
@@ -443,8 +442,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NIMA/nima.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="21" selection-end-column="61" />
+        <state relative-caret-position="24">
+          <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -463,7 +462,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NIMA/mobile_net_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3504">
+        <state relative-caret-position="3648">
           <caret line="152" selection-start-line="152" selection-end-line="152" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -473,7 +472,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NIMA/common.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1392">
+        <state relative-caret-position="1488">
           <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />

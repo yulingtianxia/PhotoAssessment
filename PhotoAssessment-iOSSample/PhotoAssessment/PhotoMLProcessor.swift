@@ -11,7 +11,7 @@ import CoreML
 import Vision
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
-open class PhotoMLProcessor {
+open class PhotoMLProcessor: NSObject {
     
     private var score: Double = 0
     private let processQueue = DispatchQueue(label: "com.photoassessment.mlprocessor")
@@ -74,7 +74,7 @@ open class PhotoMLProcessor {
         return 1
     }
     
-    public func process(image: CGImage, completionHandler: @escaping (Double) -> Void) {
+    @objc public func process(image: CGImage, completionHandler: @escaping (Double) -> Void) {
         processQueue.async {
             self.score = 0
             let handler = VNImageRequestHandler(cgImage: image)

@@ -163,6 +163,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_DEPRECATED_OBJC(Msg) SWIFT_DEPRECATED_MSG(Msg)
 #endif
 #if __has_feature(modules)
+@import CoreGraphics;
+@import Foundation;
+@import ObjectiveC;
 @import UIKit;
 #endif
 
@@ -182,6 +185,53 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
+SWIFT_CLASS("_TtC18PhotoAssessmentKit8HSBColor")
+@interface HSBColor : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@class PhotoAssessmentResult;
+
+SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentHelper") SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface PhotoAssessmentHelper : NSObject
+- (void)requestMLAssessmentScoreFor:(CGImageRef _Nonnull)image completionHandler:(void (^ _Nonnull)(double))completionHandler;
+- (void)requestMPSAssessmentScoreFor:(CGImageRef _Nonnull)image completionHandler:(void (^ _Nonnull)(PhotoAssessmentResult * _Nonnull))completionHandler;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=11.0);
+@end
+
+
+SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentResult")
+@interface PhotoAssessmentResult : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC18PhotoAssessmentKit16PhotoMLProcessor") SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface PhotoMLProcessor : NSObject
+- (void)processWithImage:(CGImageRef _Nonnull)image completionHandler:(void (^ _Nonnull)(double))completionHandler;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=11.0);
+@end
+
+
+SWIFT_CLASS("_TtC18PhotoAssessmentKit17PhotoMPSProcessor") SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface PhotoMPSProcessor : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (void)downsampleWithImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height scaleDimension:(NSInteger)scaleDimension :(void (^ _Nonnull)(NSArray<NSNumber *> * _Nullable))block;
+- (void)edgeDetectWithImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height :(void (^ _Nonnull)(int8_t, int8_t))block;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC18PhotoAssessmentKit5Utils")
+@interface Utils : NSObject
++ (CGImageRef _Nullable)downsampleWithUrl:(NSURL * _Nonnull)url maxDimension:(NSInteger)maxDimension SWIFT_WARN_UNUSED_RESULT;
++ (NSArray<NSNumber *> * _Nonnull)fingerprintForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;
++ (HSBColor * _Nonnull)meanHSBForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop

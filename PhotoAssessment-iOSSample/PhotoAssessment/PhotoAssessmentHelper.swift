@@ -8,19 +8,19 @@
 
 import UIKit
 
-open class PhotoAssessmentResult: CustomStringConvertible {
+open class PhotoAssessmentResult: NSObject {
     public var edgeDetect: (mean: Int8, variance: Int8)?
-    public var hsb: (h: CGFloat, s: CGFloat, b: CGFloat)?
+    public var hsb: HSBColor?
     public var fingerprint: [UInt16]?
     public var contentScore: Double?
     
-    public var description: String {
+    open override var description: String {
         var text = ""
         if let edgeDetect = edgeDetect {
             text += "edgeDetect: \(String(describing: edgeDetect))"
         }
         if let hsb = hsb {
-            text += String(format: "\nhsb: h(%.3f), s(%.3f), b(%.3f)", hsb.h, hsb.s, hsb.b)
+            text += String(format: "\nhsb: h(%.3f), s(%.3f), b(%.3f)", hsb.hue, hsb.saturation, hsb.brightness)
         }
         if let fingerprint = fingerprint {
             let fingerprintStr = fingerprint.map({ (value) -> String in
@@ -36,13 +36,14 @@ open class PhotoAssessmentResult: CustomStringConvertible {
 }
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
-open class PhotoAssessmentHelper {
+open class PhotoAssessmentHelper: NSObject {
     
     private let mpsProcessor = PhotoMPSProcessor()
     private let mlProcessor = PhotoMLProcessor()
+    private let utils = Utils()
     private let processQueue = DispatchQueue(label: "com.photoassessment.helper")
     
-    public func requestMLAssessmentScore(for image: CGImage, completionHandler: @escaping (Double) -> Void) {
+    @objc public func requestMLAssessmentScore(for image: CGImage, completionHandler: @escaping (Double) -> Void) {
         let start = Date()
         mlProcessor.process(image: image, completionHandler: { (score) in
             print("ml process duration:\(Date().timeIntervalSince(start))")
@@ -50,7 +51,7 @@ open class PhotoAssessmentHelper {
         })
     }
     
-    public func requestMPSAssessmentScore(for image: CGImage, completionHandler: @escaping (PhotoAssessmentResult) -> Void) {
+    @objc public func requestMPSAssessmentScore(for image: CGImage, completionHandler: @escaping (PhotoAssessmentResult) -> Void) {
         var start = Date()
         let imagePixels = image.rgbPixels()
         print("rgb pixels duration:\(Date().timeIntervalSince(start))")
@@ -60,13 +61,13 @@ open class PhotoAssessmentHelper {
             let side = 8
             let group = DispatchGroup()
             group.enter()
-            self.mpsProcessor?.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: side, { (result) in
+            self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: side, { (result) in
                 if let pixels = result {
-                    let fingerprint = fingerprintFor(imagePixels: pixels, width: side, height: side)
+                    let fingerprint = Utils.fingerprintFor(imagePixels: pixels, width: side, height: side)
                     print("finger print duration:\(Date().timeIntervalSince(start))")
                     
                     start = Date()
-                    let hsb = meanHSBFor(imagePixels: pixels, width: side, height: side)
+                    let hsb = Utils.meanHSBFor(imagePixels: pixels, width: side, height: side)
                     print("hsb duration:\(Date().timeIntervalSince(start))")
                     
                     self.processQueue.async {
@@ -78,10 +79,10 @@ open class PhotoAssessmentHelper {
             })
             group.enter()
             start = Date()
-            self.mpsProcessor?.edgeDetect(imagePixels: imagePixels, width: image.width, height: image.height, { (mean, variance) in
+            self.mpsProcessor.edgeDetect(imagePixels: imagePixels, width: image.width, height: image.height, { (mean, variance) in
                 print("fuzzy degree duration:\(Date().timeIntervalSince(start))")
                 self.processQueue.async {
-                    totalResult.edgeDetect = (mean ?? 0, variance ?? 0)
+                    totalResult.edgeDetect = (mean, variance)
                     group.leave()
                 }
             })

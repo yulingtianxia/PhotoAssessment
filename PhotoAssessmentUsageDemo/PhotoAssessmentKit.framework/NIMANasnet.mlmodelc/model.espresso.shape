@@ -1,0 +1,3868 @@
+{
+  "layer_shapes" : {
+    "normal_bn_1_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_105_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left1_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left3_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_98_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_49_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_139_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_reduction_right3_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left1_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_108_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left5_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_92_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_43_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_129_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left2_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right2_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_4_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_right5_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_reduction_right2_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_normal_left2_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_left1_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_18_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_67_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "cropping2d_2_output" : {
+      "k" : 44,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_bn_normal_right1_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_5_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_right2_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_4_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_reduction_left1_stem_1_output_intermin_" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "normal_add_3_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_right1_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_right5_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_2_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_61_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_12_output" : {
+      "k" : 44,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_bn_normal_left5_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left1_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left5_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_181_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left1_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right1_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_9_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "normal_bn_1_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_85_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_36_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "adjust_relu_1_stem_2_output" : {
+      "k" : 32,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "separable_conv_2_normal_right2_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_150_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_1_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_left4_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left3_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_30_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_reduction_right3_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_bn_1_stem_1_output" : {
+      "k" : 11,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "reduction_bn_1_stem_2_output" : {
+      "k" : 22,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_bn_normal_left2_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_5_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_174_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_reduction_left4_stem_1_output_intermin_" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_bn_normal_right2_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_reduction_right3_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left2_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_right1_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_143_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left2_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_164_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_112_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_right4_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_4_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_concat_stem_2_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_64_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_15_output" : {
+      "k" : 22,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_bn_normal_left5_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_133_output" : {
+      "k" : 176,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left2_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_2_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_bn_1_reduce_4_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_left1_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_1_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right2_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_167_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_188_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_102_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_reduction_1_stem_1_output_intermin_" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_39_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_88_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_reduction_left1_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_136_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left2_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_157_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left1_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_right2_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_left4_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_right1_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left1_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_1_output" : {
+      "k" : 32,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "activation_82_output" : {
+      "k" : 352,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_33_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left2_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_right1_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left4_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_126_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "concatenate_3_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left5_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left1_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_reduction_left4_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_normal_left5_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_57_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right2_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_4_output" : {
+      "k" : 32,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "normal_left3_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_5_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_bn_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left2_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_right1_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left2_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_3_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_right1_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_51_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_4_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_1_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_reduction_left4_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_119_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_avg_pool_1_stem_2_output" : {
+      "k" : 32,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_75_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_26_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_add_1_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "normal_bn_1_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_1_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_right2_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_109_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_20_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left2_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_reduction_right2_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_left4_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_171_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left2_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left1_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right1_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_4_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left4_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_140_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left5_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left5_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_161_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_5_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_concat_0_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_reduction_right2_stem_1_output_intermin_" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_54_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_concat_9_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_4_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_right2_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_130_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_2_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left1_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left5_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_78_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left4_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_29_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_185_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_right4_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_3_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_reduction_1_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_add3_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_154_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_reduction_left1_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_72_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_23_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left5_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_reduction_left4_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_reduction_left1_stem_1_output_intermin_" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_bn_normal_left1_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_bn_1_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left2_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_123_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_96_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_47_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_right2_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_178_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "stem_bn1_output" : {
+      "k" : 32,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "reduction_left2_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_113_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_5_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left5_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_right1_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "adjust_bn_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_90_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_41_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_3_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_147_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_168_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_1_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_left5_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_reduction_right3_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_116_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_concat_5_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_65_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_16_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_reduction_left1_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right2_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left1_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_reduction_right2_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left5_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left1_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_137_output" : {
+      "k" : 176,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_reduction_left4_stem_1_output_intermin_" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "reduction_concat_reduce_8_output" : {
+      "k" : 704,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_left3_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_7_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_10_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_106_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_left4_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_bn_1_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_left3_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_right4_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "add_3_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_right1_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left5_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_concat_reduce_4_output" : {
+      "k" : 352,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_right1_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_bn_1_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_left3_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_99_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "concatenate_4_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_conv_2_0_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_4_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left1_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_conv_2_9_output" : {
+      "k" : 88,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_2_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right2_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_add_2_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_2_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right2_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_reduction_1_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_concat_stem_1_output" : {
+      "k" : 44,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "reduction_add_2_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_reduction_left1_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_left3_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_93_output" : {
+      "k" : 352,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_44_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_left5_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_left4_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_2_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left4_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_68_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_19_output" : {
+      "k" : 22,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_bn_normal_right2_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_reduction_right3_stem_1_output_intermin_" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_bn_normal_left5_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left2_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_182_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left1_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_concat_1_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "adjust_bn_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_right2_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_right1_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_62_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_13_output" : {
+      "k" : 22,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_151_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_bn_1_reduce_8_output" : {
+      "k" : 176,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_172_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_reduction_right3_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "normal_left3_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_120_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left1_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_bn_1_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_86_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_right1_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_37_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_reduction_left1_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_1_reduction_left4_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_right4_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left2_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_141_output" : {
+      "k" : 704,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left5_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left1_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_175_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_3_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_concat_10_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left2_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_110_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_31_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_add_2_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_5_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left1_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left5_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_left3_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_3_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_80_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "concatenate_1_output" : {
+      "k" : 22,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "adjust_conv_2_5_output" : {
+      "k" : 44,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_4_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_bn_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_1_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_right1_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_144_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right1_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_165_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_55_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_reduction_1_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_reduction_right3_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "global_average_pooling2d_1_output" : {
+      "k" : 1056,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_134_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_right1_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_bn_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left1_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_reduction_left4_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_103_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_left4_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "cropping2d_3_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "zero_padding2d_1_output" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "separable_conv_2_normal_right1_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_158_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_reduction_left1_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left2_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_4_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_reduction_left4_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_89_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_bn_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_right2_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_127_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_right2_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_148_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_right4_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_reduction_right2_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_right2_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_83_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_34_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left1_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left2_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_reduction_right2_stem_1_output_intermin_" : {
+      "k" : 32,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_117_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_5_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_add_1_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_reduction_right3_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_left2_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_3_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_58_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right2_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_1_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left2_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_concat_11_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left5_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_52_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "add_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "adjust_bn_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_reduction_right2_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left2_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_bn_1_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_right2_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_right1_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left3_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_76_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_27_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left5_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right1_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left1_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left2_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_add3_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "dense_1_output" : {
+      "k" : 10,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_70_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_21_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "zero_padding2d_2_output" : {
+      "k" : 44,
+      "w" : 57,
+      "n" : 1,
+      "h" : 57
+    },
+    "separable_conv_1_normal_right2_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left2_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left5_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_right4_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "reduction_right5_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_162_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_3_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_45_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_2_output" : {
+      "k" : 11,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "activation_131_output" : {
+      "k" : 176,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_avg_pool_2_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_right2_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_add4_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_2_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_add_1_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_left2_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_bn_reduce_8_output" : {
+      "k" : 176,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_right4_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left2_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_186_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_100_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_left4_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left1_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_right1_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_5_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_normal_left5_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_121_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_right1_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_1_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_concat_12_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_155_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_79_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_176_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left5_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_8_output" : {
+      "k" : 32,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "normal_add_5_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_bn_1_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_124_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_reduction_right2_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_right2_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_concat_6_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_reduction_1_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_145_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left2_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_73_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_24_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left3_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "scores" : {
+      "k" : 10,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "activation_179_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left1_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_reduction_right3_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_bn_1_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_114_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_right2_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_97_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_48_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_right1_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "adjust_conv_2_stem_2_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_normal_right1_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left1_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_169_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "zero_padding2d_3_output" : {
+      "k" : 264,
+      "w" : 29,
+      "n" : 1,
+      "h" : 29
+    },
+    "separable_conv_1_reduction_right3_stem_1_output_intermin_" : {
+      "k" : 32,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_91_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_42_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_138_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left5_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_2_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_avg_pool_2_5_output" : {
+      "k" : 264,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_reduction_right3_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left5_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_107_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_left4_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_right5_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_66_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left3_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_right1_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_17_output" : {
+      "k" : 22,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "normal_right4_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_conv_1_0_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_left1_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left5_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "adjust_conv_1_9_output" : {
+      "k" : 88,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_60_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_11_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_reduction_1_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_5_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_4_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_concat_2_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left2_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_2_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_35_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left1_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left5_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_180_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_right1_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left1_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_bn_1_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left2_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_left1_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_94_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_bn_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right2_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_183_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "reduction_add_2_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "adjust_bn_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left1_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left5_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left5_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "zero_padding2d_4_output" : {
+      "k" : 528,
+      "w" : 15,
+      "n" : 1,
+      "h" : 15
+    },
+    "separable_conv_2_bn_normal_right1_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_right2_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_69_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "cropping2d_1_output" : {
+      "k" : 32,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "activation_152_output" : {
+      "k" : 704,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_173_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_reduction_right2_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_left3_9_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_reduction_1_stem_1_output_intermin_" : {
+      "k" : 32,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_normal_left2_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_1_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left1_6_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_14_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_63_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_142_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "cropping2d_4_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_reduction_left4_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_111_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_right4_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_87_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left2_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_left1_2_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_38_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "adjust_avg_pool_1_0_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_3_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_reduction_right3_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "adjust_bn_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_reduction_1_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "normal_concat_7_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_1_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_2_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_4_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_166_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_avg_pool_2_9_output" : {
+      "k" : 528,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_bn_reduce_4_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_81_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_right2_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_32_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_135_output" : {
+      "k" : 176,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "concatenate_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right1_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_reduction_left4_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_156_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right1_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_right4_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_56_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_reduction_1_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_add3_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_104_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_left4_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_add3_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_125_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left2_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_left2_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_1_normal_left5_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_159_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_left2_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_50_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right2_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_2_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "add_4_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left2_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left2_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left1_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_5_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_add_1_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_128_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left2_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_3_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_25_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_149_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_conv_1_stem_2_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "reduction_left3_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_right1_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left2_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_118_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_3_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left1_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_avg_pool_1_5_output" : {
+      "k" : 264,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_84_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_concat_3_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_1_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "add_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_reduction_left1_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_left3_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_reduction_1_reduce_4_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_bn_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_right2_3_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_59_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_left5_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_3_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "reduction_add4_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_right4_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_170_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_left3_6_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_right1_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_53_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_right2_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_6_output" : {
+      "k" : 32,
+      "w" : 111,
+      "n" : 1,
+      "h" : 111
+    },
+    "separable_conv_1_reduction_1_stem_2_output_intermin_" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right2_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_relu_1_0_output" : {
+      "k" : 44,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "reduction_left4_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "separable_conv_2_normal_left2_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_relu_1_9_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_reduction_1_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_160_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_normal_right2_12_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_77_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_28_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_reduction_right2_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_bn_stem_2_output" : {
+      "k" : 22,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "normal_add_4_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_right1_7_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_reduction_left1_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_2_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_add4_stem_1_output" : {
+      "k" : 11,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "activation_163_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_conv_1_5_output" : {
+      "k" : 44,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "reduction_add4_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_71_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_22_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_left1_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_184_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_1_normal_right1_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_left4_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_right2_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_132_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_add_5_10_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_153_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_reduction_right2_stem_2_output" : {
+      "k" : 22,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_95_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_46_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_reduction_left1_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_concat_8_output" : {
+      "k" : 528,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "activation_187_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_101_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "adjust_avg_pool_2_stem_2_output" : {
+      "k" : 32,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "image" : {
+      "k" : 3,
+      "w" : 224,
+      "n" : 1,
+      "h" : 224
+    },
+    "normal_left4_3_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_right1_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_left5_1_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_122_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_reduction_left4_reduce_8_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_bn_normal_left5_12_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_40_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_bn_normal_left2_7_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left1_11_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_177_output" : {
+      "k" : 1056,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "normal_right4_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_5_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_left5_9_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_bn_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_add_3_2_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "activation_146_output" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "separable_conv_2_reduction_left1_reduce_4_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_reduction_left4_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_relu_1_5_output" : {
+      "k" : 264,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_reduction_right2_reduce_8_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "adjust_avg_pool_1_9_output" : {
+      "k" : 528,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_115_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "normal_bn_1_8_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_right1_8_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_1_normal_left5_5_output_intermin_" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_left5_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_normal_right1_11_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "activation_74_output" : {
+      "k" : 88,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_2_normal_right2_0_output_intermin_" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "normal_add_1_5_output" : {
+      "k" : 88,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "separable_conv_2_bn_normal_right2_1_output" : {
+      "k" : 44,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "separable_conv_1_normal_right2_10_output_intermin_" : {
+      "k" : 176,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    }
+  }
+}

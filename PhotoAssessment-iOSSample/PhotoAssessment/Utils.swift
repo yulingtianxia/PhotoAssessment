@@ -8,49 +8,64 @@
 
 import UIKit
 
-public func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt16] {
+open class HSBColor: NSObject {
+    let hue: CGFloat
+    let saturation: CGFloat
+    let brightness: CGFloat
     
-    func downsample(component: UInt8) -> UInt16 {
-        return UInt16(component / 16)
+    init(hue: CGFloat, saturation: CGFloat, brightness: CGFloat) {
+        self.hue = hue
+        self.saturation = saturation
+        self.brightness = brightness
     }
-    
-    let result: [UInt16] = imagePixels.map { (pixel) -> UInt16 in
-        let color = pixel
-        let r = downsample(component: color.r()) << 12
-        let g = downsample(component: color.g()) << 8
-        let b = downsample(component: color.b()) << 4
-        let a = downsample(component: color.a())
-        let fingerprint = r | g | b | a
-        return fingerprint
-    }
-    return result
 }
 
-public func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (CGFloat, CGFloat, CGFloat) {
-    let hsbPixels = imagePixels.map { (pixel) -> (CGFloat, CGFloat, CGFloat) in
-        return UIColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb
-    }
-    let result = hsbPixels.reduce((0, 0, 0)) { (result, hsb) -> (CGFloat, CGFloat, CGFloat) in
-        let (h, s, b) = hsb
-        return (result.0 + h, result.1 + s, result.2 + b)
-    }
-    let count = CGFloat(hsbPixels.count)
-    return (result.0 / count, result.1 / count, result.2 / count)
-}
-
-public func downsample(url: URL, maxDimension: Int) -> CGImage? {
-    let sourceOpt = [kCGImageSourceShouldCache : false] as CFDictionary
+open class Utils: NSObject {
     
-    guard let source = CGImageSourceCreateWithURL(url as CFURL, sourceOpt) else {
-        return nil
+    @objc public class func downsample(url: URL, maxDimension: Int) -> CGImage? {
+        let sourceOpt = [kCGImageSourceShouldCache : false] as CFDictionary
+        
+        guard let source = CGImageSourceCreateWithURL(url as CFURL, sourceOpt) else {
+            return nil
+        }
+        let downsampleOpt = [kCGImageSourceCreateThumbnailFromImageAlways : true,
+                             kCGImageSourceShouldCacheImmediately : true ,
+                             kCGImageSourceCreateThumbnailWithTransform : true,
+                             kCGImageSourceThumbnailMaxPixelSize : maxDimension] as CFDictionary
+        let downsampleImage = CGImageSourceCreateThumbnailAtIndex(source, 0, downsampleOpt)!
+        
+        return downsampleImage
     }
-    let downsampleOpt = [kCGImageSourceCreateThumbnailFromImageAlways : true,
-                         kCGImageSourceShouldCacheImmediately : true ,
-                         kCGImageSourceCreateThumbnailWithTransform : true,
-                         kCGImageSourceThumbnailMaxPixelSize : maxDimension] as CFDictionary
-    let downsampleImage = CGImageSourceCreateThumbnailAtIndex(source, 0, downsampleOpt)!
     
-    return downsampleImage
+    @objc public class func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt16] {
+        
+        func downsample(component: UInt8) -> UInt16 {
+            return UInt16(component / 16)
+        }
+        
+        let result: [UInt16] = imagePixels.map { (pixel) -> UInt16 in
+            let color = pixel
+            let r = downsample(component: color.r()) << 12
+            let g = downsample(component: color.g()) << 8
+            let b = downsample(component: color.b()) << 4
+            let a = downsample(component: color.a())
+            let fingerprint = r | g | b | a
+            return fingerprint
+        }
+        return result
+    }
+    
+    @objc public class func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (HSBColor) {
+        let hsbPixels = imagePixels.map { (pixel) -> (CGFloat, CGFloat, CGFloat) in
+            return UIColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb
+        }
+        let result = hsbPixels.reduce((0, 0, 0)) { (result, hsb) -> (CGFloat, CGFloat, CGFloat) in
+            let (h, s, b) = hsb
+            return (result.0 + h, result.1 + s, result.2 + b)
+        }
+        let count = CGFloat(hsbPixels.count)
+        return HSBColor(hue: result.0 / count, saturation: result.1 / count, brightness: result.2 / count)
+    }
 }
 
 extension CGImage {

@@ -68,7 +68,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 var start = Date()
                 let downsampleDimension = 500
                 start = Date()
-                if let downsampleImage = downsample(url: url, maxDimension: downsampleDimension) {
+                if let downsampleImage = Utils.downsample(url: url, maxDimension: downsampleDimension) {
                     print("downsample duration:\(Date().timeIntervalSince(start))")
                     guard #available(iOS 11.8, *) else {
                         return

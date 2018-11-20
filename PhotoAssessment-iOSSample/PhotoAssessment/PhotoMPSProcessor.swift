@@ -11,7 +11,7 @@ import MetalKit
 import MetalPerformanceShaders
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
-open class PhotoMPSProcessor {
+open class PhotoMPSProcessor: NSObject {
     
     private let device: MTLDevice?
     private let commandQueue: MTLCommandQueue?
@@ -19,16 +19,11 @@ open class PhotoMPSProcessor {
     private let meanAndVariance: MPSImageStatisticsMeanAndVariance?
     private let scale: MPSImageBilinearScale?
     
-    public init?() {
+    public override init() {
+        
         // Load default device.
         device = MTLCreateSystemDefaultDevice()
-        
-        // Make sure the current device supports MetalPerformanceShaders.
-        guard MPSSupportsMTLDevice(device) else {
-            print("Metal Performance Shaders not Supported on current Device")
-            return nil
-        }
-        
+
         // Create new command queue.
         commandQueue = device?.makeCommandQueue()
         
@@ -38,11 +33,22 @@ open class PhotoMPSProcessor {
             scale = MPSImageBilinearScale(device: device)
         }
         else {
-            return nil
+            sobel = nil
+            meanAndVariance = nil
+            scale = nil
         }
+        super.init()
     }
     
-    public func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, _ block: @escaping ([Int32]?) -> Void) -> Void {
+    @objc public func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, _ block: @escaping ([Int32]?) -> Void) -> Void {
+        
+        // Make sure the current device supports MetalPerformanceShaders.
+        guard MPSSupportsMTLDevice(device) else {
+            print("Metal Performance Shaders not Supported on current Device")
+            block(nil)
+            return
+        }
+        
         var pixels = imagePixels
         // TextureDescriptors
         let scaleSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Snorm, width: width, height: height, mipmapped: false)
@@ -87,7 +93,14 @@ open class PhotoMPSProcessor {
         }
     }
     
-    public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, _ block: @escaping (Int8?, Int8?) -> Void) -> Void {
+    @objc public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, _ block: @escaping (Int8, Int8) -> Void) -> Void {
+        
+        // Make sure the current device supports MetalPerformanceShaders.
+        guard MPSSupportsMTLDevice(device) else {
+            print("Metal Performance Shaders not Supported on current Device")
+            block(0, 0)
+            return
+        }
         
         var pixels = imagePixels
         
@@ -103,17 +116,20 @@ open class PhotoMPSProcessor {
         
         // Textures
         guard let sobelSrcTexture: MTLTexture = device?.makeTexture(descriptor: sobelSrcTextureDescriptor) else {
-            block(nil, nil)
+            print("make sobelSrcTexture failed")
+            block(0, 0)
             return
         }
         
         guard let sobelDesTexture: MTLTexture = device?.makeTexture(descriptor: sobelDesTextureDescriptor) else {
-            block(nil, nil)
+            print("make sobelDesTexture failed")
+            block(0, 0)
             return
         }
         
         guard let varianceTexture: MTLTexture = device?.makeTexture(descriptor: varianceTextureDescriptor) else {
-            block(nil, nil)
+            print("make varianceTexture failed")
+            block(0, 0)
             return
         }
         
@@ -131,14 +147,15 @@ open class PhotoMPSProcessor {
                 let region = MTLRegionMake2D(0, 0, 2, 1)
                 
                 varianceTexture.getBytes(&result, bytesPerRow: 1 * 2, from: region, mipmapLevel: 0)
-                block(result.first, result.last)
+                block(result.first!, result.last!)
                 
 //                let grayImage = self.imageOf(grayTexture: sobelDesTexture)
             }
             commandBuffer.commit()
         }
         else {
-            block(nil, nil)
+            print("make CommandBuffer failed")
+            block(0, 0)
         }
     }
     

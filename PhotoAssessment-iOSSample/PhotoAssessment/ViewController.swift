@@ -66,7 +66,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         if let url = info[.imageURL] as? URL {
             DispatchQueue.global().async {
                 var start = Date()
-                let downsampleDimension = 500
+                let downsampleDimension = 200
                 start = Date()
                 if let downsampleImage = Utils.downsample(url: url, maxDimension: downsampleDimension) {
                     print("downsample duration:\(Date().timeIntervalSince(start))")

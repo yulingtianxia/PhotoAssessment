@@ -9,9 +9,9 @@
 import UIKit
 
 open class HSBColor: NSObject {
-    let hue: CGFloat
-    let saturation: CGFloat
-    let brightness: CGFloat
+    @objc public let hue: CGFloat
+    @objc public let saturation: CGFloat
+    @objc public let brightness: CGFloat
     
     init(hue: CGFloat, saturation: CGFloat, brightness: CGFloat) {
         self.hue = hue

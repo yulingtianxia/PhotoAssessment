@@ -187,6 +187,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_CLASS("_TtC18PhotoAssessmentKit8HSBColor")
 @interface HSBColor : NSObject
+@property (nonatomic, readonly) CGFloat hue;
+@property (nonatomic, readonly) CGFloat saturation;
+@property (nonatomic, readonly) CGFloat brightness;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -203,8 +206,14 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentHelper") SWIFT_AVAILABILIT
 
 SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentResult")
 @interface PhotoAssessmentResult : NSObject
+@property (nonatomic) int8_t edgeDetectMean;
+@property (nonatomic) int8_t edgeDetectVariance;
+@property (nonatomic, strong) HSBColor * _Nullable hsb;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable fingerprint;
+@property (nonatomic) double contentScore;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 

@@ -9,16 +9,21 @@
 import UIKit
 
 open class PhotoAssessmentResult: NSObject {
-    public var edgeDetect: (mean: Int8, variance: Int8)?
-    public var hsb: HSBColor?
-    public var fingerprint: [UInt16]?
-    public var contentScore: Double?
+    @objc public var edgeDetectMean: Int8
+    @objc public var edgeDetectVariance: Int8
+    @objc public var hsb: HSBColor?
+    @objc public var fingerprint: [UInt16]?
+    @objc public var contentScore: Double
+    
+    override init() {
+        edgeDetectMean = 0
+        edgeDetectVariance = 0
+        contentScore = 0
+    }
     
     open override var description: String {
         var text = ""
-        if let edgeDetect = edgeDetect {
-            text += "edgeDetect: \(String(describing: edgeDetect))"
-        }
+        text += "edgeDetect mean: \(String(describing: edgeDetectMean)) variance: \(String(describing: edgeDetectVariance))"
         if let hsb = hsb {
             text += String(format: "\nhsb: h(%.3f), s(%.3f), b(%.3f)", hsb.hue, hsb.saturation, hsb.brightness)
         }
@@ -28,9 +33,7 @@ open class PhotoAssessmentResult: NSObject {
             })
             text += "\nfingerprint: \(String(describing: fingerprintStr.hashValue))"
         }
-        if let contentScore = contentScore {
-            text += String(format: "\ncontentScore: %.3f", contentScore)
-        }
+        text += String(format: "\ncontentScore: %.3f", contentScore)
         return text
     }
 }
@@ -58,7 +61,7 @@ open class PhotoAssessmentHelper: NSObject {
         let totalResult = PhotoAssessmentResult()
         DispatchQueue.main.async {
             start = Date()
-            let side = 8
+            let side = 16
             let group = DispatchGroup()
             group.enter()
             self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: side, { (result) in
@@ -82,7 +85,8 @@ open class PhotoAssessmentHelper: NSObject {
             self.mpsProcessor.edgeDetect(imagePixels: imagePixels, width: image.width, height: image.height, { (mean, variance) in
                 print("fuzzy degree duration:\(Date().timeIntervalSince(start))")
                 self.processQueue.async {
-                    totalResult.edgeDetect = (mean, variance)
+                    totalResult.edgeDetectMean = mean
+                    totalResult.edgeDetectVariance = variance
                     group.leave()
                 }
             })

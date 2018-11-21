@@ -43,7 +43,6 @@ open class PhotoAssessmentHelper: NSObject {
     
     private let mpsProcessor = PhotoMPSProcessor()
     private let mlProcessor = PhotoMLProcessor()
-    private let utils = Utils()
     private let processQueue = DispatchQueue(label: "com.photoassessment.helper")
     
     @objc public func requestMLAssessmentScore(for image: CGImage, completionHandler: @escaping (Double) -> Void) {
@@ -78,6 +77,9 @@ open class PhotoAssessmentHelper: NSObject {
                         totalResult.hsb = hsb
                         group.leave()
                     }
+                }
+                else {
+                    group.leave()
                 }
             })
             group.enter()

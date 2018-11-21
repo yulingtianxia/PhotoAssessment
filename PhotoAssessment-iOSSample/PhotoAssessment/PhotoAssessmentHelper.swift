@@ -8,7 +8,8 @@
 
 import UIKit
 
-open class PhotoAssessmentResult: NSObject {
+open class PhotoAssessmentResult: NSObject, NSCoding {
+    
     @objc public var edgeDetectMean: Int8
     @objc public var edgeDetectVariance: Int8
     @objc public var hsb: HSBColor?
@@ -35,6 +36,22 @@ open class PhotoAssessmentResult: NSObject {
         }
         text += String(format: "\ncontentScore: %.3f", contentScore)
         return text
+    }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.edgeDetectMean, forKey: "edgeDetectMean")
+        aCoder.encode(self.edgeDetectVariance, forKey: "edgeDetectVariance")
+        aCoder.encode(self.hsb, forKey: "hsb")
+        aCoder.encode(self.fingerprint, forKey: "fingerprint")
+        aCoder.encode(self.contentScore, forKey: "contentScore")
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        self.edgeDetectMean = aDecoder.decodeObject(forKey: "edgeDetectMean") as? Int8 ?? 0
+        self.edgeDetectVariance = aDecoder.decodeObject(forKey: "edgeDetectVariance") as? Int8 ?? 0
+        self.hsb = aDecoder.decodeObject(forKey: "hsb") as? HSBColor
+        self.fingerprint = aDecoder.decodeObject(forKey: "fingerprint") as? [UInt16]
+        self.contentScore = aDecoder.decodeObject(forKey: "contentScore") as? Double ?? 0
     }
 }
 

@@ -8,20 +8,39 @@
 
 import UIKit
 
-open class HSBColor: NSObject {
-    @objc public let hue: CGFloat
-    @objc public let saturation: CGFloat
-    @objc public let brightness: CGFloat
+open class HSBColor: NSObject, NSCoding {
     
-    init(hue: CGFloat, saturation: CGFloat, brightness: CGFloat) {
+    @objc public let hue: Double
+    @objc public let saturation: Double
+    @objc public let brightness: Double
+    
+    init(hue: Double, saturation: Double, brightness: Double) {
         self.hue = hue
         self.saturation = saturation
         self.brightness = brightness
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        self.hue = aDecoder.decodeDouble(forKey: "hue")
+        self.saturation = aDecoder.decodeDouble(forKey: "saturation")
+        self.brightness = aDecoder.decodeDouble(forKey: "brightness")
+    }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.hue, forKey: "hue")
+        aCoder.encode(self.saturation, forKey: "saturation")
+        aCoder.encode(self.brightness, forKey: "brightness")
     }
 }
 
 open class Utils: NSObject {
     
+    /// downsample for image at url. It has bad performance, so I suggest use PHAsset.
+    ///
+    /// - Parameters:
+    ///   - url: image's url
+    ///   - maxDimension: max dimension for downsample
+    /// - Returns: CGImage after downsample
     @objc public class func downsample(url: URL, maxDimension: Int) -> CGImage? {
         let sourceOpt = [kCGImageSourceShouldCache : false] as CFDictionary
         
@@ -63,8 +82,8 @@ open class Utils: NSObject {
             let (h, s, b) = hsb
             return (result.0 + h, result.1 + s, result.2 + b)
         }
-        let count = CGFloat(hsbPixels.count)
-        return HSBColor(hue: result.0 / count, saturation: result.1 / count, brightness: result.2 / count)
+        let count = Double(hsbPixels.count)
+        return HSBColor(hue: Double(result.0) / count, saturation: Double(result.1) / count, brightness: Double(result.2) / count)
     }
 }
 

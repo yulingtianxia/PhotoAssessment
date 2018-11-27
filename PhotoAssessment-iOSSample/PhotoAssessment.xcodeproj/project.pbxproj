@@ -34,9 +34,9 @@
 		A43BB5C221A301FA00148CE8 /* PhotoMPSProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */; };
 		A43BB5C321A301FE00148CE8 /* PhotoMLProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */; };
 		A43BB5C421A3020100148CE8 /* PhotoAssessmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */; };
-		A43BB5C521A3021A00148CE8 /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */; };
 		A487816821A14EBF005C3CD8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A487816721A14EBF005C3CD8 /* Utils.swift */; };
-		A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */; };
+		A48CEA8C21ADB4E400EC0B0A /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A48CEA8B21ADB4E400EC0B0A /* NIMANasnet.mlmodel */; };
+		A48CEA8D21ADB4E400EC0B0A /* NIMANasnet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A48CEA8B21ADB4E400EC0B0A /* NIMANasnet.mlmodel */; };
 		A4F9FDBD21A26204000C8518 /* PhotoMLProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */; };
 		A4F9FDBF21A2A890000C8518 /* PhotoAssessmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */; };
 /* End PBXBuildFile section */
@@ -79,7 +79,7 @@
 		A43BB5B621A301B100148CE8 /* PhotoAssessmentKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoAssessmentKit.h; sourceTree = "<group>"; };
 		A43BB5B721A301B100148CE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A487816721A14EBF005C3CD8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = NIMANasnet.mlmodel; path = ../../../ConvertMLModel/NIMA/models/NIMANasnet.mlmodel; sourceTree = "<group>"; };
+		A48CEA8B21ADB4E400EC0B0A /* NIMANasnet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NIMANasnet.mlmodel; sourceTree = "<group>"; };
 		A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMLProcessor.swift; sourceTree = "<group>"; };
 		A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAssessmentHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,7 +143,7 @@
 		A412CF762195CC3A00306823 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A4F9FD8B219BDA20000C8518 /* NIMANasnet.mlmodel */,
+				A48CEA8B21ADB4E400EC0B0A /* NIMANasnet.mlmodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,12 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4F9FD8C219BDA20000C8518 /* NIMANasnet.mlmodel in Sources */,
 				A412CF672195BE4A00306823 /* ViewController.swift in Sources */,
 				A4F9FDBD21A26204000C8518 /* PhotoMLProcessor.swift in Sources */,
 				A412CF9C21A00C3000306823 /* PhotoMPSProcessor.swift in Sources */,
 				A412CF652195BE4A00306823 /* AppDelegate.swift in Sources */,
 				A487816821A14EBF005C3CD8 /* Utils.swift in Sources */,
+				A48CEA8C21ADB4E400EC0B0A /* NIMANasnet.mlmodel in Sources */,
 				A4F9FDBF21A2A890000C8518 /* PhotoAssessmentHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,7 +311,7 @@
 			files = (
 				A43BB5C221A301FA00148CE8 /* PhotoMPSProcessor.swift in Sources */,
 				A43BB5C121A301F700148CE8 /* Utils.swift in Sources */,
-				A43BB5C521A3021A00148CE8 /* NIMANasnet.mlmodel in Sources */,
+				A48CEA8D21ADB4E400EC0B0A /* NIMANasnet.mlmodel in Sources */,
 				A43BB5C421A3020100148CE8 /* PhotoAssessmentHelper.swift in Sources */,
 				A43BB5C321A301FE00148CE8 /* PhotoMLProcessor.swift in Sources */,
 			);

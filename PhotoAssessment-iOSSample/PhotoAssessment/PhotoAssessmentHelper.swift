@@ -77,7 +77,7 @@ open class PhotoAssessmentHelper: NSObject {
         let totalResult = PhotoAssessmentResult()
         DispatchQueue.main.async {
             start = Date()
-            let side = 16
+            let side = 50
             let group = DispatchGroup()
             group.enter()
             self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: side, { (result) in

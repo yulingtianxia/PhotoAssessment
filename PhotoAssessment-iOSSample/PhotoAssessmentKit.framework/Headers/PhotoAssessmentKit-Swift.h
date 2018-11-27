@@ -184,12 +184,15 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class NSCoder;
 
 SWIFT_CLASS("_TtC18PhotoAssessmentKit8HSBColor")
-@interface HSBColor : NSObject
-@property (nonatomic, readonly) CGFloat hue;
-@property (nonatomic, readonly) CGFloat saturation;
-@property (nonatomic, readonly) CGFloat brightness;
+@interface HSBColor : NSObject <NSCoding>
+@property (nonatomic, readonly) double hue;
+@property (nonatomic, readonly) double saturation;
+@property (nonatomic, readonly) double brightness;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -205,7 +208,7 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentHelper") SWIFT_AVAILABILIT
 
 
 SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentResult")
-@interface PhotoAssessmentResult : NSObject
+@interface PhotoAssessmentResult : NSObject <NSCoding>
 @property (nonatomic) int8_t edgeDetectMean;
 @property (nonatomic) int8_t edgeDetectVariance;
 @property (nonatomic, strong) HSBColor * _Nullable hsb;
@@ -214,6 +217,8 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentResult")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -236,6 +241,14 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit17PhotoMPSProcessor") SWIFT_AVAILABILITY(tv
 
 SWIFT_CLASS("_TtC18PhotoAssessmentKit5Utils")
 @interface Utils : NSObject
+/// downsample for image at url. It has bad performance, so I suggest use PHAsset.
+/// \param url image’s url
+///
+/// \param maxDimension max dimension for downsample
+///
+///
+/// returns:
+/// CGImage after downsample
 + (CGImageRef _Nullable)downsampleWithUrl:(NSURL * _Nonnull)url maxDimension:(NSInteger)maxDimension SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSNumber *> * _Nonnull)fingerprintForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;
 + (HSBColor * _Nonnull)meanHSBForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;

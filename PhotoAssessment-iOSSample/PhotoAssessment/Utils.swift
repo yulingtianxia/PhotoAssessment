@@ -56,20 +56,34 @@ open class Utils: NSObject {
         return downsampleImage
     }
     
-    @objc public class func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt16] {
+    @objc public class func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt32: UInt] {
         
-        func downsample(component: UInt8) -> UInt16 {
-            return UInt16(component / 16)
+        func downsample(component: UInt8) -> UInt32 {
+            return UInt32(component / 16)
         }
         
-        let result: [UInt16] = imagePixels.map { (pixel) -> UInt16 in
-            let color = pixel
-            let r = downsample(component: color.r()) << 12
-            let g = downsample(component: color.g()) << 8
-            let b = downsample(component: color.b()) << 4
-            let a = downsample(component: color.a())
-            let fingerprint = r | g | b | a
-            return fingerprint
+        func downsample(x: Int, y: Int) -> UInt32 {
+            let rowCount: Int = min(4, height)
+            let countPerRow: Int = min(4, width)
+            let hStep = width / countPerRow
+            let vStep = height / rowCount
+            let row = y / vStep
+            let col = x / hStep
+            return UInt32(row * countPerRow + col);
+        }
+        
+        var result = [UInt32: UInt]()
+        
+        for j in 0 ..< height {
+            for i in 0 ..< width {
+                let color = imagePixels[width * j + i]
+                let r = downsample(component: color.r()) << 24
+                let g = downsample(component: color.g()) << 16
+                let b = downsample(component: color.b()) << 8
+                let location = downsample(x: i, y: j) << 12
+                let fingerprint = r | g | b | location
+                result[fingerprint] = (result[fingerprint] ?? 0) + 1
+            }
         }
         return result
     }

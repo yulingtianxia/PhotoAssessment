@@ -212,7 +212,7 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentResult")
 @property (nonatomic) int8_t edgeDetectMean;
 @property (nonatomic) int8_t edgeDetectVariance;
 @property (nonatomic, strong) HSBColor * _Nullable hsb;
-@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable fingerprint;
+@property (nonatomic, copy) NSDictionary<NSNumber *, NSNumber *> * _Nullable fingerprint;
 @property (nonatomic) double contentScore;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
@@ -250,7 +250,7 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit5Utils")
 /// returns:
 /// CGImage after downsample
 + (CGImageRef _Nullable)downsampleWithUrl:(NSURL * _Nonnull)url maxDimension:(NSInteger)maxDimension SWIFT_WARN_UNUSED_RESULT;
-+ (NSArray<NSNumber *> * _Nonnull)fingerprintForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;
++ (NSDictionary<NSNumber *, NSNumber *> * _Nonnull)fingerprintForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;
 + (HSBColor * _Nonnull)meanHSBForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

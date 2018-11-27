@@ -13,7 +13,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
     @objc public var edgeDetectMean: Int8
     @objc public var edgeDetectVariance: Int8
     @objc public var hsb: HSBColor?
-    @objc public var fingerprint: [UInt16]?
+    @objc public var fingerprint: [UInt32: UInt]?
     @objc public var contentScore: Double
     
     override init() {
@@ -27,12 +27,6 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
         text += "edgeDetect mean: \(String(describing: edgeDetectMean)) variance: \(String(describing: edgeDetectVariance))"
         if let hsb = hsb {
             text += String(format: "\nhsb: h(%.3f), s(%.3f), b(%.3f)", hsb.hue, hsb.saturation, hsb.brightness)
-        }
-        if let fingerprint = fingerprint {
-            let fingerprintStr = fingerprint.map({ (value) -> String in
-                return String(format: "%x", value)
-            })
-            text += "\nfingerprint: \(String(describing: fingerprintStr.hashValue))"
         }
         text += String(format: "\ncontentScore: %.3f", contentScore)
         return text
@@ -50,7 +44,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
         self.edgeDetectMean = aDecoder.decodeObject(forKey: "edgeDetectMean") as? Int8 ?? 0
         self.edgeDetectVariance = aDecoder.decodeObject(forKey: "edgeDetectVariance") as? Int8 ?? 0
         self.hsb = aDecoder.decodeObject(forKey: "hsb") as? HSBColor
-        self.fingerprint = aDecoder.decodeObject(forKey: "fingerprint") as? [UInt16]
+        self.fingerprint = aDecoder.decodeObject(forKey: "fingerprint") as? [UInt32: UInt]
         self.contentScore = aDecoder.decodeObject(forKey: "contentScore") as? Double ?? 0
     }
 }

@@ -6,7 +6,8 @@
 //  Copyright © 2018 杨萧玉. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import CoreImage
 
 open class PhotoAssessmentResult: NSObject, NSCoding {
     

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MetalKit
 import MetalPerformanceShaders
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
@@ -93,7 +92,7 @@ open class PhotoMPSProcessor: NSObject {
         }
     }
     
-    @objc public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, _ block: @escaping (Int8, Int8) -> Void) -> Void {
+    @objc public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, _ block: @escaping (_ mean: Int8, _ variance: Int8) -> Void) -> Void {
         
         // Make sure the current device supports MetalPerformanceShaders.
         guard MPSSupportsMTLDevice(device) else {

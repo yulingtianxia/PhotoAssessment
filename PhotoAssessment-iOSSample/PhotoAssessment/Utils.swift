@@ -56,7 +56,14 @@ open class Utils: NSObject {
         return downsampleImage
     }
     
-    @objc public class func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt32: UInt] {
+    /// Fingerprint for image
+    ///
+    /// - Parameters:
+    ///   - imagePixels: image pixels with rgba8 format
+    ///   - width: image width
+    ///   - height: image height
+    /// - Returns: feature vector
+    @objc public class func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt32: Double] {
         
         func downsample(component: UInt8) -> UInt32 {
             return UInt32(component / 16)
@@ -72,7 +79,7 @@ open class Utils: NSObject {
             return UInt32(row * countPerRow + col);
         }
         
-        var result = [UInt32: UInt]()
+        var bucket = [UInt32: UInt]()
         
         for j in 0 ..< height {
             for i in 0 ..< width {
@@ -82,12 +89,23 @@ open class Utils: NSObject {
                 let b = downsample(component: color.b()) << 8
                 let location = downsample(x: i, y: j) << 12
                 let fingerprint = r | g | b | location
-                result[fingerprint] = (result[fingerprint] ?? 0) + 1
+                bucket[fingerprint] = (bucket[fingerprint] ?? 0) + 1
             }
+        }
+        let result: [UInt32: Double] = bucket.mapValues { (oldValue) -> Double in
+            let newValue = Double(oldValue) / Double(imagePixels.count)
+            return newValue
         }
         return result
     }
     
+    /// mean HSB Color
+    ///
+    /// - Parameters:
+    ///   - imagePixels: image pixels with rgba8 format
+    ///   - width: image width
+    ///   - height: image height
+    /// - Returns: HSBColor
     @objc public class func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (HSBColor) {
         let hsbPixels = imagePixels.map { (pixel) -> (CGFloat, CGFloat, CGFloat) in
             return UIColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb

@@ -39,6 +39,14 @@ open class PhotoMPSProcessor: NSObject {
         super.init()
     }
     
+    /// Downsample image
+    ///
+    /// - Parameters:
+    ///   - imagePixels: image pixels with rgba8 format
+    ///   - width: image width
+    ///   - height: image height
+    ///   - scaleDimension: scale dimension
+    ///   - block: completion block
     @objc public func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, _ block: @escaping ([Int32]?) -> Void) -> Void {
         
         // Make sure the current device supports MetalPerformanceShaders.
@@ -92,6 +100,13 @@ open class PhotoMPSProcessor: NSObject {
         }
     }
     
+    /// Edge detect for image
+    ///
+    /// - Parameters:
+    ///   - imagePixels: image pixels with rgba8 format
+    ///   - width: image width
+    ///   - height: image height
+    ///   - block: completion block
     @objc public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, _ block: @escaping (_ mean: Int8, _ variance: Int8) -> Void) -> Void {
         
         // Make sure the current device supports MetalPerformanceShaders.

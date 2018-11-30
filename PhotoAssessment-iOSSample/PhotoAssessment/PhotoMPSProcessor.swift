@@ -6,7 +6,11 @@
 //  Copyright © 2018 杨萧玉. All rights reserved.
 //
 
+#if os(iOS) || os(watchOS) || os(tvOS)
 import UIKit
+#elseif os(macOS)
+import Cocoa
+#endif
 import MetalPerformanceShaders
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
@@ -90,7 +94,7 @@ open class PhotoMPSProcessor: NSObject {
                 scaleDesTexture.getBytes(&result, bytesPerRow: 4 * scaleDimension, from: region, mipmapLevel: 0)
                 
                 block(result)
-                
+//                Debug
 //                let image = self.imageOf(rgbaTexture: scaleDesTexture)
             }
             commandBuffer.commit()
@@ -162,7 +166,7 @@ open class PhotoMPSProcessor: NSObject {
                 
                 varianceTexture.getBytes(&result, bytesPerRow: 1 * 2, from: region, mipmapLevel: 0)
                 block(result.first!, result.last!)
-                
+//                Debug
 //                let grayImage = self.imageOf(grayTexture: sobelDesTexture)
             }
             commandBuffer.commit()
@@ -173,6 +177,7 @@ open class PhotoMPSProcessor: NSObject {
         }
     }
     
+    #if os(iOS) || os(watchOS) || os(tvOS)
     fileprivate func imageOf(grayTexture: MTLTexture) -> UIImage? {
         let width = grayTexture.width
         let height = grayTexture.height
@@ -202,4 +207,8 @@ open class PhotoMPSProcessor: NSObject {
         }
         return nil
     }
+    #elseif os(macOS)
+    
+    #endif
+    
 }

@@ -5,8 +5,11 @@
 //  Created by 杨萧玉 on 2018/11/18.
 //  Copyright © 2018 杨萧玉. All rights reserved.
 //
-
+#if os(iOS) || os(watchOS) || os(tvOS)
 import UIKit
+#elseif os(macOS)
+import Cocoa
+#endif
 
 open class HSBColor: NSObject, NSCoding {
     
@@ -108,7 +111,11 @@ open class Utils: NSObject {
     /// - Returns: HSBColor
     @objc public class func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (HSBColor) {
         let hsbPixels = imagePixels.map { (pixel) -> (CGFloat, CGFloat, CGFloat) in
+            #if os(iOS) || os(watchOS) || os(tvOS)
             return UIColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb
+            #elseif os(macOS)
+            return NSColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb
+            #endif
         }
         let result = hsbPixels.reduce((0, 0, 0)) { (result, hsb) -> (CGFloat, CGFloat, CGFloat) in
             let (h, s, b) = hsb
@@ -136,6 +143,7 @@ extension CGImage {
     }
 }
 
+#if os(iOS) || os(watchOS) || os(tvOS)
 extension UIColor {
     var hsb:(h: CGFloat, s: CGFloat,b: CGFloat) {
         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0
@@ -143,6 +151,15 @@ extension UIColor {
         return (h: h, s: s, b: b)
     }
 }
+#elseif os(macOS)
+extension NSColor {
+    var hsb:(h: CGFloat, s: CGFloat,b: CGFloat) {
+        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0
+        getHue(&h, saturation: &s, brightness: &b, alpha: nil)
+        return (h: h, s: s, b: b)
+    }
+}
+#endif
 
 extension Int32 {
     func mask8() -> UInt8 {

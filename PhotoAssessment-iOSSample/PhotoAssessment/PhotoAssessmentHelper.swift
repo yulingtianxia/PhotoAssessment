@@ -23,7 +23,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
     
     open override var description: String {
         var text = ""
-        text += "edgeDetect mean: \(String(describing: edgeDetectMean)) variance: \(String(describing: edgeDetectVariance))"
+        text += "edgeDetect mean: \(String(describing: edgeDetectMean)), variance: \(String(describing: edgeDetectVariance))"
         if let hsb = hsb {
             text += String(format: "\nhsb: h(%.3f), s(%.3f), b(%.3f)", hsb.hue, hsb.saturation, hsb.brightness)
         }
@@ -61,16 +61,16 @@ open class PhotoAssessmentHelper: NSObject {
     }
     
     @objc public func requestMPSAssessmentScore(for image: CGImage, completionHandler: @escaping (PhotoAssessmentResult) -> Void) {
-        var start = Date()
-        let imagePixels = image.rgbPixels()
-        print("rgb pixels duration:\(Date().timeIntervalSince(start))")
-        let totalResult = PhotoAssessmentResult()
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
+            var start = Date()
+            let imagePixels = image.rgbPixels()
+            print("rgb pixels duration:\(Date().timeIntervalSince(start))")
+            let totalResult = PhotoAssessmentResult()
             start = Date()
             let side = 50
             let group = DispatchGroup()
             group.enter()
-            self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: side, { (result) in
+            self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: side, completionHandler: { (result) in
                 if let pixels = result {
                     let fingerprint = Utils.fingerprintFor(imagePixels: pixels, width: side, height: side)
                     print("finger print duration:\(Date().timeIntervalSince(start))")
@@ -91,7 +91,7 @@ open class PhotoAssessmentHelper: NSObject {
             })
             group.enter()
             start = Date()
-            self.mpsProcessor.edgeDetect(imagePixels: imagePixels, width: image.width, height: image.height, { (mean, variance) in
+            self.mpsProcessor.edgeDetect(imagePixels: imagePixels, width: image.width, height: image.height, completionHandler: { (mean, variance) in
                 print("fuzzy degree duration:\(Date().timeIntervalSince(start))")
                 self.processQueue.async {
                     totalResult.edgeDetectMean = mean

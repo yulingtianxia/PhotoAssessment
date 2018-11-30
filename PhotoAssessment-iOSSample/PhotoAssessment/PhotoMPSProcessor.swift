@@ -51,7 +51,7 @@ open class PhotoMPSProcessor: NSObject {
     ///   - height: image height
     ///   - scaleDimension: scale dimension
     ///   - block: completion block
-    @objc public func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, _ block: @escaping ([Int32]?) -> Void) -> Void {
+    @objc public func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, completionHandler block: @escaping ([Int32]?) -> Void) {
         
         // Make sure the current device supports MetalPerformanceShaders.
         guard MPSSupportsMTLDevice(device) else {
@@ -110,7 +110,7 @@ open class PhotoMPSProcessor: NSObject {
     ///   - width: image width
     ///   - height: image height
     ///   - block: completion block
-    @objc public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, _ block: @escaping (_ mean: Int8, _ variance: Int8) -> Void) -> Void {
+    @objc public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, completionHandler block: @escaping (_ mean: Int8, _ variance: Int8) -> Void) {
         
         // Make sure the current device supports MetalPerformanceShaders.
         guard MPSSupportsMTLDevice(device) else {

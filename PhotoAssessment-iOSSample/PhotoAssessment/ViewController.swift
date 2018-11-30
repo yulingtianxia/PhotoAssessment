@@ -32,14 +32,10 @@ class ViewController: UIViewController {
         }
         
         let photoSourcePicker = UIAlertController()
-        let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { [unowned self] _ in
-            self.presentPhotoPicker(sourceType: .camera)
-        }
         let choosePhoto = UIAlertAction(title: "Choose Photo", style: .default) { [unowned self] _ in
             self.presentPhotoPicker(sourceType: .photoLibrary)
         }
         
-        photoSourcePicker.addAction(takePhoto)
         photoSourcePicker.addAction(choosePhoto)
         photoSourcePicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -53,10 +49,10 @@ class ViewController: UIViewController {
         present(picker, animated: true)
     }
     
-    
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         let image = info[.originalImage] as! UIImage
@@ -66,7 +62,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         if let url = info[.imageURL] as? URL {
             DispatchQueue.global().async {
                 var start = Date()
-                let downsampleDimension = 200
+                let downsampleDimension = 500
                 start = Date()
                 if let downsampleImage = Utils.downsample(url: url, maxDimension: downsampleDimension) {
                     print("downsample duration:\(Date().timeIntervalSince(start))")

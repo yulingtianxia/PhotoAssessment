@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f5bd197-753e-4d5e-906f-67c25dde02b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../PhotoAssessmentUsageDemo/PhotoAssessmentUsageDemo/PhotoScanner.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PhotoAssessmentUsageDemo/PhotoAssessmentUsageDemo/PhotoScanner.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NIMA/nima.py" beforeDir="false" afterPath="$PROJECT_DIR$/NIMA/nima.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PhotoAssessmentUsageDemo/PhotoAssessmentUsageDemo.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../PhotoAssessmentUsageDemo/PhotoAssessmentUsageDemo.xcodeproj/project.pbxproj" afterDir="false" />
-    </list>
+    <list default="true" id="9f5bd197-753e-4d5e-906f-67c25dde02b1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +32,13 @@
     <session id="-1108769662">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -100,21 +96,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NIMA/mobile_net_v2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3648">
-              <caret line="152" selection-start-line="152" selection-end-line="152" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NIMA/common.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1488">
+            <state relative-caret-position="1392">
               <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -357,9 +341,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1337" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25893566" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26092136" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -462,7 +445,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NIMA/mobile_net_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3648">
+        <state relative-caret-position="3504">
           <caret line="152" selection-start-line="152" selection-end-line="152" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -472,7 +455,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NIMA/common.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1488">
+        <state relative-caret-position="1392">
           <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />

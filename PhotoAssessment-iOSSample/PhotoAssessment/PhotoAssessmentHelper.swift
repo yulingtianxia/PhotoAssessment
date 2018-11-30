@@ -23,7 +23,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
     
     open override var description: String {
         var text = ""
-        text += "edgeDetect mean: \(String(describing: edgeDetectMean)), variance: \(String(describing: edgeDetectVariance))"
+        text += "edgeDetect: mean(\(String(describing: edgeDetectMean))), variance:(\(String(describing: edgeDetectVariance)))"
         if let hsb = hsb {
             text += String(format: "\nhsb: h(%.3f), s(%.3f), b(%.3f)", hsb.hue, hsb.saturation, hsb.brightness)
         }

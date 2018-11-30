@@ -97,8 +97,8 @@ open class PhotoMPSProcessor: NSObject {
             scaleDesTexture.getBytes(&result, bytesPerRow: 4 * scaleDimension, from: region, mipmapLevel: 0)
             
             block(result)
-            //                Debug
-            //                let image = self.imageOf(rgbaTexture: scaleDesTexture)
+//            Debug
+//            let image = self.imageOf(rgbaTexture: scaleDesTexture)
         }
         commandBuffer.commit()
     }
@@ -169,8 +169,8 @@ open class PhotoMPSProcessor: NSObject {
             
             varianceTexture.getBytes(&result, bytesPerRow: 1 * 2, from: region, mipmapLevel: 0)
             block(result.first!, result.last!)
-            //                Debug
-            //                let grayImage = self.imageOf(grayTexture: sobelDesTexture)
+//            Debug
+//            let grayImage = self.imageOf(grayTexture: sobelDesTexture)
         }
         commandBuffer.commit()
     }

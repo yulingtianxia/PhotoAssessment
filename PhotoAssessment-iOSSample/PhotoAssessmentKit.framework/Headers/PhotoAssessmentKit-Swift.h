@@ -213,7 +213,6 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentResult")
 @property (nonatomic) int8_t edgeDetectVariance;
 @property (nonatomic, strong) HSBColor * _Nullable hsb;
 @property (nonatomic, copy) NSDictionary<NSNumber *, NSNumber *> * _Nullable fingerprint;
-@property (nonatomic) double contentScore;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
@@ -232,8 +231,28 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit16PhotoMLProcessor") SWIFT_AVAILABILITY(tvo
 SWIFT_CLASS("_TtC18PhotoAssessmentKit17PhotoMPSProcessor") SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(ios,introduced=11.0)
 @interface PhotoMPSProcessor : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)downsampleWithImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height scaleDimension:(NSInteger)scaleDimension :(void (^ _Nonnull)(NSArray<NSNumber *> * _Nullable))block;
-- (void)edgeDetectWithImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height :(void (^ _Nonnull)(int8_t, int8_t))block;
+/// Downsample image
+/// \param imagePixels image pixels with rgba8 format
+///
+/// \param width image width
+///
+/// \param height image height
+///
+/// \param scaleDimension scale dimension
+///
+/// \param block completion block
+///
+- (void)downsampleWithImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height scaleDimension:(NSInteger)scaleDimension completionHandler:(void (^ _Nonnull)(NSArray<NSNumber *> * _Nullable))block;
+/// Edge detect for image
+/// \param imagePixels image pixels with rgba8 format
+///
+/// \param width image width
+///
+/// \param height image height
+///
+/// \param block completion block
+///
+- (void)edgeDetectWithImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height completionHandler:(void (^ _Nonnull)(int8_t, int8_t))block;
 @end
 
 
@@ -250,7 +269,27 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit5Utils")
 /// returns:
 /// CGImage after downsample
 + (CGImageRef _Nullable)downsampleWithUrl:(NSURL * _Nonnull)url maxDimension:(NSInteger)maxDimension SWIFT_WARN_UNUSED_RESULT;
+/// Fingerprint for image
+/// \param imagePixels image pixels with rgba8 format
+///
+/// \param width image width
+///
+/// \param height image height
+///
+///
+/// returns:
+/// feature vector
 + (NSDictionary<NSNumber *, NSNumber *> * _Nonnull)fingerprintForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;
+/// mean HSB Color
+/// \param imagePixels image pixels with rgba8 format
+///
+/// \param width image width
+///
+/// \param height image height
+///
+///
+/// returns:
+/// HSBColor
 + (HSBColor * _Nonnull)meanHSBForImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

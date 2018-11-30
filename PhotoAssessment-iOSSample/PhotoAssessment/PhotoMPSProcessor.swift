@@ -84,24 +84,23 @@ open class PhotoMPSProcessor: NSObject {
         scaleSrcTexture.replace(region: scaleRegion, mipmapLevel: 0, withBytes: &pixels, bytesPerRow: 4 * width)
         
         // Run Image Filters
-        if let commandBuffer = commandQueue?.makeCommandBuffer() {
-            scale?.encode(commandBuffer: commandBuffer, sourceTexture: scaleSrcTexture, destinationTexture: scaleDesTexture)
-            commandBuffer.addCompletedHandler { (buffer) in
-                
-                var result = [Int32](repeatElement(0, count: scaleDimension * scaleDimension))
-                let region = MTLRegionMake2D(0, 0, scaleDimension, scaleDimension)
-                
-                scaleDesTexture.getBytes(&result, bytesPerRow: 4 * scaleDimension, from: region, mipmapLevel: 0)
-                
-                block(result)
-//                Debug
-//                let image = self.imageOf(rgbaTexture: scaleDesTexture)
-            }
-            commandBuffer.commit()
-        }
-        else {
+        guard let commandBuffer = commandQueue?.makeCommandBuffer() else {
             block(nil)
+            return
         }
+        scale?.encode(commandBuffer: commandBuffer, sourceTexture: scaleSrcTexture, destinationTexture: scaleDesTexture)
+        commandBuffer.addCompletedHandler { (buffer) in
+            
+            var result = [Int32](repeatElement(0, count: scaleDimension * scaleDimension))
+            let region = MTLRegionMake2D(0, 0, scaleDimension, scaleDimension)
+            
+            scaleDesTexture.getBytes(&result, bytesPerRow: 4 * scaleDimension, from: region, mipmapLevel: 0)
+            
+            block(result)
+            //                Debug
+            //                let image = self.imageOf(rgbaTexture: scaleDesTexture)
+        }
+        commandBuffer.commit()
     }
     
     /// Edge detect for image
@@ -156,25 +155,24 @@ open class PhotoMPSProcessor: NSObject {
         sobelSrcTexture.replace(region: sobelRegion, mipmapLevel: 0, withBytes: &pixels, bytesPerRow: 4 * width)
         
         // Run Image Filters
-        if let commandBuffer = commandQueue?.makeCommandBuffer() {
-            sobel?.encode(commandBuffer: commandBuffer, sourceTexture: sobelSrcTexture, destinationTexture: sobelDesTexture)
-            meanAndVariance?.encode(commandBuffer: commandBuffer, sourceTexture: sobelDesTexture, destinationTexture: varianceTexture)
-            commandBuffer.addCompletedHandler { (buffer) in
-                
-                var result = [Int8](repeatElement(0, count: 2))
-                let region = MTLRegionMake2D(0, 0, 2, 1)
-                
-                varianceTexture.getBytes(&result, bytesPerRow: 1 * 2, from: region, mipmapLevel: 0)
-                block(result.first!, result.last!)
-//                Debug
-//                let grayImage = self.imageOf(grayTexture: sobelDesTexture)
-            }
-            commandBuffer.commit()
-        }
-        else {
+        guard let commandBuffer = commandQueue?.makeCommandBuffer() else {
             print("make CommandBuffer failed")
             block(0, 0)
+            return
         }
+        sobel?.encode(commandBuffer: commandBuffer, sourceTexture: sobelSrcTexture, destinationTexture: sobelDesTexture)
+        meanAndVariance?.encode(commandBuffer: commandBuffer, sourceTexture: sobelDesTexture, destinationTexture: varianceTexture)
+        commandBuffer.addCompletedHandler { (buffer) in
+            
+            var result = [Int8](repeatElement(0, count: 2))
+            let region = MTLRegionMake2D(0, 0, 2, 1)
+            
+            varianceTexture.getBytes(&result, bytesPerRow: 1 * 2, from: region, mipmapLevel: 0)
+            block(result.first!, result.last!)
+            //                Debug
+            //                let grayImage = self.imageOf(grayTexture: sobelDesTexture)
+        }
+        commandBuffer.commit()
     }
     
     #if os(iOS) || os(watchOS) || os(tvOS)

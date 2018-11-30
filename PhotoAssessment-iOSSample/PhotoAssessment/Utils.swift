@@ -90,7 +90,7 @@ open class Utils: NSObject {
                 let r = downsample(component: color.r()) << 24
                 let g = downsample(component: color.g()) << 16
                 let b = downsample(component: color.b()) << 8
-                let location = downsample(x: i, y: j) << 12
+                let location = downsample(x: i, y: j)
                 let fingerprint = r | g | b | location
                 bucket[fingerprint] = (bucket[fingerprint] ?? 0) + 1
             }

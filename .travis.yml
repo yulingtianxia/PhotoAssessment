@@ -1,0 +1,31 @@
+osx_image: xcode9.4
+language: swift
+xcode_project: PhotoAssessment
+xcode_scheme: PhotoAssessmentKit
+xcode_sdk: iphoneos12.0
+env:
+  global:
+  - FRAMEWORK_NAME=PhotoAssessmentKit
+before_install:
+- brew update
+- brew outdated carthage || brew upgrade carthage
+before_script:
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+script:
+- xcodebuild -project PhotoAssessment-Sample/PhotoAssessment.xcodeproj -scheme PhotoAssessment
+  -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone
+  X,OS=11.4' ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  build test
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: releases
+  api_key:
+    secure: Ihnv2dapwDCHlz3ZCebVPSTB52hU5/Je34d50WHGZzappa9xvkoeywK6cgWyBEFIaJ/aJyNckQCPgTKtED3+29N3/+QE2vqxjBQZfunlm+7ZBQQpoAJ4uLNmC5KGTVJW0TymLFTP6g2Mzc2rAv6jTUPYDA0tbhoQQwTaDVq4PYwgUnaa///YEl9IwenkO18iB4Ej3WP4rPlsEozOzgWeoj9+j5MADRDBGKZ+GBu3f3GEVdzLhyJflElalubxkeeKpOCSqBbRSrAsaRMunkszsl6MaKzhF6MABSunOnr5Co6cjyh5pQV3bQvfgi1hlCaDuQxzm8wUgpw2U6RNdSfq86Ezjf/1W/Dw7mNhojlWcVuPSdIjrvXJJZrdC8u+/3iqnCW0bI7ZGkQvkjnTPgXJIkO201aBrZAw8/wuxyWhB5BMnM79fn7fGr6bxEtggSpkHZj7XbqZbQ4AMybR+pAvtFZUkvkckpakV7r4ehxnYGZwZbdNr3l+UbI0CjpD8LUw0Nlwu9q52obFt5d/vLri7496fPUjeJ/9kdW8yge1a97+2Lnzwjx9TyTeFI/mAUZW7i/TZBuPezf+wVOEJxamPzj1dl6hzZsFZrQM0lhW/hYI8061F4nfc83rOgvlrqoFyyvB8l4rRZxtee3h8HMs17AuVhmVx3GjepGyzhINQEc=
+  file: PhotoAssessmentKit.framework.zip
+  skip_cleanup: true
+  on:
+    repo: yulingtianxia/PhotoAssessment
+    tags: true

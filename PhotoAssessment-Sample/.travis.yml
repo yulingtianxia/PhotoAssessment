@@ -14,7 +14,7 @@ before_deploy:
 - carthage build --no-skip-current
 - carthage archive $FRAMEWORK_NAME
 script:
-- xcodebuild -project PhotoAssessment-Sample/PhotoAssessment.xcodeproj -scheme PhotoAssessment
+- xcodebuild -project PhotoAssessment.xcodeproj -scheme PhotoAssessment
   -configuration Release -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 deploy:
   provider: releases

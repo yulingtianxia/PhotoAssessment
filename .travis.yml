@@ -15,11 +15,7 @@ before_deploy:
 - carthage archive $FRAMEWORK_NAME
 script:
 - xcodebuild -project PhotoAssessment-Sample/PhotoAssessment.xcodeproj -scheme PhotoAssessment
-  -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone
-  X,OS=11.4' ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
-  build test
-after_success:
-- bash <(curl -s https://codecov.io/bash)
+  -configuration Release -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 deploy:
   provider: releases
   api_key:

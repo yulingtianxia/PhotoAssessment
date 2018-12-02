@@ -66,7 +66,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 start = Date()
                 if let downsampleImage = Utils.downsample(url: url, maxDimension: downsampleDimension) {
                     print("downsample duration:\(Date().timeIntervalSince(start))")
-                    guard #available(iOS 11.8, *) else {
+                    guard #available(iOS 11.0, *) else {
                         return
                     }
                     self.helper.requestMLAssessmentScore(for: downsampleImage, completionHandler: { (score) in

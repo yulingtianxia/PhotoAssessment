@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A412CF602195BE4A00306823"
-               BuildableName = "PhotoAssessment.app"
-               BlueprintName = "PhotoAssessment"
+               BlueprintIdentifier = "A43BB5B321A301B100148CE8"
+               BuildableName = "PhotoAssessmentKit.framework"
+               BlueprintName = "PhotoAssessmentKit"
                ReferencedContainer = "container:PhotoAssessment.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A412CF602195BE4A00306823"
-            BuildableName = "PhotoAssessment.app"
-            BlueprintName = "PhotoAssessment"
-            ReferencedContainer = "container:PhotoAssessment.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,42 +42,33 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A412CF602195BE4A00306823"
-            BuildableName = "PhotoAssessment.app"
-            BlueprintName = "PhotoAssessment"
+            BlueprintIdentifier = "A43BB5B321A301B100148CE8"
+            BuildableName = "PhotoAssessmentKit.framework"
+            BlueprintName = "PhotoAssessmentKit"
             ReferencedContainer = "container:PhotoAssessment.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "CGBITMAP_CONTEXT_LOG_ERRORS"
-            value = "YES"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A412CF602195BE4A00306823"
-            BuildableName = "PhotoAssessment.app"
-            BlueprintName = "PhotoAssessment"
+            BlueprintIdentifier = "A43BB5B321A301B100148CE8"
+            BuildableName = "PhotoAssessmentKit.framework"
+            BlueprintName = "PhotoAssessmentKit"
             ReferencedContainer = "container:PhotoAssessment.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

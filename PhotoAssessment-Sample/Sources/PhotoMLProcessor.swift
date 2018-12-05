@@ -22,6 +22,8 @@ private var model: VNCoreMLModel = {
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
 open class PhotoMLProcessor: NSObject {
     
+    private let processQueue = DispatchQueue(label: "com.photoassessment.mlprocessor")
+    
     private lazy var assessmentRequest: VNCoreMLRequest = {
         let request = VNCoreMLRequest(model: model)
         request.imageCropAndScaleOption = .scaleFill
@@ -66,15 +68,17 @@ open class PhotoMLProcessor: NSObject {
     }
     
     @objc public func process(image: CGImage, completionHandler: @escaping (Double) -> Void) {
-        DispatchQueue.global().async {
-            let handler = VNImageRequestHandler(cgImage: image)
+        let handler = VNImageRequestHandler(cgImage: image)
+        processQueue.async {
             do {
                 try handler.perform([self.assessmentRequest, self.faceDetectionRequest])
             } catch {
                 print("Failed to perform Assessment.\n\(error.localizedDescription)")
             }
             let score = self.processNIMA(for: self.assessmentRequest) + self.processFaceDetection(for: self.faceDetectionRequest)
-            completionHandler(score)
+            DispatchQueue.global().async {
+                completionHandler(score)
+            }
         }
     }
 }

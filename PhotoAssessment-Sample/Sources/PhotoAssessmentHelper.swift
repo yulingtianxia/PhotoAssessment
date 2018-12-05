@@ -61,7 +61,7 @@ open class PhotoAssessmentHelper: NSObject {
     }
     
     @objc public func requestMPSAssessmentScore(for image: CGImage, completionHandler: @escaping (PhotoAssessmentResult) -> Void) {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .userInitiated).async {
             var start = Date()
             let imagePixels = image.rgbPixels()
             print("rgb pixels duration:\(Date().timeIntervalSince(start))")

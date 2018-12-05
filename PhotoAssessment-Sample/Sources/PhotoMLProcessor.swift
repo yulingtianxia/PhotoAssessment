@@ -10,11 +10,9 @@ import Foundation
 import CoreML
 import Vision
 
-let nima = NIMANasnet()
-
 private var model: VNCoreMLModel = {
     do {
-        let model = try VNCoreMLModel(for: nima.model)
+        let model = try VNCoreMLModel(for: NIMANasnet().model)
         return model
     } catch {
         fatalError("Failed to load Vision ML model NIMANasnet: \(error)")
@@ -24,29 +22,18 @@ private var model: VNCoreMLModel = {
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
 open class PhotoMLProcessor: NSObject {
     
-    private var score: Double = 0
-    private let processQueue = DispatchQueue(label: "com.photoassessment.mlprocessor")
-    
     private lazy var assessmentRequest: VNCoreMLRequest = {
-        let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-            self?.score += self?.processNIMA(for: request, error: error) ?? 0
-        })
+        let request = VNCoreMLRequest(model: model)
         request.imageCropAndScaleOption = .scaleFill
         return request
     }()
     
     private lazy var faceDetectionRequest: VNDetectFaceRectanglesRequest = {
-        let request = VNDetectFaceRectanglesRequest(completionHandler: { [weak self] (request, error) in
-            self?.score += self?.processFaceDetection(for: request, error: error) ?? 0
-        })
+        let request = VNDetectFaceRectanglesRequest()
         return request
     }()
     
-    private func processNIMA(for request: VNRequest, error: Error?) -> Double {
-        if error != nil {
-            print("Vision ML NIMANasnet error: \(String(describing: error)).")
-            return 0
-        }
+    private func processNIMA(for request: VNRequest) -> Double {
         
         guard let assessments = request.results as? [VNCoreMLFeatureValueObservation] else {
             return 0
@@ -65,11 +52,7 @@ open class PhotoMLProcessor: NSObject {
         return 0
     }
     
-    private func processFaceDetection(for request: VNRequest, error: Error?) -> Double {
-        if error != nil {
-            print("FaceDetection error: \(String(describing: error)).")
-            return 0
-        }
+    private func processFaceDetection(for request: VNRequest) -> Double {
         
         guard let faceDetectionRequest = request as? VNDetectFaceRectanglesRequest,
             let faceDetectionResults = faceDetectionRequest.results as? [VNFaceObservation] else {
@@ -83,13 +66,15 @@ open class PhotoMLProcessor: NSObject {
     }
     
     @objc public func process(image: CGImage, completionHandler: @escaping (Double) -> Void) {
-        self.score = 0
-        let handler = VNImageRequestHandler(cgImage: image)
-        do {
-            try handler.perform([self.assessmentRequest, self.faceDetectionRequest])
-        } catch {
-            print("Failed to perform Assessment.\n\(error.localizedDescription)")
+        DispatchQueue.global().async {
+            let handler = VNImageRequestHandler(cgImage: image)
+            do {
+                try handler.perform([self.assessmentRequest, self.faceDetectionRequest])
+            } catch {
+                print("Failed to perform Assessment.\n\(error.localizedDescription)")
+            }
+            let score = self.processNIMA(for: self.assessmentRequest) + self.processFaceDetection(for: self.faceDetectionRequest)
+            completionHandler(score)
         }
-        completionHandler(self.score)
     }
 }

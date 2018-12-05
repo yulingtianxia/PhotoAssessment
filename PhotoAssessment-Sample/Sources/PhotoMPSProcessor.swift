@@ -18,9 +18,6 @@ open class PhotoMPSProcessor: NSObject {
     
     private let device: MTLDevice?
     private let commandQueue: MTLCommandQueue?
-    private let sobel: MPSImageSobel?
-    private let meanAndVariance: MPSImageStatisticsMeanAndVariance?
-    private let scale: MPSImageBilinearScale?
     
     public override init() {
         
@@ -30,16 +27,6 @@ open class PhotoMPSProcessor: NSObject {
         // Create new command queue.
         commandQueue = device?.makeCommandQueue()
         
-        if let device = device {
-            sobel = MPSImageSobel(device: device)
-            meanAndVariance = MPSImageStatisticsMeanAndVariance(device: device)
-            scale = MPSImageBilinearScale(device: device)
-        }
-        else {
-            sobel = nil
-            meanAndVariance = nil
-            scale = nil
-        }
         super.init()
     }
     
@@ -54,7 +41,7 @@ open class PhotoMPSProcessor: NSObject {
     @objc public func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, completionHandler block: @escaping ([Int32]?) -> Void) {
         
         // Make sure the current device supports MetalPerformanceShaders.
-        guard MPSSupportsMTLDevice(device) else {
+        guard let device = device, MPSSupportsMTLDevice(device) else {
             print("Metal Performance Shaders not Supported on current Device")
             block(nil)
             return
@@ -69,12 +56,12 @@ open class PhotoMPSProcessor: NSObject {
         scalaDesTextureDescriptor.usage = [.shaderWrite, .shaderRead]
         
         // Textures
-        guard let scaleSrcTexture: MTLTexture = device?.makeTexture(descriptor: scaleSrcTextureDescriptor) else {
+        guard let scaleSrcTexture: MTLTexture = device.makeTexture(descriptor: scaleSrcTextureDescriptor) else {
             block(nil)
             return
         }
         
-        guard let scaleDesTexture: MTLTexture = device?.makeTexture(descriptor: scalaDesTextureDescriptor) else {
+        guard let scaleDesTexture: MTLTexture = device.makeTexture(descriptor: scalaDesTextureDescriptor) else {
             block(nil)
             return
         }
@@ -88,7 +75,9 @@ open class PhotoMPSProcessor: NSObject {
             block(nil)
             return
         }
-        scale?.encode(commandBuffer: commandBuffer, sourceTexture: scaleSrcTexture, destinationTexture: scaleDesTexture)
+        
+        let scale = MPSImageBilinearScale(device: device)
+        scale.encode(commandBuffer: commandBuffer, sourceTexture: scaleSrcTexture, destinationTexture: scaleDesTexture)
         commandBuffer.addCompletedHandler { (buffer) in
             
             var result = [Int32](repeatElement(0, count: scaleDimension * scaleDimension))
@@ -113,7 +102,7 @@ open class PhotoMPSProcessor: NSObject {
     @objc public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, completionHandler block: @escaping (_ mean: Int8, _ variance: Int8) -> Void) {
         
         // Make sure the current device supports MetalPerformanceShaders.
-        guard MPSSupportsMTLDevice(device) else {
+        guard let device = device, MPSSupportsMTLDevice(device) else {
             print("Metal Performance Shaders not Supported on current Device")
             block(0, 0)
             return
@@ -132,19 +121,19 @@ open class PhotoMPSProcessor: NSObject {
         varianceTextureDescriptor.usage = [.shaderWrite, .shaderRead]
         
         // Textures
-        guard let sobelSrcTexture: MTLTexture = device?.makeTexture(descriptor: sobelSrcTextureDescriptor) else {
+        guard let sobelSrcTexture: MTLTexture = device.makeTexture(descriptor: sobelSrcTextureDescriptor) else {
             print("make sobelSrcTexture failed")
             block(0, 0)
             return
         }
         
-        guard let sobelDesTexture: MTLTexture = device?.makeTexture(descriptor: sobelDesTextureDescriptor) else {
+        guard let sobelDesTexture: MTLTexture = device.makeTexture(descriptor: sobelDesTextureDescriptor) else {
             print("make sobelDesTexture failed")
             block(0, 0)
             return
         }
         
-        guard let varianceTexture: MTLTexture = device?.makeTexture(descriptor: varianceTextureDescriptor) else {
+        guard let varianceTexture: MTLTexture = device.makeTexture(descriptor: varianceTextureDescriptor) else {
             print("make varianceTexture failed")
             block(0, 0)
             return
@@ -160,8 +149,11 @@ open class PhotoMPSProcessor: NSObject {
             block(0, 0)
             return
         }
-        sobel?.encode(commandBuffer: commandBuffer, sourceTexture: sobelSrcTexture, destinationTexture: sobelDesTexture)
-        meanAndVariance?.encode(commandBuffer: commandBuffer, sourceTexture: sobelDesTexture, destinationTexture: varianceTexture)
+        
+        let sobel = MPSImageSobel(device: device)
+        let meanAndVariance = MPSImageStatisticsMeanAndVariance(device: device)
+        sobel.encode(commandBuffer: commandBuffer, sourceTexture: sobelSrcTexture, destinationTexture: sobelDesTexture)
+        meanAndVariance.encode(commandBuffer: commandBuffer, sourceTexture: sobelDesTexture, destinationTexture: varianceTexture)
         commandBuffer.addCompletedHandler { (buffer) in
             
             var result = [Int8](repeatElement(0, count: 2))

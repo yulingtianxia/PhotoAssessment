@@ -12,7 +12,7 @@ import Vision
 
 private var model: VNCoreMLModel = {
     do {
-        let model = try VNCoreMLModel(for: NIMANasnet().model)
+        let model = try VNCoreMLModel(for: MobileNet().model)
         return model
     } catch {
         fatalError("Failed to load Vision ML model NIMANasnet: \(error)")

@@ -176,8 +176,8 @@ open class PhotoMPSProcessor: NSObject {
         grayTexture.getBytes(&pixelsResult, bytesPerRow: 1 * width, from: region, mipmapLevel: 0)
         let context = CGContext(data: &pixelsResult, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 1 * width, space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue )
         
-        if let ciImage = context?.makeImage() {
-            let imageResult = UIImage(cgImage: ciImage, scale: 0.0, orientation: UIImage.Orientation.downMirrored)
+        if let cgImage = context?.makeImage() {
+            let imageResult = UIImage(cgImage: cgImage, scale: 0.0, orientation: UIImage.Orientation.downMirrored)
             return imageResult
         }
         return nil
@@ -191,8 +191,8 @@ open class PhotoMPSProcessor: NSObject {
         rgbaTexture.getBytes(&pixelsResult, bytesPerRow: 4 * width, from: region, mipmapLevel: 0)
         let context = CGContext(data: &pixelsResult, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
         
-        if let ciImage = context?.makeImage() {
-            let imageResult = UIImage(cgImage: ciImage, scale: 0.0, orientation: UIImage.Orientation.downMirrored)
+        if let cgImage = context?.makeImage() {
+            let imageResult = UIImage(cgImage: cgImage, scale: 0.0, orientation: UIImage.Orientation.downMirrored)
             return imageResult
         }
         return nil

@@ -1,0 +1,760 @@
+{
+  "layer_shapes" : {
+    "conv_pw_4_relu_output" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_5_relu_output_relu_neg" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_8_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_7_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_12_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pw_12_relu_output_relu_clip" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pw_13_relu_output_relu_neg" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_dw_2_relu_output" : {
+      "k" : 64,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_dw_6_relu_output" : {
+      "k" : 256,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv1_pad_output" : {
+      "k" : 3,
+      "w" : 226,
+      "n" : 1,
+      "h" : 226
+    },
+    "conv_dw_2_relu_output_relu_neg" : {
+      "k" : 64,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_dw_11_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_3_relu_output_relu_neg" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pw_4_relu_output_relu_clip" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_2_relu_output_relu_clip" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_dw_7_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_13_relu_output_relu_clip" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pw_1_relu_output_relu" : {
+      "k" : 64,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv1_relu_output" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_pw_13_relu_output_relu_clip" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pw_4_relu_output_relu" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_12_relu_output_relu" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_dw_12_relu_output_relu" : {
+      "k" : 512,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pw_9_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pad_5_output" : {
+      "k" : 256,
+      "w" : 30,
+      "n" : 1,
+      "h" : 30
+    },
+    "conv_pw_10_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_5_relu_output" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_9_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_2_relu_output_relu" : {
+      "k" : 64,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pw_7_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_10_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_1_relu_output_relu_neg" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_pad_4_output" : {
+      "k" : 128,
+      "w" : 58,
+      "n" : 1,
+      "h" : 58
+    },
+    "conv_pw_2_relu_output_relu_neg" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_dw_10_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_5_relu_output_relu" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_9_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_7_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_6_relu_output_relu_neg" : {
+      "k" : 256,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pad_3_output" : {
+      "k" : 128,
+      "w" : 58,
+      "n" : 1,
+      "h" : 58
+    },
+    "conv_dw_7_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_3_relu_output" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pad_12_output" : {
+      "k" : 512,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "conv_dw_8_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pad_2_output" : {
+      "k" : 64,
+      "w" : 114,
+      "n" : 1,
+      "h" : 114
+    },
+    "conv_pw_13_relu_output" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "global_average_pooling2d_1_output" : {
+      "k" : 1024,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "conv_pw_10_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_13_relu_output" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pad_10_output" : {
+      "k" : 512,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "conv_pw_8_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_10_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_8_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_6_relu_output_relu_clip" : {
+      "k" : 256,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_13_relu_output_relu_neg" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pad_1_output" : {
+      "k" : 32,
+      "w" : 114,
+      "n" : 1,
+      "h" : 114
+    },
+    "conv_dw_4_relu_output_relu_clip" : {
+      "k" : 128,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "dense_1_output" : {
+      "k" : 10,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "conv_dw_2_relu_output_relu_clip" : {
+      "k" : 64,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pw_1_relu_output_relu_neg" : {
+      "k" : 64,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_pw_2_relu_output" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pw_6_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_2_relu_output_relu" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_dw_10_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_10_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_5_relu_output_relu_neg" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv1_relu_output_relu" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_pw_5_relu_output_relu" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_12_relu_output_relu_neg" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_dw_10_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_4_relu_output" : {
+      "k" : 128,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_dw_8_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_5_relu_output_relu_clip" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_dw_3_relu_output_relu" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pw_8_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_3_relu_output_relu_clip" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pw_7_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_1_relu_output_relu_clip" : {
+      "k" : 64,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_dw_1_relu_output_relu" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "image" : {
+      "k" : 3,
+      "w" : 224,
+      "n" : 1,
+      "h" : 224
+    },
+    "conv_pw_12_relu_output" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pw_11_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv1_relu_output_relu_clip" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_dw_6_relu_output_relu" : {
+      "k" : 256,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_12_relu_output" : {
+      "k" : 512,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_pw_13_relu_output_relu" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_dw_13_relu_output_relu" : {
+      "k" : 1024,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_dw_9_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_4_relu_output_relu_neg" : {
+      "k" : 128,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_11_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_7_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pad_9_output" : {
+      "k" : 512,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "conv_dw_9_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_3_relu_output" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pw_11_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_11_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv1_relu_output_relu_neg" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_pad_13_output" : {
+      "k" : 1024,
+      "w" : 9,
+      "n" : 1,
+      "h" : 9
+    },
+    "conv_pw_6_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pad_8_output" : {
+      "k" : 512,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "conv_pw_8_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_6_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_1_relu_output" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_dw_5_relu_output" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_dw_9_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_3_relu_output_relu" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pad_7_output" : {
+      "k" : 512,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "conv_pad_11_output" : {
+      "k" : 512,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "conv_pw_11_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "scores" : {
+      "k" : 10,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "conv_dw_11_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_6_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pad_6_output" : {
+      "k" : 256,
+      "w" : 30,
+      "n" : 1,
+      "h" : 30
+    },
+    "conv_dw_3_relu_output_relu_neg" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_dw_11_relu_output" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_9_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_pw_4_relu_output_relu_neg" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_dw_12_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 7,
+      "n" : 1,
+      "h" : 7
+    },
+    "conv_dw_7_relu_output_relu_clip" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_5_relu_output_relu_clip" : {
+      "k" : 256,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_dw_8_relu_output_relu_neg" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_3_relu_output_relu_clip" : {
+      "k" : 128,
+      "w" : 56,
+      "n" : 1,
+      "h" : 56
+    },
+    "conv_pw_9_relu_output_relu" : {
+      "k" : 512,
+      "w" : 14,
+      "n" : 1,
+      "h" : 14
+    },
+    "conv_dw_4_relu_output_relu" : {
+      "k" : 128,
+      "w" : 28,
+      "n" : 1,
+      "h" : 28
+    },
+    "conv_pw_1_relu_output" : {
+      "k" : 64,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    },
+    "conv_dw_1_relu_output_relu_clip" : {
+      "k" : 32,
+      "w" : 112,
+      "n" : 1,
+      "h" : 112
+    }
+  }
+}

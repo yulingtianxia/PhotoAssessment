@@ -1,0 +1,44 @@
+coreml mobilenet with MPSImageBilinearScale vision
+953113.jpg 5.681255
+953062.jpg 5.785238
+42039.jpg 5.285697
+42040.jpg 4.514457
+42041.jpg 5.186386
+42042.jpg 5.446316
+42044.jpg 5.508173
+
+coreml mobilenet with MPSImageLanczosScale vision
+953113.jpg 5.729377 
+953062.jpg 5.832087 
+42039.jpg 5.440902
+42040.jpg 5.083112
+42041.jpg 5.205369
+42042.jpg 5.641584
+42044.jpg 5.732950
+
+coreml mobilenet with vision VNImageCropAndScaleOptionScaleFill (best)
+953113.jpg 5.244943
+953062.jpg 5.152767
+42039.jpg 4.969497
+42040.jpg 4.254980
+42041.jpg 5.079754
+42042.jpg 4.878803
+42044.jpg 5.299158
+
+coreml mobilenet with vision VNImageCropAndScaleOptionScaleFit
+953113.jpg 5.799883
+953062.jpg 5.508212
+42039.jpg 4.893348
+42040.jpg 4.513416
+42041.jpg 4.514735
+42042.jpg 5.529792
+42044.jpg 5.868996
+
+coreml mobilenet with vision VNImageCropAndScaleOptionCenterCrop
+953113.jpg 4.929153
+953062.jpg 5.098062
+42039.jpg 4.941197
+42040.jpg 3.971237
+42041.jpg 5.010737
+42042.jpg 4.572136
+42044.jpg 4.889040

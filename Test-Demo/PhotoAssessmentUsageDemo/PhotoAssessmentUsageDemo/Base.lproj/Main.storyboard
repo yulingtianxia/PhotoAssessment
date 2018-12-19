@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RM5-yT-o4L">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="URu-It-NvP">
+            <objects>
+                <navigationController id="RM5-yT-o4L" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Hk-7h-fdt">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="FDS-gq-5eD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zw8-cI-fau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-863" y="134"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMK-0f-vpm">
+                                <rect key="frame" x="156.5" y="350" width="62" height="31"/>
+                                <state key="normal" title="浏览照片"/>
+                                <connections>
+                                    <action selector="clickButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5YR-sC-xAG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7q-w2-eQL">
+                                <rect key="frame" x="149" y="450" width="77" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MvG-QV-Kio"/>
+                                </constraints>
+                                <state key="normal" title="照片二选一"/>
+                                <connections>
+                                    <segue destination="brg-fh-NeP" kind="show" id="gh3-Xw-SGT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hMK-0f-vpm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HHr-A9-6Yj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y7q-w2-eQL" secondAttribute="bottom" constant="187" id="Hhq-GL-PnA"/>
+                            <constraint firstItem="hMK-0f-vpm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="NZj-d0-Bkq"/>
+                            <constraint firstItem="Y7q-w2-eQL" firstAttribute="top" secondItem="hMK-0f-vpm" secondAttribute="bottom" constant="69" id="kQ0-uC-Y0u"/>
+                            <constraint firstItem="Y7q-w2-eQL" firstAttribute="centerX" secondItem="hMK-0f-vpm" secondAttribute="centerX" id="pB9-9M-aXG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZV5-fP-7WQ"/>
+                    <connections>
+                        <outlet property="button" destination="hMK-0f-vpm" id="Lu5-Nw-pr0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="106" y="134"/>
+        </scene>
+        <!--Pick Me View Controller-->
+        <scene sceneID="xWe-hH-1oA">
+            <objects>
+                <viewController id="brg-fh-NeP" customClass="PickMeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YwA-96-pQS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NMe-2c-uaF">
+                                <rect key="frame" x="0.0" y="331" width="375" height="250"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NMe-2c-uaF" secondAttribute="height" multiplier="126:67" constant="-95.149253731343322" id="q4A-14-iQp"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="JUo-tz-wAQ" appends="YES" id="E1C-Ba-JUv"/>
+                                    <outletCollection property="gestureRecognizers" destination="2lb-cm-iec" appends="YES" id="fkr-ty-QDg"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbB-Nq-L65">
+                                <rect key="frame" x="156.5" y="626" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="VIA-w1-d7U"/>
+                                </constraints>
+                                <state key="normal" title="切换照片"/>
+                                <connections>
+                                    <action selector="changePhotos:" destination="brg-fh-NeP" eventType="touchUpInside" id="Y9M-qx-7cw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyE-Kp-I8T">
+                                <rect key="frame" x="157" y="589" width="61" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6Z-D3-Oed">
+                                <rect key="frame" x="333" y="626" width="26" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEX-Ts-iDU">
+                                <rect key="frame" x="16" y="626.5" width="44.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aQV-2U-Rex">
+                                <rect key="frame" x="0.0" y="64" width="375" height="250"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aQV-2U-Rex" secondAttribute="height" multiplier="126:67" constant="-95.149253731343322" id="YPc-HX-xei"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gTI-fT-28d" appends="YES" id="Rgj-D5-6ak"/>
+                                    <outletCollection property="gestureRecognizers" destination="g0P-0E-oia" appends="YES" id="d29-aZ-nCn"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HbB-Nq-L65" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QEX-Ts-iDU" secondAttribute="trailing" constant="8" symbolic="YES" id="0lM-WF-TJF"/>
+                            <constraint firstItem="HbB-Nq-L65" firstAttribute="centerX" secondItem="qf9-Cx-szP" secondAttribute="centerX" id="AeK-YE-JR8"/>
+                            <constraint firstItem="NMe-2c-uaF" firstAttribute="top" secondItem="aQV-2U-Rex" secondAttribute="bottom" constant="17" id="BBN-QA-eed"/>
+                            <constraint firstItem="NMe-2c-uaF" firstAttribute="width" secondItem="YwA-96-pQS" secondAttribute="width" id="DIK-J1-hiM"/>
+                            <constraint firstItem="NMe-2c-uaF" firstAttribute="centerX" secondItem="qf9-Cx-szP" secondAttribute="centerX" id="Ggd-oT-gTj"/>
+                            <constraint firstItem="aQV-2U-Rex" firstAttribute="centerX" secondItem="qf9-Cx-szP" secondAttribute="centerX" id="KZg-Ms-F6W"/>
+                            <constraint firstItem="q6Z-D3-Oed" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HbB-Nq-L65" secondAttribute="trailing" constant="8" symbolic="YES" id="Lzi-Y9-lBL"/>
+                            <constraint firstItem="cyE-Kp-I8T" firstAttribute="centerX" secondItem="qf9-Cx-szP" secondAttribute="centerX" id="Py5-XA-XQj"/>
+                            <constraint firstItem="qf9-Cx-szP" firstAttribute="trailing" secondItem="q6Z-D3-Oed" secondAttribute="trailing" constant="16" id="Qah-N2-Epi"/>
+                            <constraint firstItem="QEX-Ts-iDU" firstAttribute="leading" secondItem="qf9-Cx-szP" secondAttribute="leading" constant="16" id="XIX-gf-cGI"/>
+                            <constraint firstItem="qf9-Cx-szP" firstAttribute="bottom" secondItem="QEX-Ts-iDU" secondAttribute="bottom" constant="20" id="Yup-5z-lRu"/>
+                            <constraint firstItem="HbB-Nq-L65" firstAttribute="top" secondItem="cyE-Kp-I8T" secondAttribute="bottom" constant="1" id="dIY-DL-kEC"/>
+                            <constraint firstItem="aQV-2U-Rex" firstAttribute="width" secondItem="YwA-96-pQS" secondAttribute="width" id="ham-G9-vn3"/>
+                            <constraint firstItem="aQV-2U-Rex" firstAttribute="top" secondItem="qf9-Cx-szP" secondAttribute="top" id="nSJ-Eb-anw"/>
+                            <constraint firstItem="qf9-Cx-szP" firstAttribute="bottom" secondItem="q6Z-D3-Oed" secondAttribute="bottom" constant="20" id="nzc-r8-pyd"/>
+                            <constraint firstItem="qf9-Cx-szP" firstAttribute="bottom" secondItem="HbB-Nq-L65" secondAttribute="bottom" constant="11" id="zhR-dL-Nrs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qf9-Cx-szP"/>
+                    </view>
+                    <connections>
+                        <outlet property="doubleTapGestureA" destination="g0P-0E-oia" id="fJu-gM-t9q"/>
+                        <outlet property="doubleTapGestureB" destination="2lb-cm-iec" id="Job-QE-TmG"/>
+                        <outlet property="imageViewA" destination="aQV-2U-Rex" id="QJ5-Pj-Fuq"/>
+                        <outlet property="imageViewB" destination="NMe-2c-uaF" id="gcu-pe-zyS"/>
+                        <outlet property="resultLabel" destination="cyE-Kp-I8T" id="nwm-4d-7Nl"/>
+                        <outlet property="scoreLabel" destination="QEX-Ts-iDU" id="RTK-js-lJa"/>
+                        <outlet property="statisticsLabel" destination="q6Z-D3-Oed" id="5JC-5e-lRA"/>
+                        <outlet property="tapGestureA" destination="gTI-fT-28d" id="Jjh-gs-0yJ"/>
+                        <outlet property="tapGestureB" destination="JUo-tz-wAQ" id="OHI-Dw-J3g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FBt-Ib-sj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gTI-fT-28d">
+                    <connections>
+                        <action selector="handleTapImageViewA:" destination="brg-fh-NeP" id="qPJ-5Z-Og9"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="JUo-tz-wAQ">
+                    <connections>
+                        <action selector="handleTapImageViewB:" destination="brg-fh-NeP" id="C1i-eu-JkV"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="g0P-0E-oia">
+                    <connections>
+                        <action selector="handleDoubleTapImageViewA:" destination="brg-fh-NeP" id="7oh-PQ-xbT"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="2lb-cm-iec">
+                    <connections>
+                        <action selector="handleDoubleTapImageViewB:" destination="brg-fh-NeP" id="3El-0a-gIn"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1125.5999999999999" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>

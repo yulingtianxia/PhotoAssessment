@@ -69,12 +69,12 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                     guard #available(iOS 11.0, *) else {
                         return
                     }
-                    self.helper.requestMLAssessmentScore(for: downsampleImage, completionHandler: { (score) in
+                    self.helper.requestSubjectiveAssessment(for: downsampleImage, completionHandler: { (score) in
                         DispatchQueue.main.async {
                             self.assessmentLabel.text = String(format: "Assessment Score:%0.5f", score)
                         }
                     })
-                    self.helper.requestMPSAssessmentScore(for: downsampleImage, completionHandler: { (result) in
+                    self.helper.requestObjectiveAssessment(for: downsampleImage, downsampleDimension: 50, completionHandler: { (result) in
                         DispatchQueue.main.async {
                             self.detailLabel.text = result.description
                         }

@@ -201,8 +201,8 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit8HSBColor")
 
 SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentHelper") SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(ios,introduced=11.0)
 @interface PhotoAssessmentHelper : NSObject
-- (void)requestMLAssessmentScoreFor:(CGImageRef _Nonnull)image completionHandler:(void (^ _Nonnull)(double))completionHandler;
-- (void)requestMPSAssessmentScoreFor:(CGImageRef _Nonnull)image completionHandler:(void (^ _Nonnull)(PhotoAssessmentResult * _Nonnull))completionHandler;
+- (void)requestSubjectiveAssessmentFor:(CGImageRef _Nonnull)image completionHandler:(void (^ _Nonnull)(double))completionHandler;
+- (void)requestObjectiveAssessmentFor:(CGImageRef _Nonnull)image downsampleDimension:(NSInteger)downsampleDimension completionHandler:(void (^ _Nonnull)(PhotoAssessmentResult * _Nonnull))completionHandler;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=11.0);
 @end
 

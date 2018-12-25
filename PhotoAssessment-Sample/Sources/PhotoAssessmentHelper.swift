@@ -52,33 +52,22 @@ open class PhotoAssessmentHelper: NSObject {
     private let mlProcessor = PhotoMLProcessor()
     private let processQueue = DispatchQueue(label: "com.photoassessment.helper")
     
-    @objc public func requestMLAssessmentScore(for image: CGImage, completionHandler: @escaping (Double) -> Void) {
-        let start = Date()
+    @objc public func requestSubjectiveAssessment(for image: CGImage, completionHandler: @escaping (Double) -> Void) {
         mlProcessor.process(image: image, completionHandler: { (score) in
-            print("ml process duration:\(Date().timeIntervalSince(start))")
             completionHandler(score)
         })
     }
     
-    @objc public func requestMPSAssessmentScore(for image: CGImage, completionHandler: @escaping (PhotoAssessmentResult) -> Void) {
+    @objc public func requestObjectiveAssessment(for image: CGImage, downsampleDimension: Int, completionHandler: @escaping (PhotoAssessmentResult) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
-            var start = Date()
             let imagePixels = image.rgbPixels()
-            print("rgb pixels duration:\(Date().timeIntervalSince(start))")
             let totalResult = PhotoAssessmentResult()
-            start = Date()
-            let side = 50
             let group = DispatchGroup()
             group.enter()
-            self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: side, completionHandler: { (result) in
+            self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: downsampleDimension, completionHandler: { (result) in
                 if let pixels = result {
-                    let fingerprint = Utils.fingerprintFor(imagePixels: pixels, width: side, height: side)
-                    print("finger print duration:\(Date().timeIntervalSince(start))")
-                    
-                    start = Date()
-                    let hsb = Utils.meanHSBFor(imagePixels: pixels, width: side, height: side)
-                    print("hsb duration:\(Date().timeIntervalSince(start))")
-                    
+                    let fingerprint = Utils.fingerprintFor(imagePixels: pixels, width: downsampleDimension, height: downsampleDimension)
+                    let hsb = Utils.meanHSBFor(imagePixels: pixels, width: downsampleDimension, height: downsampleDimension)
                     self.processQueue.async {
                         totalResult.fingerprint = fingerprint
                         totalResult.hsb = hsb
@@ -90,9 +79,7 @@ open class PhotoAssessmentHelper: NSObject {
                 }
             })
             group.enter()
-            start = Date()
             self.mpsProcessor.edgeDetect(imagePixels: imagePixels, width: image.width, height: image.height, completionHandler: { (mean, variance) in
-                print("fuzzy degree duration:\(Date().timeIntervalSince(start))")
                 self.processQueue.async {
                     totalResult.edgeDetectMean = mean
                     totalResult.edgeDetectVariance = variance

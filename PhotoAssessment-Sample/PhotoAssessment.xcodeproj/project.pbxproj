@@ -27,6 +27,9 @@
 		A412CF6C2195BE4D00306823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6B2195BE4D00306823 /* Assets.xcassets */; };
 		A412CF6F2195BE4D00306823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A412CF6D2195BE4D00306823 /* LaunchScreen.storyboard */; };
 		A412CF9C21A00C3000306823 /* PhotoMPSProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */; };
+		A42721D121D375950031660D /* PhotoVisionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42721D021D375950031660D /* PhotoVisionProcessor.swift */; };
+		A42721D221D375950031660D /* PhotoVisionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42721D021D375950031660D /* PhotoVisionProcessor.swift */; };
+		A42721D321D375950031660D /* PhotoVisionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42721D021D375950031660D /* PhotoVisionProcessor.swift */; };
 		A43522EB21C25B5D0026F2EA /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A43522E921C2392A0026F2EA /* MobileNet.mlmodel */; };
 		A43522EC21C25B5F0026F2EA /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A43522E921C2392A0026F2EA /* MobileNet.mlmodel */; };
 		A43522ED21C25B830026F2EA /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A43522E921C2392A0026F2EA /* MobileNet.mlmodel */; };
@@ -81,6 +84,7 @@
 		A412CF702195BE4D00306823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMPSProcessor.swift; sourceTree = "<group>"; };
 		A412CFA421A0421900306823 /* PhotoAssessment-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoAssessment-Bridging-Header.h"; sourceTree = "<group>"; };
+		A42721D021D375950031660D /* PhotoVisionProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVisionProcessor.swift; sourceTree = "<group>"; };
 		A43522E921C2392A0026F2EA /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		A43BB5B421A301B100148CE8 /* PhotoAssessmentKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhotoAssessmentKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43BB5B621A301B100148CE8 /* PhotoAssessmentKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoAssessmentKit.h; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				A487816721A14EBF005C3CD8 /* Utils.swift */,
 				A412CF9B21A00C3000306823 /* PhotoMPSProcessor.swift */,
 				A4F9FDBC21A26204000C8518 /* PhotoMLProcessor.swift */,
+				A42721D021D375950031660D /* PhotoVisionProcessor.swift */,
 				A4F9FDBE21A2A890000C8518 /* PhotoAssessmentHelper.swift */,
 				A43522E921C2392A0026F2EA /* MobileNet.mlmodel */,
 			);
@@ -367,6 +372,7 @@
 				A43522ED21C25B830026F2EA /* MobileNet.mlmodel in Sources */,
 				A487816821A14EBF005C3CD8 /* Utils.swift in Sources */,
 				A4F9FDBF21A2A890000C8518 /* PhotoAssessmentHelper.swift in Sources */,
+				A42721D121D375950031660D /* PhotoVisionProcessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +383,7 @@
 				A43BB5C221A301FA00148CE8 /* PhotoMPSProcessor.swift in Sources */,
 				A43522EB21C25B5D0026F2EA /* MobileNet.mlmodel in Sources */,
 				A43BB5C121A301F700148CE8 /* Utils.swift in Sources */,
+				A42721D221D375950031660D /* PhotoVisionProcessor.swift in Sources */,
 				A43BB5C421A3020100148CE8 /* PhotoAssessmentHelper.swift in Sources */,
 				A43BB5C321A301FE00148CE8 /* PhotoMLProcessor.swift in Sources */,
 			);
@@ -389,6 +396,7 @@
 				A4DDC47421B0E03C00ACF653 /* PhotoMPSProcessor.swift in Sources */,
 				A43522EC21C25B5F0026F2EA /* MobileNet.mlmodel in Sources */,
 				A4DDC47321B0E03900ACF653 /* Utils.swift in Sources */,
+				A42721D321D375950031660D /* PhotoVisionProcessor.swift in Sources */,
 				A4DDC47621B0E04100ACF653 /* PhotoAssessmentHelper.swift in Sources */,
 				A4DDC47521B0E03E00ACF653 /* PhotoMLProcessor.swift in Sources */,
 			);

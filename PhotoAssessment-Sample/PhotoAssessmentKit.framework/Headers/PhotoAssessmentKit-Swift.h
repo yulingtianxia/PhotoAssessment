@@ -213,6 +213,7 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit21PhotoAssessmentResult")
 @property (nonatomic) int8_t edgeDetectVariance;
 @property (nonatomic, strong) HSBColor * _Nullable hsb;
 @property (nonatomic, copy) NSDictionary<NSNumber *, NSNumber *> * _Nullable fingerprint;
+@property (nonatomic, copy) NSArray<NSValue *> * _Nullable faceRectangles;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
@@ -253,6 +254,13 @@ SWIFT_CLASS("_TtC18PhotoAssessmentKit17PhotoMPSProcessor") SWIFT_AVAILABILITY(tv
 /// \param block completion block
 ///
 - (void)edgeDetectWithImagePixels:(NSArray<NSNumber *> * _Nonnull)imagePixels width:(NSInteger)width height:(NSInteger)height completionHandler:(void (^ _Nonnull)(int8_t, int8_t))block;
+@end
+
+
+SWIFT_CLASS("_TtC18PhotoAssessmentKit20PhotoVisionProcessor") SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface PhotoVisionProcessor : NSObject
+- (void)faceRectanglesWithImage:(CGImageRef _Nonnull)image completionHandler:(void (^ _Nonnull)(NSArray<NSValue *> * _Nonnull))completionHandler;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(macos,introduced=10.13) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=11.0);
 @end
 
 

@@ -30,11 +30,6 @@ open class PhotoMLProcessor: NSObject {
         return request
     }()
     
-    private lazy var faceDetectionRequest: VNDetectFaceRectanglesRequest = {
-        let request = VNDetectFaceRectanglesRequest()
-        return request
-    }()
-    
     private func processNIMA(for request: VNRequest) -> Double {
         
         guard let assessments = request.results as? [VNCoreMLFeatureValueObservation] else {
@@ -54,28 +49,15 @@ open class PhotoMLProcessor: NSObject {
         return 0
     }
     
-    private func processFaceDetection(for request: VNRequest) -> Double {
-        
-        guard let faceDetectionRequest = request as? VNDetectFaceRectanglesRequest,
-            let faceDetectionResults = faceDetectionRequest.results as? [VNFaceObservation] else {
-                return 0
-        }
-        
-        if faceDetectionResults.isEmpty {
-            return 0
-        }
-        return 1
-    }
-    
     @objc public func process(image: CGImage, completionHandler: @escaping (Double) -> Void) {
         let handler = VNImageRequestHandler(cgImage: image)
         processQueue.async {
             do {
-                try handler.perform([self.assessmentRequest, self.faceDetectionRequest])
+                try handler.perform([self.assessmentRequest])
             } catch {
                 print("Failed to perform Assessment.\n\(error.localizedDescription)")
             }
-            let score = self.processNIMA(for: self.assessmentRequest) + self.processFaceDetection(for: self.faceDetectionRequest)
+            let score = self.processNIMA(for: self.assessmentRequest)
             DispatchQueue.global().async {
                 completionHandler(score)
             }

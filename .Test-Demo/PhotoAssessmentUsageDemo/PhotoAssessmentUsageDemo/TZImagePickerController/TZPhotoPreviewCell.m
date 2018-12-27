@@ -245,7 +245,7 @@
         options.networkAccessAllowed = NO;
         self.assessmentLabel.text = @"";
         [[PHImageManager defaultManager] requestImageForAsset:asset
-                                                   targetSize:CGSizeMake(500, 500)
+                                                   targetSize:CGSizeMake(224, 224)
                                                   contentMode:PHImageContentModeAspectFit
                                                       options:options
                                                 resultHandler:^(UIImage *image, NSDictionary *info) {

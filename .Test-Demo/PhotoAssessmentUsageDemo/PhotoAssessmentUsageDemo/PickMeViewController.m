@@ -137,7 +137,7 @@
         dispatch_group_enter(group);
         // targetSize 的调整会影响计算总耗时，但并不是 targetSize 越小耗时越小，好神奇。大概试了下，500最合适
         [[PHImageManager defaultManager] requestImageForAsset:self.assets[self.assetIndexA]
-                                                   targetSize:CGSizeMake(500, 500)
+                                                   targetSize:CGSizeMake(224, 224)
                                                   contentMode:PHImageContentModeAspectFit
                                                       options:options
                                                 resultHandler:^(UIImage *image, NSDictionary *info) {
@@ -157,7 +157,7 @@
                                                 }];
         dispatch_group_enter(group);
         [[PHImageManager defaultManager] requestImageForAsset:self.assets[self.assetIndexB]
-                                                   targetSize:CGSizeMake(500, 500)
+                                                   targetSize:CGSizeMake(224, 224)
                                                   contentMode:PHImageContentModeAspectFit
                                                       options:options
                                                 resultHandler:^(UIImage *image, NSDictionary *info) {

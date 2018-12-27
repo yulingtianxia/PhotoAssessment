@@ -140,7 +140,7 @@ API_AVAILABLE(ios(11.0))
 - (double)totalScore
 {
 //    return self.contentScore;
-    return self.hsb.saturation + sqrt(self.edgeDetectVariance) * 0.1 + self.contentScore;
+    return self.hsb.saturation * (self.edgeDetectMean + self.edgeDetectVariance);
 }
 
 - (BOOL)betterThan:(PhotoAssessmentResult *)anotherResult

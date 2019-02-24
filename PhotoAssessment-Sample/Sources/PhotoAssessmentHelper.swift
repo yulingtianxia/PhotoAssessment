@@ -30,6 +30,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
         if let hsb = hsb {
             text += String(format: "\nhsb: h(%.3f), s(%.3f), b(%.3f)", hsb.hue, hsb.saturation, hsb.brightness)
         }
+        text += String(format: "\nsaturation: %.3f", saturation)
         if let faceRectangles = faceRectangles {
             text += "\nfaceRectangles: \(faceRectangles.debugDescription)"
         }

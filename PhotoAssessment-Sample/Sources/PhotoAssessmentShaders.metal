@@ -23,9 +23,8 @@ rgb2hsvKernel(texture2d<float, access::read> inTexture [[texture(0)]],
     
     float4 c = inTexture.read(gid);
     float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
-    float4 p = mix(float4(c.yz, K.wz), float4(c.zy, K.xy), step(c.y, c.z));
-    float4 q = mix(float4(p.xyw, c.w), float4(c.w, p.yzx), step(p.x, c.w));
-    
+    float4 p = c.z < c.y ? float4(c.yz, K.wz) : float4(c.zy, K.xy);
+    float4 q = c.w < p.x ? float4(p.xyw, c.w) : float4(c.w, p.yzx);
     float d = q.x - min(q.w, q.y);
     float e = 1.0e-10;
 //    float4 hsv = float4(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x, 1.0);

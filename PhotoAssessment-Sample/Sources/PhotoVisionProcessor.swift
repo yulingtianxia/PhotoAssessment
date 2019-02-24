@@ -6,7 +6,11 @@
 //  Copyright © 2018 杨萧玉. All rights reserved.
 //
 
+#if os(iOS) || os(watchOS) || os(tvOS)
 import UIKit
+#elseif os(macOS)
+import Cocoa
+#endif
 import Vision
 
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)

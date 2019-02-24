@@ -14,12 +14,14 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
     @objc public var edgeDetectMean: Int8
     @objc public var edgeDetectVariance: Int8
     @objc public var hsb: HSBColor?
+    @objc public var saturation: Float
     @objc public var fingerprint: [UInt32: Double]?
     @objc public var faceRectangles: [CGRect]?
     
     override init() {
         edgeDetectMean = 0
         edgeDetectVariance = 0
+        saturation = 0
     }
     
     open override var description: String {
@@ -38,6 +40,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
         aCoder.encode(self.edgeDetectMean, forKey: "edgeDetectMean")
         aCoder.encode(self.edgeDetectVariance, forKey: "edgeDetectVariance")
         aCoder.encode(self.hsb, forKey: "hsb")
+        aCoder.encode(self.saturation, forKey: "saturation")
         aCoder.encode(self.fingerprint, forKey: "fingerprint")
         aCoder.encode(self.faceRectangles, forKey: "faceRectangles")
     }
@@ -46,6 +49,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
         self.edgeDetectMean = aDecoder.decodeObject(forKey: "edgeDetectMean") as? Int8 ?? 0
         self.edgeDetectVariance = aDecoder.decodeObject(forKey: "edgeDetectVariance") as? Int8 ?? 0
         self.hsb = aDecoder.decodeObject(forKey: "hsb") as? HSBColor
+        self.saturation = aDecoder.decodeFloat(forKey: "saturation")
         self.fingerprint = aDecoder.decodeObject(forKey: "fingerprint") as? [UInt32: Double]
         self.faceRectangles = aDecoder.decodeObject(forKey: "faceRectangles") as? [CGRect]
     }
@@ -74,12 +78,25 @@ open class PhotoAssessmentHelper: NSObject {
             group.enter()
             self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: downsampleDimension, completionHandler: { (result) in
                 if let pixels = result {
+                    let subGroup = DispatchGroup()
+//                    let fingerprint = Utils.fingerprintFor(imagePixels: pixels, width: downsampleDimension, height: downsampleDimension)
+//                    let hsb = Utils.meanHSBFor(imagePixels: pixels, width: downsampleDimension, height: downsampleDimension)
+                    subGroup.enter()
+                    self.mpsProcessor.meanSaturation(ofImagePixels: pixels, width: downsampleDimension, height: downsampleDimension, completionHandler: { (result) in
+                        self.processQueue.async {
+                            totalResult.saturation = result
+                            subGroup.leave()
+                        }
+                    })
+                    subGroup.enter()
+                    self.mpsProcessor.fingerprint(ofImagePixels: pixels, width: downsampleDimension, height: downsampleDimension, completionHandler: { (result) in
+                        self.processQueue.async {
+                            totalResult.fingerprint = result
+                            subGroup.leave()
+                        }
+                    })
                     
-                    let fingerprint = Utils.fingerprintFor(imagePixels: pixels, width: downsampleDimension, height: downsampleDimension)
-                    let hsb = Utils.meanHSBFor(imagePixels: pixels, width: downsampleDimension, height: downsampleDimension)
-                    self.processQueue.async {
-                        totalResult.fingerprint = fingerprint
-                        totalResult.hsb = hsb
+                    subGroup.notify(queue: self.processQueue) {
                         group.leave()
                     }
                 }
@@ -89,7 +106,7 @@ open class PhotoAssessmentHelper: NSObject {
             })
             
             group.enter()
-            self.mpsProcessor.edgeDetect(imagePixels: imagePixels, width: image.width, height: image.height, completionHandler: { (mean, variance) in
+            self.mpsProcessor.edgeDetect(ofImagePixels: imagePixels, width: image.width, height: image.height, completionHandler: { (mean, variance) in
                 self.processQueue.async {
                     totalResult.edgeDetectMean = mean
                     totalResult.edgeDetectVariance = variance

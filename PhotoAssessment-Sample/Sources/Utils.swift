@@ -66,7 +66,7 @@ open class Utils: NSObject {
     ///   - width: image width
     ///   - height: image height
     /// - Returns: feature vector
-    @objc public class func fingerprintFor(imagePixels: [Int32], width: Int, height: Int) -> [UInt32: Double] {
+    @objc public class func fingerprintFor(imagePixels: [UInt32], width: Int, height: Int) -> [UInt32: Double] {
         
         func downsample(component: UInt8) -> UInt32 {
             return UInt32(component / 16)
@@ -109,10 +109,10 @@ open class Utils: NSObject {
     ///   - width: image width
     ///   - height: image height
     /// - Returns: HSBColor
-    @objc public class func meanHSBFor(imagePixels: [Int32], width: Int, height: Int) -> (HSBColor) {
+    @objc public class func meanHSBFor(imagePixels: [UInt32], width: Int, height: Int) -> (HSBColor) {
         let hsbPixels = imagePixels.map { (pixel) -> (CGFloat, CGFloat, CGFloat) in
             #if os(iOS) || os(watchOS) || os(tvOS)
-            return UIColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb
+            return UIColor(red: CGFloat(pixel.r()) / 255.0, green: CGFloat(pixel.g()) / 255.0, blue: CGFloat(pixel.b()) / 255.0, alpha: CGFloat(pixel.a()) / 255.0).hsb
             #elseif os(macOS)
             return NSColor(red: CGFloat(pixel.r()), green: CGFloat(pixel.g()), blue: CGFloat(pixel.b()), alpha: CGFloat(pixel.a())).hsb
             #endif
@@ -134,8 +134,8 @@ extension CGImage {
         return pixels
     }
     
-    func rgbPixels() -> [Int32] {
-        var pixels = [Int32](repeatElement(0, count: width * height))
+    func rgbPixels() -> [UInt32] {
+        var pixels = [UInt32](repeatElement(0, count: width * height))
         // Apple's bug(Only Swift): wrong bytesPerRow. Use workaround.
         let context = CGContext(data: &pixels, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
         context?.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
@@ -161,7 +161,7 @@ extension NSColor {
 }
 #endif
 
-extension Int32 {
+extension UInt32 {
     func mask8() -> UInt8 {
         return UInt8(self & 0xFF)
     }

@@ -69,12 +69,24 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                     guard #available(iOS 11.0, *) else {
                         return
                     }
+//                    if let cgImage = image.cgImage {
+//                        let imagePixels = cgImage.rgbPixels()
+//                        var date = Date()
+//                        let fingerprint = Utils.meanHSBFor(imagePixels: imagePixels, width: cgImage.width, height: cgImage.height)
+//                        print("cpu fingerprint cost: \(-date.timeIntervalSinceNow)")
+//                        let mpsProcessor = PhotoMPSProcessor()
+//                        date = Date()
+//                        mpsProcessor.meanSaturation(imagePixels: imagePixels, width: cgImage.width, height: cgImage.height, completionHandler: { (result) in
+//                            print("gpu fingerprint cost: \(-date.timeIntervalSinceNow)")
+//                        })
+//                    }
+                    
                     self.helper.requestSubjectiveAssessment(for: downsampleImage, completionHandler: { (score) in
                         DispatchQueue.main.async {
                             self.assessmentLabel.text = String(format: "Assessment Score:%0.5f", score)
                         }
                     })
-                    self.helper.requestObjectiveAssessment(for: downsampleImage, downsampleDimension: 50, completionHandler: { (result) in
+                    self.helper.requestObjectiveAssessment(for: downsampleImage, downsampleDimension: 4, completionHandler: { (result) in
                         DispatchQueue.main.async {
                             self.detailLabel.text = result.description
                         }

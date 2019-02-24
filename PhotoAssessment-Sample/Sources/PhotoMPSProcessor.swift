@@ -38,7 +38,7 @@ open class PhotoMPSProcessor: NSObject {
     ///   - height: image height
     ///   - scaleDimension: scale dimension
     ///   - block: completion block
-    @objc public func downsample(imagePixels: [Int32], width: Int, height: Int, scaleDimension: Int, completionHandler block: @escaping ([Int32]?) -> Void) {
+    @objc public func downsample(imagePixels: [UInt32], width: Int, height: Int, scaleDimension: Int, completionHandler block: @escaping ([UInt32]?) -> Void) {
         
         // Make sure the current device supports MetalPerformanceShaders.
         guard let device = device, MPSSupportsMTLDevice(device) else {
@@ -49,10 +49,10 @@ open class PhotoMPSProcessor: NSObject {
         
         var pixels = imagePixels
         // TextureDescriptors
-        let scaleSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Snorm, width: width, height: height, mipmapped: false)
-        scaleSrcTextureDescriptor.usage = [.shaderWrite, .shaderRead]
+        let scaleSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)
+        scaleSrcTextureDescriptor.usage = [.shaderRead]
         
-        let scalaDesTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Snorm, width: scaleDimension, height: scaleDimension, mipmapped: false)
+        let scalaDesTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: scaleDimension, height: scaleDimension, mipmapped: false)
         scalaDesTextureDescriptor.usage = [.shaderWrite, .shaderRead]
         
         // Textures
@@ -66,7 +66,7 @@ open class PhotoMPSProcessor: NSObject {
             return
         }
         
-        // Fill sobelSrcTexture with pixels
+        // Fill scaleSrcTexture with pixels
         let scaleRegion = MTLRegionMake2D(0, 0, width, height)
         scaleSrcTexture.replace(region: scaleRegion, mipmapLevel: 0, withBytes: &pixels, bytesPerRow: 4 * width)
         
@@ -80,7 +80,7 @@ open class PhotoMPSProcessor: NSObject {
         scale.encode(commandBuffer: commandBuffer, sourceTexture: scaleSrcTexture, destinationTexture: scaleDesTexture)
         commandBuffer.addCompletedHandler { (buffer) in
             
-            var result = [Int32](repeatElement(0, count: scaleDimension * scaleDimension))
+            var result = [UInt32](repeatElement(0, count: scaleDimension * scaleDimension))
             let region = MTLRegionMake2D(0, 0, scaleDimension, scaleDimension)
             
             scaleDesTexture.getBytes(&result, bytesPerRow: 4 * scaleDimension, from: region, mipmapLevel: 0)
@@ -99,7 +99,7 @@ open class PhotoMPSProcessor: NSObject {
     ///   - width: image width
     ///   - height: image height
     ///   - block: completion block
-    @objc public func edgeDetect(imagePixels: [Int32], width: Int, height: Int, completionHandler block: @escaping (_ mean: Int8, _ variance: Int8) -> Void) {
+    @objc public func edgeDetect(ofImagePixels imagePixels: [UInt32], width: Int, height: Int, completionHandler block: @escaping (_ mean: Int8, _ variance: Int8) -> Void) {
         
         // Make sure the current device supports MetalPerformanceShaders.
         guard let device = device, MPSSupportsMTLDevice(device) else {
@@ -111,8 +111,8 @@ open class PhotoMPSProcessor: NSObject {
         var pixels = imagePixels
         
         // TextureDescriptors
-        let sobelSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Snorm, width: width, height: height, mipmapped: false)
-        sobelSrcTextureDescriptor.usage = [.shaderWrite, .shaderRead]
+        let sobelSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)
+        sobelSrcTextureDescriptor.usage = [.shaderRead]
         
         let sobelDesTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .r8Snorm, width: width, height: height, mipmapped: false)
         sobelDesTextureDescriptor.usage = [.shaderWrite, .shaderRead]
@@ -163,6 +163,137 @@ open class PhotoMPSProcessor: NSObject {
             block(result.first!, result.last!)
 //            Debug
 //            let grayImage = self.imageOf(grayTexture: sobelDesTexture)
+        }
+        commandBuffer.commit()
+    }
+    
+    @objc public func meanSaturation(ofImagePixels imagePixels: [UInt32], width: Int, height: Int, completionHandler block: @escaping (Float) -> Void) {
+        
+        // Make sure the current device supports MetalPerformanceShaders.
+        guard let device = device, MPSSupportsMTLDevice(device) else {
+            print("Metal Performance Shaders not Supported on current Device")
+            block(0)
+            return
+        }
+        
+        var pixels = imagePixels
+        
+        // TextureDescriptors
+        let saturationSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)
+        saturationSrcTextureDescriptor.usage = [.shaderRead]
+        
+        let saturationDesTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .r32Float, width: width, height: height, mipmapped: false)
+        saturationDesTextureDescriptor.usage = [.shaderWrite, .shaderRead]
+        
+        let meanTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .r32Float, width: 2, height: 1, mipmapped: false)
+        meanTextureDescriptor.usage = [.shaderWrite, .shaderRead]
+        
+        // Textures
+        guard let saturationSrcTexture: MTLTexture = device.makeTexture(descriptor: saturationSrcTextureDescriptor) else {
+            print("make saturationSrcTexture failed")
+            block(0)
+            return
+        }
+        
+        guard let saturationDesTexture: MTLTexture = device.makeTexture(descriptor: saturationDesTextureDescriptor) else {
+            print("make saturationDesTexture failed")
+            block(0)
+            return
+        }
+        
+        guard let meanTexture: MTLTexture = device.makeTexture(descriptor: meanTextureDescriptor) else {
+            print("make meanTexture failed")
+            block(0)
+            return
+        }
+        
+        // Fill sobelSrcTexture with pixels
+        let saturationRegion = MTLRegionMake2D(0, 0, width, height)
+        saturationSrcTexture.replace(region: saturationRegion, mipmapLevel: 0, withBytes: &pixels, bytesPerRow: 4 * width)
+        
+        // Run Image Filters
+        guard let commandBuffer = commandQueue?.makeCommandBuffer() else {
+            print("make CommandBuffer failed")
+            block(0)
+            return
+        }
+        
+        let saturation = MPSSaturationKernel(device: device)
+        let meanAndVariance = MPSImageStatisticsMeanAndVariance(device: device)
+        saturation.encode(commandBuffer: commandBuffer, sourceTexture: saturationSrcTexture, destinationTexture: saturationDesTexture)
+        meanAndVariance.encode(commandBuffer: commandBuffer, sourceTexture: saturationDesTexture, destinationTexture: meanTexture)
+        commandBuffer.addCompletedHandler { (buffer) in
+            
+            var result = [Float32](repeatElement(0, count: 2))
+            let region = MTLRegionMake2D(0, 0, 2, 1)
+            
+            meanTexture.getBytes(&result, bytesPerRow: 4 * 2, from: region, mipmapLevel: 0)
+            block(result.first!)
+        }
+        commandBuffer.commit()
+    }
+    
+    @objc public func fingerprint(ofImagePixels imagePixels: [UInt32], width: Int, height: Int, completionHandler block: @escaping ([UInt32: Double]?) -> Void) {
+        
+        // Make sure the current device supports MetalPerformanceShaders.
+        guard let device = device, MPSSupportsMTLDevice(device) else {
+            print("Metal Performance Shaders not Supported on current Device")
+            block(nil)
+            return
+        }
+        
+        var pixels = imagePixels
+        
+        // TextureDescriptors
+        let fpSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Uint, width: width, height: height, mipmapped: false)
+        fpSrcTextureDescriptor.usage = [.shaderRead]
+        
+        let fpDesTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Uint, width: width, height: height, mipmapped: false)
+        fpDesTextureDescriptor.usage = [.shaderWrite, .shaderRead]
+        
+        // Textures
+        guard let fpSrcTexture: MTLTexture = device.makeTexture(descriptor: fpSrcTextureDescriptor) else {
+            print("make fpSrcTexture failed")
+            block(nil)
+            return
+        }
+        
+        guard let fpDesTexture: MTLTexture = device.makeTexture(descriptor: fpDesTextureDescriptor) else {
+            print("make fpDesTexture failed")
+            block(nil)
+            return
+        }
+        
+        // Fill sobelSrcTexture with pixels
+        let fpRegion = MTLRegionMake2D(0, 0, width, height)
+        fpSrcTexture.replace(region: fpRegion, mipmapLevel: 0, withBytes: &pixels, bytesPerRow: 4 * width)
+        
+        // Run Image Filters
+        guard let commandBuffer = commandQueue?.makeCommandBuffer() else {
+            print("make CommandBuffer failed")
+            block(nil)
+            return
+        }
+        
+        let fp = MSPFingerprintImageKernel(device: device)
+
+        fp.encode(commandBuffer: commandBuffer, sourceTexture: fpSrcTexture, destinationTexture: fpDesTexture)
+        commandBuffer.addCompletedHandler { (buffer) in
+            var result = [UInt32](repeatElement(0, count: width * height))
+            let region = MTLRegionMake2D(0, 0, width, height)
+            fpDesTexture.getBytes(&result, bytesPerRow: 4 * width, from: region, mipmapLevel: 0)
+            var bucket = [UInt32: UInt]()
+            for j in 0 ..< height {
+                for i in 0 ..< width {
+                    let fingerprint = result[width * j + i]
+                    bucket[fingerprint] = (bucket[fingerprint] ?? 0) + 1
+                }
+            }
+            let histogram: [UInt32: Double] = bucket.mapValues { (oldValue) -> Double in
+                let newValue = Double(oldValue) / Double(imagePixels.count)
+                return newValue
+            }
+            block(histogram)
         }
         commandBuffer.commit()
     }

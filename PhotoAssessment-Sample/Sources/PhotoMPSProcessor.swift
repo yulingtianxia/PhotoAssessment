@@ -185,7 +185,7 @@ open class PhotoMPSProcessor: NSObject {
         let saturationDesTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .r32Float, width: width, height: height, mipmapped: false)
         saturationDesTextureDescriptor.usage = [.shaderWrite, .shaderRead]
         
-        let meanTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .r32Float, width: 2, height: 1, mipmapped: false)
+        let meanTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .r32Float, width: 1, height: 1, mipmapped: false)
         meanTextureDescriptor.usage = [.shaderWrite, .shaderRead]
         
         // Textures
@@ -219,15 +219,15 @@ open class PhotoMPSProcessor: NSObject {
         }
         
         let saturation = MPSSaturationKernel(device: device)
-        let meanAndVariance = MPSImageStatisticsMeanAndVariance(device: device)
+        let mean = MPSImageStatisticsMean(device: device)
         saturation.encode(commandBuffer: commandBuffer, sourceTexture: saturationSrcTexture, destinationTexture: saturationDesTexture)
-        meanAndVariance.encode(commandBuffer: commandBuffer, sourceTexture: saturationDesTexture, destinationTexture: meanTexture)
+        mean.encode(commandBuffer: commandBuffer, sourceTexture: saturationDesTexture, destinationTexture: meanTexture)
         commandBuffer.addCompletedHandler { (buffer) in
             
-            var result = [Float32](repeatElement(0, count: 2))
-            let region = MTLRegionMake2D(0, 0, 2, 1)
+            var result = [Float32](repeatElement(0, count: 1))
+            let region = MTLRegionMake2D(0, 0, 1, 1)
             
-            meanTexture.getBytes(&result, bytesPerRow: 4 * 2, from: region, mipmapLevel: 0)
+            meanTexture.getBytes(&result, bytesPerRow: 4, from: region, mipmapLevel: 0)
             block(result.first!)
         }
         commandBuffer.commit()
@@ -248,18 +248,9 @@ open class PhotoMPSProcessor: NSObject {
         let fpSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Uint, width: width, height: height, mipmapped: false)
         fpSrcTextureDescriptor.usage = [.shaderRead]
         
-        let fpDesTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Uint, width: width, height: height, mipmapped: false)
-        fpDesTextureDescriptor.usage = [.shaderWrite, .shaderRead]
-        
         // Textures
         guard let fpSrcTexture: MTLTexture = device.makeTexture(descriptor: fpSrcTextureDescriptor) else {
             print("make fpSrcTexture failed")
-            block(nil)
-            return
-        }
-        
-        guard let fpDesTexture: MTLTexture = device.makeTexture(descriptor: fpDesTextureDescriptor) else {
-            print("make fpDesTexture failed")
             block(nil)
             return
         }
@@ -276,24 +267,32 @@ open class PhotoMPSProcessor: NSObject {
         }
         
         let fp = MSPFingerprintImageKernel(device: device)
+        let bufferLength = fp.fingerprintSize()
+        let fpBuffer = device.makeBuffer(length: bufferLength, options: .storageModeShared)
 
-        fp.encode(commandBuffer: commandBuffer, sourceTexture: fpSrcTexture, destinationTexture: fpDesTexture)
+        fp.encode(commandBuffer: commandBuffer, sourceTexture: fpSrcTexture, fingerprint: fpBuffer)
         commandBuffer.addCompletedHandler { (buffer) in
-            var result = [UInt32](repeatElement(0, count: width * height))
-            let region = MTLRegionMake2D(0, 0, width, height)
-            fpDesTexture.getBytes(&result, bytesPerRow: 4 * width, from: region, mipmapLevel: 0)
-            var bucket = [UInt32: UInt]()
-            for j in 0 ..< height {
-                for i in 0 ..< width {
-                    let fingerprint = result[width * j + i]
-                    bucket[fingerprint] = (bucket[fingerprint] ?? 0) + 1
-                }
+            if let buf = fpBuffer {
+                let sum = width * height
+                let bufferPtr = buf.contents()
+                let uint32Ptr = bufferPtr.bindMemory(to: UInt32.self, capacity: bufferLength)
+                let uint32Buffer = UnsafeBufferPointer(start: uint32Ptr, count: bufferLength / MemoryLayout<UInt32>.size)
+                let output = Array(uint32Buffer)
+                
+                let histogram: [UInt32: Double] = output.enumerated().reduce([UInt32: Double](), { (dict, arg1) -> [UInt32: Double] in
+                    let (offset, element) = arg1
+                    if element > 0 {
+                        var dict = dict
+                        dict[UInt32(offset)] = Double(element) / Double(sum)
+                        return dict
+                    }
+                    return dict
+                })
+                block(histogram)
             }
-            let histogram: [UInt32: Double] = bucket.mapValues { (oldValue) -> Double in
-                let newValue = Double(oldValue) / Double(imagePixels.count)
-                return newValue
+            else {
+                block(nil)
             }
-            block(histogram)
         }
         commandBuffer.commit()
     }

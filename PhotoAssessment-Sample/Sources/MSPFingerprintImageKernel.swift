@@ -73,7 +73,13 @@ class MSPFingerprintImageKernel: MPSUnaryImageKernel {
         return false
     }
     
-    override func encode(commandBuffer: MTLCommandBuffer, sourceTexture: MTLTexture, destinationTexture: MTLTexture) {
+    func fingerprintSize() -> Int {
+        // 4 channels. 4 Bytes per channel.
+        let bufferLength = 8192
+        return bufferLength
+    }
+    
+    func encode(commandBuffer: MTLCommandBuffer, sourceTexture: MTLTexture, fingerprint buffer: MTLBuffer?) {
         guard let computePipelineState = computePipelineState else {
             print("Failed to create ComputePipelineState")
             return
@@ -86,7 +92,8 @@ class MSPFingerprintImageKernel: MPSUnaryImageKernel {
         encoder?.pushDebugGroup("fingerprint")
         encoder?.setComputePipelineState(computePipelineState)
         encoder?.setTexture(sourceTexture, index: 0)
-        encoder?.setTexture(destinationTexture, index: 1)
+        encoder?.setBuffer(buffer, offset: 0, index: 0)
+//        encoder?.setTexture(destinationTexture, index: 1)
         if supportNonuniformThreadgroupSize() {
             let threadsPerGrid = MTLSize(width: sourceTexture.width, height: sourceTexture.height, depth: 1);
             encoder?.dispatchThreads(threadsPerGrid, threadsPerThreadgroup: threadGroupSize)
@@ -97,6 +104,7 @@ class MSPFingerprintImageKernel: MPSUnaryImageKernel {
             let threadgroupsPerGrid = MTLSize(width: (sourceTexture.width + w - 1) / w, height: (sourceTexture.height + h - 1) / h, depth: 1);
             encoder?.dispatchThreadgroups(threadgroupsPerGrid, threadsPerThreadgroup: threadGroupSize)
         }
+        
         encoder?.popDebugGroup()
         encoder?.endEncoding()
     }

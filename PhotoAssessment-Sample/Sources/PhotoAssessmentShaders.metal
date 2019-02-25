@@ -10,6 +10,12 @@
 #include <simd/simd.h>
 using namespace metal;
 
+#define HistogramBufferSize (2048) // 4 channels. 16 entrys per channel.
+
+typedef struct
+{
+    atomic_int bucket[HistogramBufferSize];
+} PAHistogramBuffer;
 
 kernel void
 rgb2hsvKernel(texture2d<float, access::read> inTexture [[texture(0)]],
@@ -33,10 +39,10 @@ rgb2hsvKernel(texture2d<float, access::read> inTexture [[texture(0)]],
 
 kernel void
 fingerprintKernel(texture2d<uint, access::read> inTexture [[texture(0)]],
-              texture2d<uint, access::write> outTexture [[texture(1)]],
-              uint2 gid [[thread_position_in_grid]])
+                  device PAHistogramBuffer &buffer [[buffer(0)]],
+                  uint2 gid [[thread_position_in_grid]])
 {
-    if((gid.x >= outTexture.get_width()) || (gid.y >= outTexture.get_height()))
+    if((gid.x >= inTexture.get_width()) || (gid.y >= inTexture.get_height()))
     {
         return;
     }
@@ -44,7 +50,7 @@ fingerprintKernel(texture2d<uint, access::read> inTexture [[texture(0)]],
     uint4 c = inTexture.read(gid);
     uint width = inTexture.get_width();
     uint height = inTexture.get_height();
-    uint blockCount = 4;
+    uint blockCount = 2;
     uint rowCount = min(blockCount, height);
     uint countPerRow = min(blockCount, width);
     uint hStep = width / countPerRow;
@@ -52,7 +58,8 @@ fingerprintKernel(texture2d<uint, access::read> inTexture [[texture(0)]],
     uint row = gid.y / vStep;
     uint col = gid.x / hStep;
     
-    outTexture.write(uint4(row * countPerRow + col, c.y / 16, c.z / 16, c.w / 16), gid);
+    // |-3bit-|-3bit-|-3bit-|-2bit-|
+    uint result = (row * countPerRow + col) + ((c.y >> 5) << 2) + ((c.z >> 5) << 5) + ((c.w >> 5) << 8);
+    
+    atomic_fetch_add_explicit(&buffer.bucket[result], 1, memory_order_relaxed);
 }
-
-

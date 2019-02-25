@@ -72,12 +72,13 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 //                    if let cgImage = image.cgImage {
 //                        let imagePixels = cgImage.rgbPixels()
 //                        var date = Date()
-//                        let fingerprint = Utils.meanHSBFor(imagePixels: imagePixels, width: cgImage.width, height: cgImage.height)
+//                        let fingerprint = Utils.fingerprint(ofImagePixels: imagePixels, width: cgImage.width, height: cgImage.height)
 //                        print("cpu fingerprint cost: \(-date.timeIntervalSinceNow)")
 //                        let mpsProcessor = PhotoMPSProcessor()
 //                        date = Date()
-//                        mpsProcessor.meanSaturation(imagePixels: imagePixels, width: cgImage.width, height: cgImage.height, completionHandler: { (result) in
+//                        mpsProcessor.fingerprint(ofImagePixels: imagePixels, width: cgImage.width, height: cgImage.height, completionHandler: { (result) in
 //                            print("gpu fingerprint cost: \(-date.timeIntervalSinceNow)")
+//                            print("equal result:\(fingerprint == result)")
 //                        })
 //                    }
                     

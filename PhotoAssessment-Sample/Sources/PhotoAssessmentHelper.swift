@@ -80,8 +80,6 @@ open class PhotoAssessmentHelper: NSObject {
             self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: downsampleDimension, completionHandler: { (result) in
                 if let pixels = result {
                     let subGroup = DispatchGroup()
-//                    let fingerprint = Utils.fingerprintFor(imagePixels: pixels, width: downsampleDimension, height: downsampleDimension)
-//                    let hsb = Utils.meanHSBFor(imagePixels: pixels, width: downsampleDimension, height: downsampleDimension)
                     subGroup.enter()
                     self.mpsProcessor.meanSaturation(ofImagePixels: pixels, width: downsampleDimension, height: downsampleDimension, completionHandler: { (result) in
                         self.processQueue.async {

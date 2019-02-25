@@ -66,15 +66,15 @@ open class Utils: NSObject {
     ///   - width: image width
     ///   - height: image height
     /// - Returns: feature vector
-    @objc public class func fingerprintFor(imagePixels: [UInt32], width: Int, height: Int) -> [UInt32: Double] {
+    @objc public class func fingerprint(ofImagePixels imagePixels: [UInt32], width: Int, height: Int) -> [UInt32: Double] {
         
         func downsample(component: UInt8) -> UInt32 {
-            return UInt32(component / 16)
+            return UInt32(component / 32)
         }
         
         func downsample(x: Int, y: Int) -> UInt32 {
-            let rowCount: Int = min(4, height)
-            let countPerRow: Int = min(4, width)
+            let rowCount: Int = min(2, height)
+            let countPerRow: Int = min(2, width)
             let hStep = width / countPerRow
             let vStep = height / rowCount
             let row = y / vStep
@@ -87,9 +87,10 @@ open class Utils: NSObject {
         for j in 0 ..< height {
             for i in 0 ..< width {
                 let color = imagePixels[width * j + i]
-                let r = downsample(component: color.r()) << 24
-                let g = downsample(component: color.g()) << 16
-                let b = downsample(component: color.b()) << 8
+                // |-3bit-|-3bit-|-3bit-|-2bit-|
+                let r = downsample(component: color.r()) << 8
+                let g = downsample(component: color.g()) << 5
+                let b = downsample(component: color.b()) << 2
                 let location = downsample(x: i, y: j)
                 let fingerprint = r | g | b | location
                 bucket[fingerprint] = (bucket[fingerprint] ?? 0) + 1

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController {
 
@@ -23,6 +24,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { (status) in
+                
+            }
+        }
     }
     
     @IBAction func takePicture(_ sender: UIBarButtonItem) {
@@ -59,29 +66,18 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         imageView.image = image
         assessmentLabel.text = "Processing..."
         detailLabel.text = ""
-        if let url = info[.imageURL] as? URL {
+        if let asset = info[.phAsset] as? PHAsset {
             DispatchQueue.global().async {
-                var start = Date()
-                let downsampleDimension = 500
-                start = Date()
-                if let downsampleImage = Utils.downsample(url: url, maxDimension: downsampleDimension) {
-                    print("downsample duration:\(Date().timeIntervalSince(start))")
-                    guard #available(iOS 11.0, *) else {
+                guard asset.mediaType == .image else {
+                    return
+                }
+                let options = PHImageRequestOptions()
+                options.deliveryMode = .highQualityFormat
+                options.resizeMode = .fast
+                PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 500, height: 500), contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
+                    guard let downsampleImage = image?.cgImage else {
                         return
                     }
-//                    if let cgImage = image.cgImage {
-//                        let imagePixels = cgImage.rgbPixels()
-//                        var date = Date()
-//                        let fingerprint = Utils.fingerprint(ofImagePixels: imagePixels, width: cgImage.width, height: cgImage.height)
-//                        print("cpu fingerprint cost: \(-date.timeIntervalSinceNow)")
-//                        let mpsProcessor = PhotoMPSProcessor()
-//                        date = Date()
-//                        mpsProcessor.fingerprint(ofImagePixels: imagePixels, width: cgImage.width, height: cgImage.height, completionHandler: { (result) in
-//                            print("gpu fingerprint cost: \(-date.timeIntervalSinceNow)")
-//                            print("equal result:\(fingerprint == result)")
-//                        })
-//                    }
-                    
                     self.helper.requestSubjectiveAssessment(for: downsampleImage, completionHandler: { (score) in
                         DispatchQueue.main.async {
                             self.assessmentLabel.text = String(format: "Assessment Score:%0.5f", score)
@@ -92,7 +88,26 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                             self.detailLabel.text = result.description
                         }
                     })
-                }
+//                    if let cgImage = image?.cgImage {
+//                        let imagePixels = cgImage.rgbPixels()
+//                        var date = Date()
+//                        let fingerprint = Utils.fingerprint(ofImagePixels: imagePixels, width: cgImage.width, height: cgImage.height)
+//                        print("cpu fingerprint cost: \(-date.timeIntervalSinceNow)")
+//                        date = Date()
+//                        let hsb = Utils.meanHSB(ofImagePixels: imagePixels, width: cgImage.width, height: cgImage.height)
+//                        print("cpu meanSaturation cost: \(-date.timeIntervalSinceNow)")
+//                        let mpsProcessor = PhotoMPSProcessor()
+//                        date = Date()
+//                        mpsProcessor.fingerprint(ofImagePixels: imagePixels, width: cgImage.width, height: cgImage.height, completionHandler: { (result) in
+//                            print("gpu fingerprint cost: \(-date.timeIntervalSinceNow)")
+//                            print("equal result:\(fingerprint == result)")
+//                        })
+//                        mpsProcessor.meanSaturation(ofImagePixels: imagePixels, width: cgImage.width, height: cgImage.height, completionHandler: { (result) in
+//                            print("gpu meanSaturation cost: \(-date.timeIntervalSinceNow)")
+//                            print("equal result:\(Float(hsb.saturation) - result < 0.0001)")
+//                        })
+//                    }
+                })
             }
         }
     }

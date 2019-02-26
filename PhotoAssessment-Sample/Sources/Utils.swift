@@ -111,7 +111,7 @@ open class Utils: NSObject {
     ///   - width: image width
     ///   - height: image height
     /// - Returns: HSBColor
-    @objc public class func meanHSBFor(imagePixels: [UInt32], width: Int, height: Int) -> (HSBColor) {
+    @objc public class func meanHSB(ofImagePixels imagePixels: [UInt32], width: Int, height: Int) -> (HSBColor) {
         let hsbPixels = imagePixels.map { (pixel) -> (CGFloat, CGFloat, CGFloat) in
             #if os(iOS) || os(watchOS) || os(tvOS)
             return UIColor(red: CGFloat(pixel.r()) / 255.0, green: CGFloat(pixel.g()) / 255.0, blue: CGFloat(pixel.b()) / 255.0, alpha: CGFloat(pixel.a()) / 255.0).hsb

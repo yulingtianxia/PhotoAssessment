@@ -87,7 +87,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                             self.assessmentLabel.text = String(format: "Assessment Score:%0.5f", score)
                         }
                     })
-                    self.helper.requestObjectiveAssessment(for: downsampleImage, downsampleDimension: 4, completionHandler: { (result) in
+                    self.helper.requestObjectiveAssessment(for: downsampleImage, downsampleDimension: 50, completionHandler: { (result) in
                         DispatchQueue.main.async {
                             self.detailLabel.text = result.description
                         }

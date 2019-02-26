@@ -16,7 +16,8 @@ class MSPFingerprintImageKernel: MPSUnaryImageKernel {
     
     override init(device: MTLDevice) {
         let library = device.makeDefaultLibrary()
-        if let function = library?.makeFunction(name: "fingerprintKernel") {
+        let functionName = device.supportNonuniformThreadgroupSize() ? "fingerprintKernelNonuniform" : "fingerprintKernel"
+        if let function = library?.makeFunction(name: functionName) {
             do {
                 try computePipelineState = device.makeComputePipelineState(function: function)
             } catch {
@@ -43,36 +44,6 @@ class MSPFingerprintImageKernel: MPSUnaryImageKernel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func supportNonuniformThreadgroupSize() -> Bool {
-        #if os(iOS)
-        if #available(iOS 12.0, *) {
-            if device.supportsFeatureSet(.iOS_GPUFamily4_v2) {
-                return true
-            }
-            if device.supportsFeatureSet(.iOS_GPUFamily5_v1) {
-                return true
-            }
-        } else if device.supportsFeatureSet(.iOS_GPUFamily4_v1) {
-            return true
-        }
-        #elseif os(macOS)
-        if #available(OSX 10.14, *) {
-            if device.supportsFeatureSet(.macOS_GPUFamily1_v4) {
-                return true
-            }
-            if device.supportsFeatureSet(.macOS_GPUFamily2_v1) {
-                return true
-            }
-        }
-        else {
-            if device.supportsFeatureSet(.macOS_GPUFamily1_v3) {
-                return true
-            }
-        }
-        #endif
-        return false
-    }
-    
     func fingerprintSize() -> Int {
         // 4 channels. 4 Bytes per channel.
         let bufferLength = 8192
@@ -93,8 +64,8 @@ class MSPFingerprintImageKernel: MPSUnaryImageKernel {
         encoder?.setComputePipelineState(computePipelineState)
         encoder?.setTexture(sourceTexture, index: 0)
         encoder?.setBuffer(buffer, offset: 0, index: 0)
-//        encoder?.setTexture(destinationTexture, index: 1)
-        if supportNonuniformThreadgroupSize() {
+
+        if device.supportNonuniformThreadgroupSize() {
             let threadsPerGrid = MTLSize(width: sourceTexture.width, height: sourceTexture.height, depth: 1);
             encoder?.dispatchThreads(threadsPerGrid, threadsPerThreadgroup: threadGroupSize)
         }

@@ -10,6 +10,7 @@ import UIKit
 #elseif os(macOS)
 import Cocoa
 #endif
+import Metal
 
 open class HSBColor: NSObject, NSCoding {
     
@@ -181,5 +182,38 @@ extension UInt32 {
     
     func a() -> UInt8 {
         return mask8()
+    }
+}
+
+
+extension MTLDevice {
+    func supportNonuniformThreadgroupSize() -> Bool {
+        #if os(iOS)
+        if #available(iOS 12.0, *) {
+            if supportsFeatureSet(.iOS_GPUFamily4_v2) {
+                return true
+            }
+            if supportsFeatureSet(.iOS_GPUFamily5_v1) {
+                return true
+            }
+        } else if supportsFeatureSet(.iOS_GPUFamily4_v1) {
+            return true
+        }
+        #elseif os(macOS)
+        if #available(OSX 10.14, *) {
+            if supportsFeatureSet(.macOS_GPUFamily1_v4) {
+                return true
+            }
+            if supportsFeatureSet(.macOS_GPUFamily2_v1) {
+                return true
+            }
+        }
+        else {
+            if supportsFeatureSet(.macOS_GPUFamily1_v3) {
+                return true
+            }
+        }
+        #endif
+        return false
     }
 }

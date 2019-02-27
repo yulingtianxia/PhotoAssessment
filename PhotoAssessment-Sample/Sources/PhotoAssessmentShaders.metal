@@ -10,7 +10,7 @@
 #include <simd/simd.h>
 using namespace metal;
 
-#define HistogramBufferSize (2048) // 4 channels. 16 entrys per channel.
+#define HistogramBufferSize (2048) // 4 channels. 8*8*8*4 entrys per channel.
 
 typedef struct
 {

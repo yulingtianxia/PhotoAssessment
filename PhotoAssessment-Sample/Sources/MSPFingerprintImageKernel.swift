@@ -45,7 +45,7 @@ class MSPFingerprintImageKernel: MPSUnaryImageKernel {
     }
     
     func fingerprintSize() -> Int {
-        // 4 channels. 4 Bytes per channel.
+        // HistogramBufferSize * 4.
         let bufferLength = 8192
         return bufferLength
     }

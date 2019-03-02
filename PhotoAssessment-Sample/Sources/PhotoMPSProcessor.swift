@@ -18,6 +18,8 @@ open class PhotoMPSProcessor: NSObject {
     
     private let device: MTLDevice?
     private let commandQueue: MTLCommandQueue?
+    private let saturationPipelineState: MTLComputePipelineState?
+    private let fingerprintPipelineState: MTLComputePipelineState?
     
     public override init() {
         
@@ -26,6 +28,18 @@ open class PhotoMPSProcessor: NSObject {
 
         // Create new command queue.
         commandQueue = device?.makeCommandQueue()
+        
+        if let device = device {
+            let rgb2hsv = device.supportNonuniformThreadgroupSize() ? "rgb2hsvKernelNonuniform" : "rgb2hsvKernel"
+            saturationPipelineState = makePipelineState(device: device, functionName: rgb2hsv)
+            
+            let fingerprint = device.supportNonuniformThreadgroupSize() ? "fingerprintKernelNonuniform" : "fingerprintKernel"
+            fingerprintPipelineState = makePipelineState(device: device, functionName: fingerprint)
+        }
+        else {
+            saturationPipelineState = nil
+            fingerprintPipelineState = nil
+        }
         
         super.init()
     }
@@ -111,7 +125,7 @@ open class PhotoMPSProcessor: NSObject {
         var pixels = imagePixels
         
         // TextureDescriptors
-        let sobelSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)
+        let sobelSrcTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Snorm, width: width, height: height, mipmapped: false)
         sobelSrcTextureDescriptor.usage = [.shaderRead]
         
         let sobelDesTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .r8Snorm, width: width, height: height, mipmapped: false)
@@ -167,6 +181,13 @@ open class PhotoMPSProcessor: NSObject {
         commandBuffer.commit()
     }
     
+    /// Mean saturation of image.
+    ///
+    /// - Parameters:
+    ///   - imagePixels: image pixels with rgba8 format
+    ///   - width: image width
+    ///   - height: image height
+    ///   - block: completion block
     @objc public func meanSaturation(ofImagePixels imagePixels: [UInt32], width: Int, height: Int, completionHandler block: @escaping (Float) -> Void) {
         
         // Make sure the current device supports MetalPerformanceShaders.
@@ -218,7 +239,13 @@ open class PhotoMPSProcessor: NSObject {
             return
         }
         
-        let saturation = MPSSaturationKernel(device: device)
+        guard let pipelineState = saturationPipelineState else {
+            print("Failed to create saturationPipelineState")
+            block(0)
+            return
+        }
+        
+        let saturation = MPSSaturationKernel(device: device, computePipelineState: pipelineState)
         let mean = MPSImageStatisticsMean(device: device)
         saturation.encode(commandBuffer: commandBuffer, sourceTexture: saturationSrcTexture, destinationTexture: saturationDesTexture)
         mean.encode(commandBuffer: commandBuffer, sourceTexture: saturationDesTexture, destinationTexture: meanTexture)
@@ -266,7 +293,13 @@ open class PhotoMPSProcessor: NSObject {
             return
         }
         
-        let fp = MSPFingerprintImageKernel(device: device)
+        guard let computePipelineState = fingerprintPipelineState else {
+            print("Failed to create fingerprintPipelineState")
+            block(nil)
+            return
+        }
+        
+        let fp = MSPFingerprintImageKernel(device: device, computePipelineState: computePipelineState)
         let bufferLength = fp.fingerprintSize()
         let fpBuffer = device.makeBuffer(length: bufferLength, options: .storageModeShared)
 
@@ -296,39 +329,56 @@ open class PhotoMPSProcessor: NSObject {
         }
         commandBuffer.commit()
     }
+}
+
+#if os(iOS) || os(watchOS) || os(tvOS)
+fileprivate func imageOf(grayTexture: MTLTexture) -> UIImage? {
+    let width = grayTexture.width
+    let height = grayTexture.height
+    var pixelsResult = [Int8](repeatElement(0, count: width * height))
+    let region = MTLRegionMake2D(0, 0, width, height)
+    grayTexture.getBytes(&pixelsResult, bytesPerRow: 1 * width, from: region, mipmapLevel: 0)
+    let context = CGContext(data: &pixelsResult, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 1 * width, space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue )
     
-    #if os(iOS) || os(watchOS) || os(tvOS)
-    fileprivate func imageOf(grayTexture: MTLTexture) -> UIImage? {
-        let width = grayTexture.width
-        let height = grayTexture.height
-        var pixelsResult = [Int8](repeatElement(0, count: width * height))
-        let region = MTLRegionMake2D(0, 0, width, height)
-        grayTexture.getBytes(&pixelsResult, bytesPerRow: 1 * width, from: region, mipmapLevel: 0)
-        let context = CGContext(data: &pixelsResult, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 1 * width, space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue )
-        
-        if let cgImage = context?.makeImage() {
-            let imageResult = UIImage(cgImage: cgImage, scale: 0.0, orientation: UIImage.Orientation.downMirrored)
-            return imageResult
-        }
-        return nil
+    if let cgImage = context?.makeImage() {
+        let imageResult = UIImage(cgImage: cgImage, scale: 0.0, orientation: UIImage.Orientation.downMirrored)
+        return imageResult
     }
+    return nil
+}
+
+fileprivate func imageOf(rgbaTexture: MTLTexture) -> UIImage? {
+    let width = rgbaTexture.width
+    let height = rgbaTexture.height
+    var pixelsResult = [Int32](repeatElement(0, count: width * height))
+    let region = MTLRegionMake2D(0, 0, width, height)
+    rgbaTexture.getBytes(&pixelsResult, bytesPerRow: 4 * width, from: region, mipmapLevel: 0)
+    let context = CGContext(data: &pixelsResult, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
     
-    fileprivate func imageOf(rgbaTexture: MTLTexture) -> UIImage? {
-        let width = rgbaTexture.width
-        let height = rgbaTexture.height
-        var pixelsResult = [Int32](repeatElement(0, count: width * height))
-        let region = MTLRegionMake2D(0, 0, width, height)
-        rgbaTexture.getBytes(&pixelsResult, bytesPerRow: 4 * width, from: region, mipmapLevel: 0)
-        let context = CGContext(data: &pixelsResult, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
-        
-        if let cgImage = context?.makeImage() {
-            let imageResult = UIImage(cgImage: cgImage, scale: 0.0, orientation: UIImage.Orientation.downMirrored)
-            return imageResult
-        }
-        return nil
+    if let cgImage = context?.makeImage() {
+        let imageResult = UIImage(cgImage: cgImage, scale: 0.0, orientation: UIImage.Orientation.downMirrored)
+        return imageResult
     }
-    #elseif os(macOS)
-    
-    #endif
-    
+    return nil
+}
+#elseif os(macOS)
+
+#endif
+
+fileprivate func makePipelineState(device: MTLDevice, functionName: String) -> MTLComputePipelineState? {
+    let library = device.makeDefaultLibrary()
+    let computePipelineState: MTLComputePipelineState?
+    if let function = library?.makeFunction(name: functionName) {
+        do {
+            try computePipelineState = device.makeComputePipelineState(function: function)
+        } catch {
+            computePipelineState = nil
+            print("Failed to create ComputePipelineState: \(error.localizedDescription)")
+        }
+    }
+    else {
+        computePipelineState = nil
+        print("missing metal function")
+    }
+    return computePipelineState
 }

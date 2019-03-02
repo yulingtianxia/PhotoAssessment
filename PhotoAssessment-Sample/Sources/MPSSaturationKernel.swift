@@ -11,32 +11,14 @@ import Metal
 
 class MPSSaturationKernel: MPSUnaryImageKernel {
     
-    let computePipelineState: MTLComputePipelineState?
-    let threadGroupSize: MTLSize?
+    let computePipelineState: MTLComputePipelineState
+    let threadGroupSize: MTLSize
     
-    override init(device: MTLDevice) {
-        let library = device.makeDefaultLibrary()
-        let functionName = device.supportNonuniformThreadgroupSize() ? "rgb2hsvKernelNonuniform" : "rgb2hsvKernel"
-        if let function = library?.makeFunction(name: functionName) {
-            do {
-                try computePipelineState = device.makeComputePipelineState(function: function)
-            } catch {
-                computePipelineState = nil
-                print("Failed to create ComputePipelineState: \(error.localizedDescription)")
-            }
-        }
-        else {
-            computePipelineState = nil
-            print("missing metal function")
-        }
-        if let computePipelineState = computePipelineState {
-            let w = computePipelineState.threadExecutionWidth;
-            let h = computePipelineState.maxTotalThreadsPerThreadgroup / w;
-            threadGroupSize = MTLSize(width: w, height: h, depth: 1);
-        }
-        else {
-            threadGroupSize = nil
-        }
+    init(device: MTLDevice, computePipelineState: MTLComputePipelineState) {
+        self.computePipelineState = computePipelineState
+        let w = computePipelineState.threadExecutionWidth;
+        let h = computePipelineState.maxTotalThreadsPerThreadgroup / w;
+        threadGroupSize = MTLSize(width: w, height: h, depth: 1);
         super.init(device: device)
     }
     
@@ -45,14 +27,7 @@ class MPSSaturationKernel: MPSUnaryImageKernel {
     }
     
     override func encode(commandBuffer: MTLCommandBuffer, sourceTexture: MTLTexture, destinationTexture: MTLTexture) {
-        guard let computePipelineState = computePipelineState else {
-            print("Failed to create ComputePipelineState")
-            return
-        }
-        guard let threadGroupSize = threadGroupSize else {
-            print("Failed to create threadGroupSize")
-            return
-        }
+
         let encoder = commandBuffer.makeComputeCommandEncoder()
         encoder?.pushDebugGroup("rgb2hsv")
         encoder?.setComputePipelineState(computePipelineState)

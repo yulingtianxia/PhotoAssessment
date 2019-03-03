@@ -14,6 +14,7 @@ Photo Assessment using Core ML and Metal.
 ## 📚 Article
 
 - [使用 Metal 和 Core ML 评价照片质量](http://yulingtianxia.com/blog/2018/11/30/Photo-Assessment/)
+- [Parallel Computation using MPS](http://yulingtianxia.com/blog/2019/02/28/Parallel-Computation-using-MPS/)
 
 ## 🔮 Example
 

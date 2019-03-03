@@ -77,29 +77,17 @@ open class PhotoAssessmentHelper: NSObject {
             let group = DispatchGroup()
             
             group.enter()
-            self.mpsProcessor.downsample(imagePixels: imagePixels, width: image.width, height: image.height, scaleDimension: downsampleDimension, completionHandler: { (result) in
-                if let pixels = result {
-                    let subGroup = DispatchGroup()
-                    subGroup.enter()
-                    self.mpsProcessor.meanSaturation(ofImagePixels: pixels, width: downsampleDimension, height: downsampleDimension, completionHandler: { (result) in
-                        self.processQueue.async {
-                            totalResult.saturation = result
-                            subGroup.leave()
-                        }
-                    })
-                    subGroup.enter()
-                    self.mpsProcessor.fingerprint(ofImagePixels: pixels, width: downsampleDimension, height: downsampleDimension, completionHandler: { (result) in
-                        self.processQueue.async {
-                            totalResult.fingerprint = result
-                            subGroup.leave()
-                        }
-                    })
-                    
-                    subGroup.notify(queue: self.processQueue) {
-                        group.leave()
-                    }
+            self.mpsProcessor.meanSaturation(ofImagePixels: imagePixels, width: image.width, height: image.height, completionHandler: { (result) in
+                self.processQueue.async {
+                    totalResult.saturation = result
+                    group.leave()
                 }
-                else {
+            })
+            
+            group.enter()
+            self.mpsProcessor.fingerprint(ofImagePixels: imagePixels, width: image.width, height: image.height, completionHandler: { (result) in
+                self.processQueue.async {
+                    totalResult.fingerprint = result
                     group.leave()
                 }
             })

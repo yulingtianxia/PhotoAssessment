@@ -39,27 +39,6 @@ open class HSBColor: NSObject, NSCoding {
 
 open class Utils: NSObject {
     
-    /// downsample for image at url. It has bad performance, so I suggest use PHAsset.
-    ///
-    /// - Parameters:
-    ///   - url: image's url
-    ///   - maxDimension: max dimension for downsample
-    /// - Returns: CGImage after downsample
-    @objc public class func downsample(url: URL, maxDimension: Int) -> CGImage? {
-        let sourceOpt = [kCGImageSourceShouldCache : false] as CFDictionary
-        
-        guard let source = CGImageSourceCreateWithURL(url as CFURL, sourceOpt) else {
-            return nil
-        }
-        let downsampleOpt = [kCGImageSourceCreateThumbnailFromImageAlways : true,
-                             kCGImageSourceShouldCacheImmediately : true ,
-                             kCGImageSourceCreateThumbnailWithTransform : true,
-                             kCGImageSourceThumbnailMaxPixelSize : maxDimension] as CFDictionary
-        let downsampleImage = CGImageSourceCreateThumbnailAtIndex(source, 0, downsampleOpt)!
-        
-        return downsampleImage
-    }
-    
     /// Fingerprint for image
     ///
     /// - Parameters:
@@ -125,6 +104,20 @@ open class Utils: NSObject {
         }
         let count = Double(hsbPixels.count)
         return HSBColor(hue: Double(result.0) / count, saturation: Double(result.1) / count, brightness: Double(result.2) / count)
+    }
+    
+    @objc public class func similarity(a: Fingerprint, b: Fingerprint) -> Double {
+        var ab: Double = 0
+        var aa: Double = 0
+        var bb: Double = 0
+        for (key, value) in a {
+            ab += b[key] ?? 0 * value
+            aa += value * value
+        }
+        for (_, value) in b {
+            bb += value * value
+        }
+        return ab / (sqrt(aa) * sqrt(bb))
     }
 }
 

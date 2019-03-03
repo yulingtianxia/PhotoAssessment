@@ -9,24 +9,21 @@
 import MetalPerformanceShaders
 import Metal
 
-class MPSSaturationKernel: MPSUnaryImageKernel {
+class MPSSaturationKernel {
     
     let computePipelineState: MTLComputePipelineState
     let threadGroupSize: MTLSize
+    let device: MTLDevice
     
     init(device: MTLDevice, computePipelineState: MTLComputePipelineState) {
+        self.device = device
         self.computePipelineState = computePipelineState
         let w = computePipelineState.threadExecutionWidth;
         let h = computePipelineState.maxTotalThreadsPerThreadgroup / w;
         threadGroupSize = MTLSize(width: w, height: h, depth: 1);
-        super.init(device: device)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func encode(commandBuffer: MTLCommandBuffer, sourceTexture: MTLTexture, destinationTexture: MTLTexture) {
+    func encode(commandBuffer: MTLCommandBuffer, sourceTexture: MTLTexture, destinationTexture: MTLTexture) {
 
         let encoder = commandBuffer.makeComputeCommandEncoder()
         encoder?.pushDebugGroup("rgb2hsv")

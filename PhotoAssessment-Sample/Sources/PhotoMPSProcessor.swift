@@ -13,6 +13,8 @@ import Cocoa
 #endif
 import MetalPerformanceShaders
 
+public typealias Fingerprint = [UInt32: Double]
+
 @available(iOS 11.0, macOS 10.13, tvOS 11.0, *)
 open class PhotoMPSProcessor: NSObject {
     
@@ -20,6 +22,7 @@ open class PhotoMPSProcessor: NSObject {
     private let commandQueue: MTLCommandQueue?
     private let saturationPipelineState: MTLComputePipelineState?
     private let fingerprintPipelineState: MTLComputePipelineState?
+    private let cosinePipelineState: MTLComputePipelineState?
     
     public override init() {
         
@@ -35,10 +38,13 @@ open class PhotoMPSProcessor: NSObject {
             
             let fingerprint = device.supportNonuniformThreadgroupSize() ? "fingerprintKernelNonuniform" : "fingerprintKernel"
             fingerprintPipelineState = makePipelineState(device: device, functionName: fingerprint)
+            let cosine = device.supportNonuniformThreadgroupSize() ? "cosineKernelNonuniform" : "cosineKernel"
+            cosinePipelineState = makePipelineState(device: device, functionName: cosine)
         }
         else {
             saturationPipelineState = nil
             fingerprintPipelineState = nil
+            cosinePipelineState = nil
         }
         
         super.init()
@@ -260,7 +266,14 @@ open class PhotoMPSProcessor: NSObject {
         commandBuffer.commit()
     }
     
-    @objc public func fingerprint(ofImagePixels imagePixels: [UInt32], width: Int, height: Int, completionHandler block: @escaping ([UInt32: Double]?) -> Void) {
+    /// Fingerprint of image.
+    ///
+    /// - Parameters:
+    ///   - imagePixels: image pixels with rgba8 format
+    ///   - width: image width
+    ///   - height: image height
+    ///   - block: completion block
+    @objc public func fingerprint(ofImagePixels imagePixels: [UInt32], width: Int, height: Int, completionHandler block: @escaping (Fingerprint?) -> Void) {
         
         // Make sure the current device supports MetalPerformanceShaders.
         guard let device = device, MPSSupportsMTLDevice(device) else {
@@ -282,7 +295,7 @@ open class PhotoMPSProcessor: NSObject {
             return
         }
         
-        // Fill sobelSrcTexture with pixels
+        // Fill fpSrcTexture with pixels
         let fpRegion = MTLRegionMake2D(0, 0, width, height)
         fpSrcTexture.replace(region: fpRegion, mipmapLevel: 0, withBytes: &pixels, bytesPerRow: 4 * width)
         
@@ -300,7 +313,7 @@ open class PhotoMPSProcessor: NSObject {
         }
         
         let fp = MSPFingerprintImageKernel(device: device, computePipelineState: computePipelineState)
-        let bufferLength = fp.fingerprintSize()
+        let bufferLength = fp.bufferLength()
         let fpBuffer = device.makeBuffer(length: bufferLength, options: .storageModeShared)
 
         fp.encode(commandBuffer: commandBuffer, sourceTexture: fpSrcTexture, fingerprint: fpBuffer)
@@ -311,8 +324,7 @@ open class PhotoMPSProcessor: NSObject {
                 let uint32Ptr = bufferPtr.bindMemory(to: UInt32.self, capacity: bufferLength)
                 let uint32Buffer = UnsafeBufferPointer(start: uint32Ptr, count: bufferLength / MemoryLayout<UInt32>.size)
                 let output = Array(uint32Buffer)
-                
-                let histogram: [UInt32: Double] = output.enumerated().reduce([UInt32: Double](), { (dict, arg1) -> [UInt32: Double] in
+                let histogram: Fingerprint = output.enumerated().reduce(Fingerprint(), { (dict, arg1) -> Fingerprint in
                     let (offset, element) = arg1
                     if element > 0 {
                         var dict = dict
@@ -326,6 +338,96 @@ open class PhotoMPSProcessor: NSObject {
             else {
                 block(nil)
             }
+        }
+        commandBuffer.commit()
+    }
+    
+    /// Cosine similarity of two fingerprints.
+    ///
+    /// - Parameters:
+    ///   - a: fingerprint of image
+    ///   - b: fingerprint of image
+    ///   - block: completion block
+    @objc public func cosineSimilarity(ofFingerprint a: [UInt32], withAnother b: [UInt32], completionHandler block: @escaping (Double) -> Void) {
+        // Make sure the current device supports MetalPerformanceShaders.
+        guard let device = device, MPSSupportsMTLDevice(device) else {
+            print("Metal Performance Shaders not Supported on current Device")
+            block(0)
+            return
+        }
+        
+        guard a.count == b.count else {
+            print("Input fingerprint size not equal")
+            block(0)
+            return
+        }
+        
+        let size = a.count
+        
+        // TextureDescriptors
+        let fpTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Uint, width: size, height: 1, mipmapped: false)
+        fpTextureDescriptor.usage = [.shaderRead]
+        
+        // Textures
+        guard let fpATexture: MTLTexture = device.makeTexture(descriptor: fpTextureDescriptor) else {
+            print("make fpTexture failed")
+            block(0)
+            return
+        }
+        
+        guard let fpBTexture: MTLTexture = device.makeTexture(descriptor: fpTextureDescriptor) else {
+            print("make fpTexture failed")
+            block(0)
+            return
+        }
+
+        var aFingerprint = a
+        var bFingerprint = b
+        
+        // Fill fpSrcTexture with pixels
+        let fpRegion = MTLRegionMake2D(0, 0, size, 1)
+        fpATexture.replace(region: fpRegion, mipmapLevel: 0, withBytes: &aFingerprint, bytesPerRow: 4 * size)
+        fpBTexture.replace(region: fpRegion, mipmapLevel: 0, withBytes: &bFingerprint, bytesPerRow: 4 * size)
+        
+        guard let computePipelineState = cosinePipelineState else {
+            print("Failed to create cosinePipelineState")
+            block(0)
+            return
+        }
+        
+        let cosine = MPSCosineImageKernel(device: device, computePipelineState: computePipelineState)
+        
+        
+        // Run Image Filters
+        guard let commandBuffer = commandQueue?.makeCommandBuffer() else {
+            print("make CommandBuffer failed")
+            block(0)
+            return
+        }
+        
+        let bufferLength = cosine.bufferLength()
+        let cosineBuffer = device.makeBuffer(length: bufferLength, options: .storageModeShared)
+        cosine.encode(commandBuffer: commandBuffer, primaryTexture: fpATexture, secondaryTexture: fpBTexture, cosine: cosineBuffer)
+        
+        commandBuffer.addCompletedHandler { (cbuff) in
+            
+            if let buf = cosineBuffer {
+                let bufferPtr = buf.contents()
+                let uint32Ptr = bufferPtr.bindMemory(to: UInt32.self, capacity: bufferLength)
+                let uint32Buffer = UnsafeBufferPointer(start: uint32Ptr, count: bufferLength / MemoryLayout<UInt32>.size)
+                let output = Array(uint32Buffer)
+                
+                if output.count == 3 {
+                    let sumAB = Double(output[0])
+                    let sumAA = sqrt(Double(output[1]))
+                    let sumBB = sqrt(Double(output[2]))
+                    
+                    let result = sumAB / (sumAA * sumBB)
+                    block(result)
+                    return
+                }
+            }
+            block(0)
         }
         commandBuffer.commit()
     }

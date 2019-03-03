@@ -15,7 +15,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
     @objc public var edgeDetectVariance: Int8
     @objc public var hsb: HSBColor?
     @objc public var saturation: Float
-    @objc public var fingerprint: [UInt32: Double]?
+    @objc public var fingerprint: Fingerprint?
     @objc public var faceRectangles: [CGRect]?
     
     override init() {
@@ -51,7 +51,7 @@ open class PhotoAssessmentResult: NSObject, NSCoding {
         self.edgeDetectVariance = aDecoder.decodeObject(forKey: "edgeDetectVariance") as? Int8 ?? 0
         self.hsb = aDecoder.decodeObject(forKey: "hsb") as? HSBColor
         self.saturation = aDecoder.decodeFloat(forKey: "saturation")
-        self.fingerprint = aDecoder.decodeObject(forKey: "fingerprint") as? [UInt32: Double]
+        self.fingerprint = aDecoder.decodeObject(forKey: "fingerprint") as? Fingerprint
         self.faceRectangles = aDecoder.decodeObject(forKey: "faceRectangles") as? [CGRect]
     }
 }

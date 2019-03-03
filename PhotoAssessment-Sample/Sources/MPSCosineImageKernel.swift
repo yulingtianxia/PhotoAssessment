@@ -1,15 +1,15 @@
 //
-//  MSPFingerprintImageKernel.swift
+//  MPSCosineImageKernel.swift
 //  PhotoAssessment
 //
-//  Created by 杨萧玉 on 2019/2/24.
+//  Created by 杨萧玉 on 2019/3/3.
 //  Copyright © 2019 杨萧玉. All rights reserved.
 //
 
 import MetalPerformanceShaders
 import Metal
 
-class MSPFingerprintImageKernel {
+class MPSCosineImageKernel {
     
     let computePipelineState: MTLComputePipelineState
     let threadGroupSize: MTLSize
@@ -24,25 +24,31 @@ class MSPFingerprintImageKernel {
     }
     
     func bufferLength() -> Int {
-        // HistogramBufferSize * 4.
-        return 8192
+        // PACosineBuffer * 4.
+        return 12
     }
     
-    func encode(commandBuffer: MTLCommandBuffer, sourceTexture: MTLTexture, fingerprint buffer: MTLBuffer?) {
+    func encode(commandBuffer: MTLCommandBuffer, primaryTexture: MTLTexture, secondaryTexture: MTLTexture, cosine buffer: MTLBuffer?) {
+        
+        guard primaryTexture.width == secondaryTexture.width && primaryTexture.height == secondaryTexture.height else {
+            return
+        }
+        
         let encoder = commandBuffer.makeComputeCommandEncoder()
-        encoder?.pushDebugGroup("fingerprint")
+        encoder?.pushDebugGroup("cosine")
         encoder?.setComputePipelineState(computePipelineState)
-        encoder?.setTexture(sourceTexture, index: 0)
+        encoder?.setTexture(primaryTexture, index: 0)
+        encoder?.setTexture(secondaryTexture, index: 1)
         encoder?.setBuffer(buffer, offset: 0, index: 0)
-
+        
         if device.supportNonuniformThreadgroupSize() {
-            let threadsPerGrid = MTLSize(width: sourceTexture.width, height: sourceTexture.height, depth: 1);
+            let threadsPerGrid = MTLSize(width: primaryTexture.width, height: primaryTexture.height, depth: 1);
             encoder?.dispatchThreads(threadsPerGrid, threadsPerThreadgroup: threadGroupSize)
         }
         else {
             let w = threadGroupSize.width;
             let h = threadGroupSize.height;
-            let threadgroupsPerGrid = MTLSize(width: (sourceTexture.width + w - 1) / w, height: (sourceTexture.height + h - 1) / h, depth: 1);
+            let threadgroupsPerGrid = MTLSize(width: (primaryTexture.width + w - 1) / w, height: (primaryTexture.height + h - 1) / h, depth: 1);
             encoder?.dispatchThreadgroups(threadgroupsPerGrid, threadsPerThreadgroup: threadGroupSize)
         }
         

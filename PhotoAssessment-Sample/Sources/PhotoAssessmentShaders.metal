@@ -10,12 +10,19 @@
 #include <simd/simd.h>
 using namespace metal;
 
-#define HistogramBufferSize (2048) // 4 channels. 8*8*8*4 entrys per channel.
+#define HistogramBufferSize (2048) // 4 channels. 8*8*8*4 entrys.
 
 typedef struct
 {
-    atomic_int bucket[HistogramBufferSize];
+    atomic_uint bucket[HistogramBufferSize];
 } PAHistogramBuffer;
+
+typedef struct
+{
+    atomic_uint ab;
+    atomic_uint aa;
+    atomic_uint bb;
+} PACosineBuffer;
 
 void rgb2hsv(texture2d<float, access::read> inTexture [[texture(0)]],
              texture2d<float, access::write> outTexture [[texture(1)]],
@@ -90,4 +97,43 @@ fingerprintKernel(texture2d<uint, access::read> inTexture [[texture(0)]],
     }
     
     fingerprint(inTexture, buffer, gid);
+}
+
+
+void cosine(texture2d<uint, access::read> inTextureA [[texture(0)]],
+            texture2d<uint, access::read> inTextureB [[texture(1)]],
+            device PACosineBuffer &buffer [[buffer(0)]],
+            uint2 gid [[thread_position_in_grid]])
+{
+    uint4 color_a = inTextureA.read(gid);
+    uint a = (color_a.w << 24) | (color_a.z << 16) | (color_a.y << 8) | color_a.x;
+    uint4 color_b = inTextureB.read(gid);
+    uint b = (color_b.w << 24) | (color_b.z << 16) | (color_b.y << 8) | color_b.x;
+    
+    atomic_fetch_add_explicit(&buffer.ab, a * b, memory_order_relaxed);
+    atomic_fetch_add_explicit(&buffer.aa, a * a, memory_order_relaxed);
+    atomic_fetch_add_explicit(&buffer.bb, b * b, memory_order_relaxed);
+}
+
+kernel void
+cosineKernelNonuniform(texture2d<uint, access::read> inTextureA [[texture(0)]],
+                       texture2d<uint, access::read> inTextureB [[texture(1)]],
+                       device PACosineBuffer &buffer [[buffer(0)]],
+                       uint2 gid [[thread_position_in_grid]])
+{
+    cosine(inTextureA, inTextureB, buffer, gid);
+}
+
+kernel void
+cosineKernel(texture2d<uint, access::read> inTextureA [[texture(0)]],
+             texture2d<uint, access::read> inTextureB [[texture(1)]],
+             device PACosineBuffer &buffer [[buffer(0)]],
+             uint2 gid [[thread_position_in_grid]])
+{
+    if((gid.x >= inTextureA.get_width()) || (gid.y >= inTextureA.get_height()))
+    {
+        return;
+    }
+    
+    cosine(inTextureA, inTextureB, buffer, gid);
 }

@@ -13,5 +13,5 @@ s.module_name = 'PhotoAssessment'
 s.ios.deployment_target = '11.0'
 s.osx.deployment_target = '10.13'
 
-s.source_files = 'Sources/*.{swift,mlmodel}'
+s.source_files = 'PhotoAssessment-Sample/Sources/*.{swift,mlmodel}'
 end

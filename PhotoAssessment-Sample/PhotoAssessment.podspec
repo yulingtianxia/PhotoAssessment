@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'PhotoAssessment'
-s.version = '1.1.0'
+s.version = '1.1.1'
 s.license = { :type => 'MIT', :file => 'LICENSE' }
 s.summary = 'Swift framework for Photo Assessment using Core ML and Metal.'
 s.homepage = 'https://github.com/yulingtianxia/PhotoAssessment'

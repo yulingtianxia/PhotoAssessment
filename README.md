@@ -9,7 +9,7 @@
 
 # PhotoAssessment
 
-Photo Assessment using Core ML and Metal.
+Photo Assessment (i.e. quality score) using Core ML and Metal.
 
 ## 📚 Article
 
